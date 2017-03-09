@@ -250,6 +250,39 @@ Class Facebook
         }
     }
 
+    public function getPages(){
+
+        $token = $this->get_access_token();
+
+        $list = $this->request('get', 'me/accounts?type=page', null, $token);
+
+        return $list;
+    }
+
+    public function getLikesPage($pageID){
+
+        $json = $this->request('get', '/'.$pageID.'?fields=fan_count');
+
+        return $json->fan_count;
+    }
+
+    public function PostPage($params, $idpage){
+
+        $params = array(
+          "access_token" => $this->get_access_token(), // see: https://developers.facebook.com/docs/facebook-login/access-tokens/
+          "message" => "Here is a blog post about auto posting on Facebook using PHP #php #facebook",
+          "link" => "http://www.pontikis.net/blog/auto_post_on_facebook_with_php",
+          "picture" => "http://i.imgur.com/lHkOsiH.png",
+          "name" => "How to Auto Post on Facebook with PHP",
+          "caption" => "www.pontikis.net",
+          "description" => "Automatically post on Facebook with PHP using Facebook PHP SDK. How to create a Facebook app. Obtain and extend Facebook access tokens. Cron automation."
+        );
+
+        $post = $this->request('post', '/'.$idpage.'/feed', $params);
+
+        return $post;
+    }
+
     /**
      * Generate Facebook login url for Facebook Redirect Login (web)
      *
