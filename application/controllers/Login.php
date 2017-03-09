@@ -5,9 +5,24 @@ class Login extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+
+		$this->load->model('loginmodel', 'LoginModel');
 	}
 
 	public function index(){
-		$this->load->view('login');
+
+		$data = array();
+
+		if($this->input->post('submitLogin')){
+
+			$data['messageLogin'] = $this->LoginModel->Logar();
+		}
+
+		if($this->input->post('submitCadastrar')){
+
+			$data['messageCadastrar'] = $this->LoginModel->Cadastrar();
+		}
+
+		$this->load->view('login', $data);
 	}
 }

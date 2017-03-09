@@ -36,8 +36,8 @@
             </a>
          </div>
          <div id="form-switch-btns" class="btn-group switch-btns">
-	         <button data-target="#signup-form-wrap" class="btn">Cadastrar</button> 
-	         <button data-target="#signin-form-wrap" class="btn" disabled="disabled">Entrar</button>
+	         <button data-target="#signup-form-wrap" class="btn" <?php echo (isset($messageCadastrar)) ? 'disabled' : '';?>>Cadastrar</button> 
+	         <button data-target="#signin-form-wrap" class="btn" <?php echo (!isset($messageCadastrar)) ? 'disabled' : '';?>>Entrar</button>
          </div>
       </header>
       <!-- /.login-page-header -->
@@ -61,35 +61,41 @@
          <!-- /.first-side -->
          <div class="side second-side">
             <div class="side-content">
-               <div id="signin-form-wrap" class="form-wrap show">
+               <div id="signin-form-wrap" class="form-wrap <?php echo (!isset($messageCadastrar)) ? 'show' : '';?>">
                   <h4 class="my-5 font-weight-light text-uppercase">Faça o login e tenha acesso ao sistema</h4>
-                  <form id="signin-form" class="form" action="#">
+                  <form id="signin-form" class="form" action="" method="post">
+
+                  	 <?php if(isset($messageLogin)) echo $messageLogin; ?>
+
                      <div class="form-group">
-                     	<input type="text" class="form-control" placeholder="Login">
+                     	<input type="text" name="login" class="form-control" placeholder="Login" required>
                      </div>
                      <div class="form-group">
-                     	<input type="password" class="form-control" placeholder="Senha">
+                     	<input type="password" name="senha" class="form-control" placeholder="Senha" required>
                      </div>
-                     <input type="submit" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="Entrar">
+                     <input type="submit" name="submitLogin" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="Entrar">
                   </form>
                </div>
                <!-- /#signin-form-wrap -->
-               <div id="signup-form-wrap" class="form-wrap">
+               <div id="signup-form-wrap" class="form-wrap <?php echo (isset($messageCadastrar)) ? 'show' : '';?>">
                   <h4 class="my-5 font-weight-light text-uppercase">Faça seu cadastro para acessar nosso sistema</h4>
-                  <form id="signup-form" class="form" action="#">
+                  <form id="signup-form" class="form" action="" method="post">
+
+                  	 <?php if(isset($messageCadastrar)) echo $messageCadastrar; ?>
+
                      <div class="form-group">
-                     	<input type="text" class="form-control" placeholder="Nome">
+                     	<input type="text" name="nome" class="form-control" placeholder="Nome" required>
                      </div>
                      <div class="form-group">
-                     	<input type="email" class="form-control" placeholder="Email">
+                     	<input type="email" name="email" class="form-control" placeholder="Email" required>
                      </div>
                      <div class="form-group">
-                     	<input type="text" class="form-control" placeholder="Login">
+                     	<input type="text" name="login" class="form-control" placeholder="Login" required>
                      </div>
                      <div class="form-group">
-                     	<input type="password" class="form-control" placeholder="Senha">
+                     	<input type="password" name="senha" class="form-control" placeholder="Senha" required>
                      </div>
-                     <input type="submit" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="Cadastrar">
+                     <input type="submit" name="submitCadastrar" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="Cadastrar">
                   </form>
                </div>
                <!-- /#signin-form-wrap -->
