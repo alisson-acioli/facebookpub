@@ -61,7 +61,15 @@
    <!-- /.row -->
 
    <div align="center">
+      <?php
+      if($this->facebook->is_authenticated()){
+         echo '<div class="alert alert-success text-center">O sistema está conectado com o seu Facebook</div>';
+      }else{
+      ?>
       <a href="<?php echo $this->facebook->login_url();?>" class="btn btn-primary">Faça o login no Facebook antes de usar o sistema</a>
+      <?php
+      }
+      ?>
    </div>
 
    <div class="row">
