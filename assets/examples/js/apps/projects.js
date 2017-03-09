@@ -1,0 +1,1 @@
+!function(){"use strict";$('input[name="task_due_date"]').daterangepicker({singleDatePicker:!0,showDropdowns:!0,autoUpdateInput:!1}),$('input[name="task_due_date"]').on("apply.daterangepicker",function(t,a){$(this).val(a.startDate.format("MM/DD/YYYY"))}),$('input[name="task_due_date"]').on("cancel.daterangepicker",function(t,a){$(this).val("")})}();
