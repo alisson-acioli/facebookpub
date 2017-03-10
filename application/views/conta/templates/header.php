@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/site.css">
 <!-- current page styles -->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/examples/css/dashboards/dashboard.v1.css">
+<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bower_components/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet" href="<?php echo base_url();?>assets/examples/css/demos/form.wizard.css">
+
 <style>
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600');
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500');
