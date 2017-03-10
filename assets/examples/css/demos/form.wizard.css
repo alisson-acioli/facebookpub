@@ -1,1 +1,202 @@
-.wizard{border:2px solid #eceeef;position:relative;margin-top:2rem}.wizard .nav-tabs.vertices{width:100%;position:absolute;top:0;left:0;-webkit-transform:translateY(calc(-50% - 4px));-ms-transform:translateY(calc(-50% - 4px));transform:translateY(calc(-50% - 4px));display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-pack:distribute;justify-content:space-around;border:none}.wizard .nav-tabs.vertices.keep-prefix-suffix{width:calc(100% + 4px);left:-2px}.wizard .nav-tabs.vertices:not(.keep-prefix-suffix) .nav-item:first-child .nav-link:before,.wizard .nav-tabs.vertices:not(.keep-prefix-suffix) .nav-item:last-child .nav-link:after{display:none}.wizard .nav-tabs.vertices .nav-item{-webkit-box-flex:0;-ms-flex:0 1 100%;flex:0 1 100%}.wizard .nav-tabs.vertices .nav-link{width:100%;display:block;background:none;position:relative;border:none;padding:0;z-index:1}.wizard .nav-tabs.vertices .nav-link .vertex{width:58px;height:58px;margin:0 auto;display:block;padding:.5rem;border-radius:.25rem;border:none;background-color:#39527b;color:#39527b;z-index:1}.wizard .nav-tabs.vertices .nav-link .vertex svg{width:22px;height:22px}.wizard .nav-tabs.vertices .nav-link .vertex.vertex-sm{width:48px;height:48px}.wizard .nav-tabs.vertices .nav-link .vertex.vertex-sm svg{width:18px;height:18px}.wizard .nav-tabs.vertices .nav-link .vertex.vertex-circle,.wizard .nav-tabs.vertices .nav-link .vertex.vertex-circle .vertex-inner{border-radius:5000px}.wizard .nav-tabs.vertices .nav-link .vertex-inner{background:#fff;width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border-radius:.25rem}.wizard .nav-tabs.vertices .nav-link:after,.wizard .nav-tabs.vertices .nav-link:before{content:"";height:.5rem;background:#39527b;position:absolute;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);width:50%;z-index:-1}.wizard .nav-tabs.vertices .nav-link:before{right:50%;left:0}.wizard .nav-tabs.vertices .nav-link:after{right:0;left:50%}.wizard .nav-tabs.vertices .nav-item.active .nav-link .vertex,.wizard .nav-tabs.vertices .nav-item.active .nav-link:after,.wizard .nav-tabs.vertices .nav-item.active .nav-link:before,.wizard .nav-tabs.vertices .nav-item.visited .nav-link .vertex,.wizard .nav-tabs.vertices .nav-item.visited .nav-link:after,.wizard .nav-tabs.vertices .nav-item.visited .nav-link:before{background-color:#60c84c}.wizard-checkbox{position:relative}.wizard-checkbox input[type=checkbox]{opacity:0;position:absolute;top:50%;left:50%;z-index:-1}.wizard-checkbox label{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;width:100px;height:100px;background:#f7f7f9;border:1px solid #eceeef;font-weight:400;border-radius:.25rem;cursor:pointer}.wizard-checkbox label:hover{box-shadow:0 0 16px #ddd}.wizard-checkbox input[type=checkbox]:checked+label{border-color:#60c84c;box-shadow:0 0 16px rgba(96,200,76,.5)}.wizard .form-control{background-color:#eee}.wizard .form-control.form-control-danger,.wizard .form-control.form-control-success,.wizard .form-control:focus{background-color:#fff}
+.wizard {
+    border: 2px solid #eceeef;
+    position: relative;
+    margin-top: 2rem
+}
+.wizard .nav-tabs.vertices {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: translateY(calc(-50% - 4px));
+    -ms-transform: translateY(calc(-50% - 4px));
+    transform: translateY(calc(-50% - 4px));
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    border: none
+}
+.wizard .nav-tabs.vertices.keep-prefix-suffix {
+    width: calc(100% + 4px);
+    left: -2px
+}
+.wizard .nav-tabs.vertices:not(.keep-prefix-suffix) .nav-item:first-child .nav-link:before,
+.wizard .nav-tabs.vertices:not(.keep-prefix-suffix) .nav-item:last-child .nav-link:after {
+    display: none
+}
+.wizard .nav-tabs.vertices .nav-item {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%
+}
+.wizard .nav-tabs.vertices .nav-link {
+    width: 100%;
+    display: block;
+    background: none;
+    position: relative;
+    border: none;
+    padding: 0;
+    z-index: 1
+}
+.wizard .nav-tabs.vertices .nav-link .vertex {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto;
+    display: block;
+    padding: .5rem;
+    border-radius: .25rem;
+    border: none;
+    background-color: #39527b;
+    color: #39527b;
+    z-index: 1
+}
+.wizard .nav-tabs.vertices .nav-link .vertex svg {
+    width: 22px;
+    height: 22px
+}
+.wizard .nav-tabs.vertices .nav-link .vertex.vertex-sm {
+    width: 48px;
+    height: 48px
+}
+.wizard .nav-tabs.vertices .nav-link .vertex.vertex-sm svg {
+    width: 18px;
+    height: 18px
+}
+.wizard .nav-tabs.vertices .nav-link .vertex.vertex-circle,
+.wizard .nav-tabs.vertices .nav-link .vertex.vertex-circle .vertex-inner {
+    border-radius: 5000px
+}
+.wizard .nav-tabs.vertices .nav-link .vertex-inner {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: .25rem
+}
+.wizard .nav-tabs.vertices .nav-link:after,
+.wizard .nav-tabs.vertices .nav-link:before {
+    content: "";
+    height: .5rem;
+    background: #39527b;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 50%;
+    z-index: -1
+}
+.wizard .nav-tabs.vertices .nav-link:before {
+    right: 50%;
+    left: 0
+}
+.wizard .nav-tabs.vertices .nav-link:after {
+    right: 0;
+    left: 50%
+}
+.wizard .nav-tabs.vertices .nav-item.active .nav-link .vertex,
+.wizard .nav-tabs.vertices .nav-item.active .nav-link:after,
+.wizard .nav-tabs.vertices .nav-item.active .nav-link:before,
+.wizard .nav-tabs.vertices .nav-item.visited .nav-link .vertex,
+.wizard .nav-tabs.vertices .nav-item.visited .nav-link:after,
+.wizard .nav-tabs.vertices .nav-item.visited .nav-link:before {
+    background-color: #60c84c
+}
+.wizard-checkbox {
+    position: relative
+}
+.wizard-checkbox input[type=checkbox] {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1
+}
+.wizard-checkbox label {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    background: #f7f7f9;
+    border: 1px solid #eceeef;
+    font-weight: 400;
+    border-radius: .25rem;
+    cursor: pointer
+}
+.wizard-checkbox label:hover {
+    box-shadow: 0 0 16px #ddd
+}
+.wizard-checkbox input[type=checkbox]:checked+label {
+    border-color: #60c84c;
+    box-shadow: 0 0 16px rgba(96, 200, 76, .5)
+}
+
+.wizard-radio {
+    position: relative
+}
+.wizard-radio input[type=radio] {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1
+}
+.wizard-radio label {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    background: #f7f7f9;
+    border: 1px solid #eceeef;
+    font-weight: 400;
+    border-radius: .25rem;
+    cursor: pointer
+}
+.wizard-radio label:hover {
+    box-shadow: 0 0 16px #ddd
+}
+.wizard-radio input[type=radio]:checked+label {
+    border-color: #60c84c;
+    box-shadow: 0 0 16px rgba(96, 200, 76, .5)
+}
+
+.wizard .form-control {
+    background-color: #eee
+}
+.wizard .form-control.form-control-danger,
+.wizard .form-control.form-control-success,
+.wizard .form-control:focus {
+    background-color: #fff
+}
