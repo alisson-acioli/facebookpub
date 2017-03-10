@@ -26,6 +26,8 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bower_components/sweetalert/dist/sweetalert.css">
 <link rel="stylesheet" href="<?php echo base_url();?>assets/examples/css/demos/form.wizard.css">
 
+<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
 <style>
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600');
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500');
@@ -144,16 +146,10 @@ svg4everybody();
          <div class="dropdown-menu dropdown-menu-right p-0" data-plugin="dropdownCaret">
             <a class="dropdown-item dropdown-menu-cap"><?php echo usuario('nome');?></a> 
             <a class="dropdown-item" href="#">
-               <svg class="svg-user-sm-icon mr-2">
-                  <use xlink:href="<?php echo base_url();?>assets/global/svg-sprite/sprite.svg#user-sm"/>
-               </svg>
                <span>Perfil</span> 
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
-               <svg class="svg-logout-icon mr-2">
-                  <use xlink:href="<?php echo base_url();?>assets/global/svg-sprite/sprite.svg#logout"/>
-               </svg>
                <span>Sair</span>
             </a>
          </div>
