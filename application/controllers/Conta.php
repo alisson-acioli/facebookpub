@@ -10,9 +10,38 @@ class Conta extends CI_Controller {
     public function index(){
 
         $data['titulo'] = 'Página inicial';
+
+        $data['jsLoader'] = array(
+                                  'assets/examples/js/dashboards/dashboard.v1.js'
+                                  );
         
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/dashboard/index');
+        $this->load->view('conta/templates/footer');
+    }
+
+    public function postagem(){
+
+        $data['titulo'] = 'Programar postagem';
+        
+        $data['jsLoader'] = array(
+                                  'assets/vendor/bower_components/jquery-validation/dist/jquery.validate.min.js',
+                                  'assets/vendor/bower_components/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js',
+                                  'assets/vendor/bower_components/sweetalert/dist/sweetalert.min.js',
+                                  'assets/examples/js/demos/form.wizard.js'
+                                  );
+
+        $this->load->view('conta/templates/header', $data);
+        $this->load->view('conta/postagem/index');
+        $this->load->view('conta/templates/footer');
+    }
+
+    public function programacoes(){
+
+        $data['titulo'] = 'Programações';
+
+        $this->load->view('conta/templates/header', $data);
+        $this->load->view('conta/postagem/programacoes');
         $this->load->view('conta/templates/footer');
     }
 }
