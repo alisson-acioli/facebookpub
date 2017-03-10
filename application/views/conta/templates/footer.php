@@ -54,7 +54,12 @@
 <!-- theme customizer -->
 <script src="<?php echo base_url();?>assets/examples/js/theme-customizer.js"></script>
 
-<!-- current page scripts -->
-<script src="<?php echo base_url();?>assets/examples/js/dashboards/dashboard.v1.js"></script>
+<?php
+if(isset($jsLoader)){
+   foreach($jsLoader as $jsFile){
+      echo '<script src="'.base_url($jsFile).'"></script>';
+   }
+}
+?>
 </body>
 </html>
