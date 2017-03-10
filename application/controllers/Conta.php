@@ -44,4 +44,18 @@ class Conta extends CI_Controller {
         $this->load->view('conta/postagem/programacoes');
         $this->load->view('conta/templates/footer');
     }
+
+    public function relatorios(){
+
+        $data['titulo'] = 'Relatórios';
+
+        $data['jsLoader'] = array(
+                          'assets/vendor/bower_components/moment/min/moment.min.js',
+                          'assets/vendor/bower_components/bootstrap-daterangepicker/daterangepicker.js'
+                          );
+
+        $this->load->view('conta/templates/header', $data);
+        $this->load->view('conta/relatorios/index');
+        $this->load->view('conta/templates/footer');
+    }
 }
