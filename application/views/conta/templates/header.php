@@ -168,25 +168,25 @@ svg4everybody();
          <li class="menu-section-heading">NAVEGAÇÃO</li>
          <li>
             <a href="<?php echo base_url('conta');?>">
-               <i class="menu-icon zmdi zmdi-home zmdi-hc-lg"></i>
+               <i class="fa fa-home"></i>
                <span class="menu-text">Dashboard</span>
             </a>
          </li>
          <li>
-            <a href="search.html">
-               <i class="menu-icon zmdi zmdi-search zmdi-hc-lg"></i>
+            <a href="<?php echo base_url('conta/postagem');?>">
+               <i class="fa fa-edit"></i>
                <span class="menu-text">Postagem</span>
             </a>
          </li>
          <li>
-            <a href="search.html">
-               <i class="menu-icon zmdi zmdi-search zmdi-hc-lg"></i>
+            <a href="<?php echo base_url('conta/programacoes');?>">
+               <i class="fa fa-clock-o"></i>
                <span class="menu-text">Programações</span>
             </a>
          </li>
          <li>
-            <a href="search.html">
-               <i class="menu-icon zmdi zmdi-search zmdi-hc-lg"></i>
+            <a href="<?php echo base_url('conta/relatorios');?>">
+               <i class="fa fa-line-chart"></i>
                <span class="menu-text">Relatórios</span>
             </a>
          </li>
