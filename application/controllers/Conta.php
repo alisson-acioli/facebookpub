@@ -45,6 +45,15 @@ class Conta extends CI_Controller {
         $this->load->view('conta/templates/footer');
     }
 
+    public function paginas(){
+
+        $data['titulo'] = 'Páginas';
+
+        $this->load->view('conta/templates/header', $data);
+        $this->load->view('conta/paginas/index');
+        $this->load->view('conta/templates/footer');
+    }
+
     public function relatorios(){
 
         $data['titulo'] = 'Relatórios';
