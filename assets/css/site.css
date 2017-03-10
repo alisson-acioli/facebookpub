@@ -2590,3 +2590,7 @@ body.menubar-light.menubar-fold .site-menu>li>.submenu>li {
 .label-danger[href]:focus {
   background-color: #c9302c;
 }
+
+.pointer{
+    cursor: pointer !important;
+}
