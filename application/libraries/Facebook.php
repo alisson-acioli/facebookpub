@@ -263,7 +263,7 @@ Class Facebook
 
         $json = $this->request('get', '/'.$pageID.'?fields=fan_count');
 
-        return $json->fan_count;
+        return $json['fan_count'];
     }
 
     public function PostPage($params, $idpage){
