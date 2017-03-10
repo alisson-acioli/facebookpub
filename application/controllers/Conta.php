@@ -5,6 +5,8 @@ class Conta extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
+
+        $this->load->model('paginas');
     }
 
     public function index(){
@@ -48,6 +50,10 @@ class Conta extends CI_Controller {
     public function paginas(){
 
         $data['titulo'] = 'Páginas';
+
+        if($this->input->post('submit')){
+          $data['message'] = $this->paginas->SalvaPagina();
+        }
 
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/paginas/index');

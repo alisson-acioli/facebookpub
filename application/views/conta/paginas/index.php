@@ -4,6 +4,7 @@
   <p>Caso queira adiconar ou remover posteriormente, será possível por essa página.</p>
 
   <div align="center">
+    <form action="" method="post">
     <?php
     if($this->facebook->is_authenticated()){
 
@@ -12,9 +13,9 @@
       if(count($pagesList['data']) > 0){
     ?>
 
-    <input type="submit" class="btn btn-primary pull-right mb-3 pointer" value="Salvar Alterações">
+    <input type="submit" name="submit" class="btn btn-primary pull-right mb-3 pointer" value="Salvar Alterações">
     <div class="clearfix"></div>
-    
+
     <table class="table table-hover table-striped">
     <thead>
       <tr>
@@ -27,11 +28,27 @@
     <tbody>
     <?php
         foreach($pagesList['data'] as $page){
+
+          $this->db->where('id_page', $page['id']);
+          $queryPage = $this->db->get('paginas');
+
+          if($queryPage->num_rows() > 0){
+
+            $row = $queryPage->row();
+
+            if($row->status == 1){
+              $checked = 'checked';
+            }else{
+              $checked = '';
+            }
+          }else{
+            $checked = '';
+          }
     ?>
     <tr>
       <td><?php echo $page['name'];?></td>
       <td><?php echo $this->facebook->getLikesPage($page['id']);?> curtidas</td>
-      <td><input type="checkbox" data-plugin="switchry" data-color="#10c469" name="pages[]" value="<?php echo $page['id'];?>" data-size="small"></td>
+      <td><input type="checkbox" data-plugin="switchry" data-color="#10c469" name="pages[]" value="<?php echo $page['id'];?>" data-size="small" <?php echo $checked;?>></td>
     </tr>
     <?php
         }
@@ -48,6 +65,7 @@
     <?php
     }
     ?>
+    </form>
   </div>
     
 </section>
