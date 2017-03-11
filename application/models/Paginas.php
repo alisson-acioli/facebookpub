@@ -36,5 +36,26 @@ class Paginas extends CI_Model{
             }
         }
     }
+
+    public function TodasPaginas(){
+
+        $userid = $this->session->userdata('userid');
+        $pages = array();
+
+        $this->db->where('id_user', $userid);
+        $this->db->where('status', 1);
+        $queryPages = $this->db->get('paginas');
+
+        if($queryPages->num_rows() > 0){
+
+            foreach($queryPages->result() as $result){
+
+                $pages[] = array('page'=>$this->facebook->NamePage($result->id_page), 'page_id'=>$result->id_page);
+            }
+
+        }
+
+        return $pages;
+    }
 }
 ?>

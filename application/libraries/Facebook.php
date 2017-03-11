@@ -250,6 +250,16 @@ Class Facebook
         }
     }
 
+    public function NamePage($idPage){
+
+        $query = $this->request('get', '/'.$idPage);
+
+        if(!empty($query)){
+
+            return $query['name'];
+        }
+    }
+
     public function getPages(){
 
         $token = $this->get_access_token();

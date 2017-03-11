@@ -68,29 +68,29 @@
             <div class="d-flex justify-content-center">
 
                <div class="wizard-radio mr-4">
-                  <input id="texto" value="texto" type="radio" name="tipo" checked>
-                  <label for="texto">
+                  <input id="textoin" value="texto" type="radio" name="tipo" checked>
+                  <label for="textoin">
                      <i class="fa fa-text-height mb-2"></i>
                      <span class="fz-base">Texto</span>
                   </label>
                </div>
                <div class="wizard-radio mr-4">
-                  <input id="link" value="link" type="radio" name="tipo">
-                  <label for="link">
+                  <input id="linkin" value="link" type="radio" name="tipo">
+                  <label for="linkin">
                      <i class="fa fa-link mb-2"></i>
                      <span class="fz-base">Link</span>
                   </label>
                </div>
                <div class="wizard-radio mr-4">
-                  <input id="imagem" value="imagem" type="radio" name="tipo">
-                  <label for="imagem">
+                  <input id="imagemin" value="imagem" type="radio" name="tipo">
+                  <label for="imagemin">
                      <i class="fa fa-file-picture-o mb-2"></i>
                      <span class="fz-base">Imagem</span>
                   </label>
                </div>
                <div class="wizard-radio">
-                  <input id="video" value="video" type="radio" name="tipo">
-                  <label for="video">
+                  <input id="videoin" value="video" type="radio" name="tipo">
+                  <label for="videoin">
                      <i class="fa fa-video-camera mb-2"></i>
                      <span class="fz-base">Vídeo</span>
                   </label>
@@ -120,25 +120,25 @@
                <div class="form-group row">
                   <label for="titulo_link_link" class="col-2 col-form-label">Título do Link</label>
                   <div class="col-10">
-                     <input type="text" id="titulo_link_link" class="form-control">
+                     <input type="text" id="titulo_link_link" name="titulo_link_link" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
                   <label for="descricao_link_link" class="col-2 col-form-label">Descrição do Link</label>
                   <div class="col-10">
-                     <input type="text" id="descricao_link_link" class="form-control">
+                     <textarea type="text" id="descricao_link_link" name="descricao_link_link" class="form-control"></textarea>
                   </div>
                </div>
                <div class="form-group row">
                   <label for="imagem_link_link" class="col-2 col-form-label">Imagem do Link</label>
                   <div class="col-10">
-                     <input type="file" id="imagem_link_link" class="form-control">
+                     <input type="text" id="imagem_link_link" name="imagem_link_link" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
                   <label for="url_link_link" class="col-2 col-form-label">URL (link)</label>
                   <div class="col-10">
-                     <input type="text" id="url_link_link" class="form-control">
+                     <input type="text" id="url_link_link" name="url_link_link" class="form-control">
                   </div>
                </div>
             </div>
@@ -147,13 +147,13 @@
                <div class="form-group row">
                   <label for="imagem_imagem" class="col-2 col-form-label">Imagem</label>
                   <div class="col-10">
-                     <input type="file" id="imagem_imagem" class="form-control">
+                     <input type="url" id="imagem_imagem" name="imagem_imagem" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
                   <label for="mensagem_post_imagem" class="col-2 col-form-label">Mensagem no post</label>
                   <div class="col-10">
-                     <textarea id="mensagem_post_imagem" rows="4" class="form-control"></textarea>
+                     <textarea id="mensagem_post_imagem" name="mensagem_post_imagem" rows="4" class="form-control"></textarea>
                   </div>
                </div>
             </div>
@@ -162,19 +162,19 @@
                <div class="form-group row">
                   <label for="titulo_video_video" class="col-2 col-form-label">Título do Vídeo</label>
                   <div class="col-10">
-                     <input type="text" id="titulo_video_video" class="form-control">
+                     <input type="text" id="titulo_video_video" name="titulo_video_video" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
                   <label for="descricao_video_video" class="col-2 col-form-label">Descrição do Vídeo</label>
                   <div class="col-10">
-                     <textarea id="descricao_video_video" rows="4" class="form-control"></textarea>
+                     <textarea id="descricao_video_video" name="descricao_video_video" rows="4" class="form-control"></textarea>
                   </div>
                </div>
                <div class="form-group row">
                   <label for="url_video_video" class="col-2 col-form-label">URL do Vídeo</label>
                   <div class="col-10">
-                     <input type="text" id="url_video_video" class="form-control">
+                     <input type="text" id="url_video_video" name="url_video_video" class="form-control">
                   </div>
                </div>
             </div>
@@ -186,17 +186,14 @@
             <div class="form-group row">
                <label for="services" class="col-2 col-form-label">Data</label>
                <div class="col-10">
-                  <input type="text" id="daterange-ex-3" class="form-control" value="<?php echo date('d/m/Y');?>" style="width:150px;">
+                  <input type="text" id="daterange-ex-3" name="data_agendamento" class="form-control" value="<?php echo date('d/m/Y');?>" style="width:150px;">
                </div>
             </div>
             <div class="form-group row">
                <label for="services" class="col-2 col-form-label">Hora</label>
                <div class="col-10">
-                  <div class="input-group clockpicker" style="width: 150px" data-plugin="clockpicker">
-                     <input type="text" class="form-control" value="<?php echo date('H:i');?>">
-                     <span class="input-group-addon">
-                        <span class="zmdi zmdi-time"></span>
-                     </span>
+                  <div class="clockpicker" data-plugin="clockpicker">
+                     <input type="text" name="hora_agendamento" class="form-control" value="<?php echo date('H:i');?>" style="width: 150px">
                   </div>
                </div>
             </div>
@@ -217,7 +214,7 @@
                <div class="form-group row">
                   <label for="intervalo" class="col-2 col-form-label">Intervalo</label>
                   <div class="col-10">
-                     <select id="intervalo" class="form-control" style="width:200px">
+                     <select id="intervalo" name="intervalo" class="form-control" style="width:200px">
                         <option value="1">A cada 1 dia</option>
                         <option value="2">A cada 2 dias</option>
                         <option value="3">A cada 3 dias</option>
@@ -231,9 +228,9 @@
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="data_final" class="col-2 col-form-label">Data Final</label>
+                  <label for="dt-picker" class="col-2 col-form-label">Data Final</label>
                   <div class="col-10">
-                     <input type="text" id="dt-picker" class="form-control" value="<?php echo date('d/m/Y', time() + (60*60*24));?>" style="width:150px;">
+                     <input type="text" id="dt-picker" name="data_final" class="form-control" value="<?php echo date('d/m/Y', time() + (60*60*24));?>" style="width:150px;">
                   </div>
                </div>
             </div>
@@ -243,7 +240,16 @@
          <div class="tab-pane py-5" id="paginas-publicacao" role="tabpanel">
             <h4 class="text-center mb-5">Quais Páginas ?</h4>
             <p class="text-center">Escolha as páginas que deverão receber a sua postagem.</p>
-            
+            <select name="paginas_programacao_select" id="paginas_programacao_select" class="form-control" style="width:75%;">
+            <?php
+            if(!empty($paginas)){
+
+                  foreach($paginas as $pagina){
+                     echo '<option value="'.$pagina['page_id'].'">'.$pagina['page'].'</option>';
+                  }
+            }
+            ?>
+            </select>
          </div>
          <!-- /.tab-pane -->
          <div class="pager d-flex justify-content-center">

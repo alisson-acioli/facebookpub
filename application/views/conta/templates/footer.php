@@ -17,6 +17,9 @@
 <!-- #video-modal -->
 <!-- /.theme-customizer -->
 
+<script>
+var baseURL = '<?php echo base_url();?>';
+</script>
 <!-- core plugins -->
 <script src="<?php echo base_url();?>assets/vendor/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/bower_components/tether/dist/js/tether.min.js"></script>
@@ -155,7 +158,6 @@ Highcharts.chart('curtidas_dia', {
 
 <!-- theme customizer -->
 <script src="<?php echo base_url();?>assets/examples/js/theme-customizer.js"></script>
-
 <?php
 if(isset($jsLoader)){
    foreach($jsLoader as $jsFile){
@@ -163,7 +165,6 @@ if(isset($jsLoader)){
    }
 }
 ?>
-
 
 </body>
 </html>
