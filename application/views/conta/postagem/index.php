@@ -48,6 +48,17 @@
                </div>
             </a>
          </li>
+         <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#paginas-publicacao" role="tab">
+               <div class="vertex">
+                  <span class="vertex-inner">
+                     <svg width="22" height="22" class="svg-isvg-chat-icon">
+                        <use xlink:href="<?php echo base_url();?>assets/global/svg-sprite/sprite.svg#isvg-chat"/>
+                     </svg>
+                  </span>
+               </div>
+            </a>
+         </li>
       </ul>
       <div class="tab-content">
          <!-- /.tab-pane -->
@@ -57,28 +68,28 @@
             <div class="d-flex justify-content-center">
 
                <div class="wizard-radio mr-4">
-                  <input id="cloud" type="radio" name="tipo">
-                  <label for="cloud">
+                  <input id="texto" value="texto" type="radio" name="tipo" checked>
+                  <label for="texto">
                      <i class="fa fa-text-height mb-2"></i>
                      <span class="fz-base">Texto</span>
                   </label>
                </div>
                <div class="wizard-radio mr-4">
-                  <input id="hosting" type="radio" name="tipo">
-                  <label for="hosting">
+                  <input id="link" value="link" type="radio" name="tipo">
+                  <label for="link">
                      <i class="fa fa-link mb-2"></i>
                      <span class="fz-base">Link</span>
                   </label>
                </div>
                <div class="wizard-radio mr-4">
-                  <input id="analytics" type="radio" name="tipo">
-                  <label for="analytics">
+                  <input id="imagem" value="imagem" type="radio" name="tipo">
+                  <label for="imagem">
                      <i class="fa fa-file-picture-o mb-2"></i>
                      <span class="fz-base">Imagem</span>
                   </label>
                </div>
                <div class="wizard-radio">
-                  <input id="video" type="radio" name="tipo">
+                  <input id="video" value="video" type="radio" name="tipo">
                   <label for="video">
                      <i class="fa fa-video-camera mb-2"></i>
                      <span class="fz-base">Vídeo</span>
@@ -89,36 +100,150 @@
          <!-- /.tab-pane -->
          <div class="tab-pane p-5" id="detalhes-publicacao" role="tabpanel">
             <h4 class="text-center mb-5">Detalhes da Programação</h4>
-            <div class="form-group row mb-5">
-               <label class="col-4 col-form-label text-right">Payment Method:</label>
-               <div class="col-6">
-                  <div class="radio radio-primary"><input type="radio" id="cache" name="payment_method"><label for="cache">Cache</label></div>
-                  <div class="radio radio-primary"><input type="radio" id="card" name="payment_method"><label for="card">Debit Card</label></div>
+
+            <div class="texto" style="display:block;">
+               <div class="form-group row">
+                  <label for="mensagem_texto" class="col-2 col-form-label">Mensagem</label>
+                  <div class="col-10">
+                     <textarea name="mensagem_texto" id="mensagem_texto" rows="4" class="form-control"></textarea>
+                  </div>
                </div>
             </div>
-            <div class="form-group row">
-               <label for="spending" class="col-4 col-form-label text-right">Shopping Spending:</label>
-               <div class="col-6"><input type="text" id="spending" name="spending" class="form-control" placeholder="How much you spend in $ ?"></div>
+
+            <div class="row link" style="display:none;">
+               <div class="form-group row">
+                  <label for="mensagem_link" class="col-2 col-form-label">Mensagem no post</label>
+                  <div class="col-10">
+                     <textarea name="mensagem_link" id="mensagem_link" rows="4" class="form-control"></textarea>
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="titulo_link_link" class="col-2 col-form-label">Título do Link</label>
+                  <div class="col-10">
+                     <input type="text" id="titulo_link_link" class="form-control">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="descricao_link_link" class="col-2 col-form-label">Descrição do Link</label>
+                  <div class="col-10">
+                     <input type="text" id="descricao_link_link" class="form-control">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="imagem_link_link" class="col-2 col-form-label">Imagem do Link</label>
+                  <div class="col-10">
+                     <input type="file" id="imagem_link_link" class="form-control">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="url_link_link" class="col-2 col-form-label">URL (link)</label>
+                  <div class="col-10">
+                     <input type="text" id="url_link_link" class="form-control">
+                  </div>
+               </div>
             </div>
+
+            <div class="row imagem" style="display:none;">
+               <div class="form-group row">
+                  <label for="imagem_imagem" class="col-2 col-form-label">Imagem</label>
+                  <div class="col-10">
+                     <input type="file" id="imagem_imagem" class="form-control">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="mensagem_post_imagem" class="col-2 col-form-label">Mensagem no post</label>
+                  <div class="col-10">
+                     <textarea id="mensagem_post_imagem" rows="4" class="form-control"></textarea>
+                  </div>
+               </div>
+            </div>
+
+            <div class="row video" style="display:none;">
+               <div class="form-group row">
+                  <label for="titulo_video_video" class="col-2 col-form-label">Título do Vídeo</label>
+                  <div class="col-10">
+                     <input type="text" id="titulo_video_video" class="form-control">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="descricao_video_video" class="col-2 col-form-label">Descrição do Vídeo</label>
+                  <div class="col-10">
+                     <textarea id="descricao_video_video" rows="4" class="form-control"></textarea>
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="url_video_video" class="col-2 col-form-label">URL do Vídeo</label>
+                  <div class="col-10">
+                     <input type="text" id="url_video_video" class="form-control">
+                  </div>
+               </div>
+            </div>
+
          </div>
          <!-- /.tab-pane -->
          <div class="tab-pane p-5" id="agendamento-publicacao" role="tabpanel">
             <h4 class="text-center mb-5">Agendamento</h4>
             <div class="form-group row">
-               <label for="services" class="col-2 col-form-label">Service</label>
+               <label for="services" class="col-2 col-form-label">Data</label>
                <div class="col-10">
-                  <select name="services" id="services" class="form-control">
-                     <option disabled="disabled" selected="selected">Choose Service</option>
-                     <option value="cloud">Cloud Services</option>
-                     <option value="hosting">Web Hosting</option>
-                     <option value="analytics">Analytics</option>
-                  </select>
+                  <input type="text" id="daterange-ex-3" class="form-control" value="<?php echo date('d/m/Y');?>" style="width:150px;">
                </div>
             </div>
             <div class="form-group row">
-               <label for="message" class="col-2 col-form-label">Message</label>
-               <div class="col-10"><textarea name="message" id="message" rows="4" class="form-control"></textarea></div>
+               <label for="services" class="col-2 col-form-label">Hora</label>
+               <div class="col-10">
+                  <div class="input-group clockpicker" style="width: 150px" data-plugin="clockpicker">
+                     <input type="text" class="form-control" value="<?php echo date('H:i');?>">
+                     <span class="input-group-addon">
+                        <span class="zmdi zmdi-time"></span>
+                     </span>
+                  </div>
+               </div>
             </div>
+            <div class="form-group row">
+               <label for="services" class="col-2 col-form-label">Repetir Postagem ?</label>
+               <div class="col-10">
+                  <div class="radio radio-inline radio-primary">
+                     <input type="radio" id="radio-inline-1" name="repetir_post" value="0" checked="checked">
+                     <label for="radio-inline-1">Não</label>
+                  </div>
+                  <div class="ml-3 radio radio-inline radio-primary">
+                     <input type="radio" id="radio-inline-2" name="repetir_post" value="1">
+                     <label for="radio-inline-2">Sim</label>
+                  </div>
+               </div>
+            </div>
+            <div class="repeticao_postagem" style="display:none;">
+               <div class="form-group row">
+                  <label for="intervalo" class="col-2 col-form-label">Intervalo</label>
+                  <div class="col-10">
+                     <select id="intervalo" class="form-control" style="width:200px">
+                        <option value="1">A cada 1 dia</option>
+                        <option value="2">A cada 2 dias</option>
+                        <option value="3">A cada 3 dias</option>
+                        <option value="4">A cada 4 dias</option>
+                        <option value="5">A cada 5 dias</option>
+                        <option value="6">A cada 6 dias</option>
+                        <option value="7">A cada 1 semana</option>
+                        <option value="14">A cada 2 semanas</option>
+                        <option value="30">A cada 1 mês</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="data_final" class="col-2 col-form-label">Data Final</label>
+                  <div class="col-10">
+                     <input type="text" id="dt-picker" class="form-control" value="<?php echo date('d/m/Y', time() + (60*60*24));?>" style="width:150px;">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- /.tab-pane -->
+         <!-- /.tab-pane -->
+         <div class="tab-pane py-5" id="paginas-publicacao" role="tabpanel">
+            <h4 class="text-center mb-5">Quais Páginas ?</h4>
+            <p class="text-center">Escolha as páginas que deverão receber a sua postagem.</p>
+            
          </div>
          <!-- /.tab-pane -->
          <div class="pager d-flex justify-content-center">

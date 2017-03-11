@@ -30,7 +30,11 @@ class Conta extends CI_Controller {
                                   'assets/vendor/bower_components/jquery-validation/dist/jquery.validate.min.js',
                                   'assets/vendor/bower_components/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js',
                                   'assets/vendor/bower_components/sweetalert/dist/sweetalert.min.js',
-                                  'assets/examples/js/demos/form.wizard.js'
+                                  'assets/examples/js/demos/form.wizard.js',
+                                  'assets/vendor/bower_components/moment/min/moment.min.js',
+                                  'assets/vendor/bower_components/bootstrap-daterangepicker/daterangepicker.js',
+                                  'assets/vendor/bower_components/clockpicker/dist/bootstrap-clockpicker.js',
+                                  'assets/examples/js/demos/forms.datetime.js'
                                   );
 
         $this->load->view('conta/templates/header', $data);

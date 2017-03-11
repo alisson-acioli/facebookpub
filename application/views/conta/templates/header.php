@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/examples/css/dashboards/dashboard.v1.css">
 <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bower_components/sweetalert/dist/sweetalert.css">
 <link rel="stylesheet" href="<?php echo base_url();?>assets/examples/css/demos/form.wizard.css">
-
+<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bower_components/clockpicker/dist/bootstrap-clockpicker.css">
 <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bower_components/bootstrap-daterangepicker/daterangepicker.css">
 
 <style>
