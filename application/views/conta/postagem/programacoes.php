@@ -5,6 +5,7 @@
    <p>Quando você faz uma publicação você tem a possibilidade de programar as postagens, assim você não precisa se preocupar em entrar todo dia no facebook para postar em sua página.</p>
    <p>Caso você queria <b>Cancelar</b> uma programação, basta clicar em <u>Excluir</u>, assim a programação não será postada.</p>
    
+   <button class="btn btn-danger pull-right mb-2" id="deletarSelecionados"><i class="fa fa-times"></i> Deletar Selecionados</button>
    <div class="table-responsive">
      <table class="table table-hover table-striped">
      <thead class="thead-inverse">
@@ -54,10 +55,10 @@
          <td>
           <?php
           if($postagem->status != 2){
-            echo '<a href="">Excluir</a> | ';
+            echo '<a href="javascript:void(0);" id="deletaProgramacao" data-id="'.$postagem->id.'">Excluir</a> | ';
           }
           ?>
-          <a href="">Detalhes</a>
+          <a href="javascript:void(0);" id="detalhesProgramacao" data-id="<?php echo $postagem->id;?>">Detalhes</a>
          </td>
        </tr>
       <?php

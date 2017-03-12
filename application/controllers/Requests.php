@@ -226,4 +226,38 @@ class Requests extends CI_Controller {
             echo json_encode(array('status'=>0, 'erro'=>'Não foi encontrada nenhuma página/grupo para relacionar com a postagem a ser feita.'));
         }
     }
+
+    public function delete_programming(){
+
+        $userid = $this->session->userdata('userid');
+
+        $id = $this->input->post('id');
+
+        $separa = explode(',', $id);
+
+        if(!empty($separa)){
+
+            foreach($separa as $idProgramacao){
+
+                $this->db->where('id_user', $userid);
+                $this->db->where('id', $idProgramacao);
+                $query = $this->db->get('programacoes');
+
+                if($query->num_rows() > 0){
+
+                    $this->db->where('id_user', $userid);
+                    $this->db->where('id', $idProgramacao);
+                    $this->db->delete('programacoes');
+
+                    $this->db->where('id_programacao', $idProgramacao);
+                    $this->db->delete('programacoes_contas');
+                }
+            }
+
+            echo json_encode(array('status'=>1));
+            
+        }else{
+            echo json_encode(array('status'=>0, 'erro'=>'Nenhuma programação foi selecionada para excluir.'));
+        }
+    }
 }
