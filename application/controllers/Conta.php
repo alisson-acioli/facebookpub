@@ -52,6 +52,10 @@ class Conta extends CI_Controller {
 
         $data['postagens'] = $this->postagem->TodasProgramacoes();
 
+        $data['jsLoader'] = array(
+                                  'assets/js/pages/programacoes.js'
+                                  );
+
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/postagem/programacoes');
         $this->load->view('conta/templates/footer');
