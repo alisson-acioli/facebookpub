@@ -1,3 +1,31 @@
+$(document).on("change", 'input[name="tipo"]', function(){
+
+  var TipoPublicacao = $(this).val();
+
+  $(".texto").css('display', 'none');
+  $(".link").css('display', 'none');
+  $(".imagem").css('display', 'none');
+  $(".video").css('display', 'none');
+
+  $("."+TipoPublicacao).css('display', 'block');
+});
+
+$(document).on("change", 'input[name="repetir_post"]', function(){
+
+  var Repetir = $(this).val();
+
+  if(Repetir == 1){
+    $(".repeticao_postagem").css('display', 'block');
+  }else{
+    $(".repeticao_postagem").css('display', 'none');
+  }
+});
+
+
+
+
+
+/* Validação do formulário */
 $(function() {
    ! function() {
       function e() {

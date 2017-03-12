@@ -57,30 +57,6 @@ var baseURL = '<?php echo base_url();?>';
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script>
-$(document).on("change", 'input[name="tipo"]', function(){
-
-  var TipoPublicacao = $(this).val();
-
-  $(".texto").css('display', 'none');
-  $(".link").css('display', 'none');
-  $(".imagem").css('display', 'none');
-  $(".video").css('display', 'none');
-
-  $("."+TipoPublicacao).css('display', 'block');
-});
-
-$(document).on("change", 'input[name="repetir_post"]', function(){
-
-  var Repetir = $(this).val();
-
-  if(Repetir == 1){
-    $(".repeticao_postagem").css('display', 'block');
-  }else{
-    $(".repeticao_postagem").css('display', 'none');
-  }
-});
-</script>
 
 <script>
 Highcharts.chart('postagem_dia', {
