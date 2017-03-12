@@ -7,6 +7,7 @@ class Conta extends CI_Controller {
         parent::__construct();
 
         $this->load->model('paginas');
+        $this->load->model('postagem');
     }
 
     public function index(){
@@ -48,6 +49,8 @@ class Conta extends CI_Controller {
     public function programacoes(){
 
         $data['titulo'] = 'Programações';
+
+        $data['postagens'] = $this->postagem->TodasProgramacoes();
 
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/postagem/programacoes');
