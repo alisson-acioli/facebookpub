@@ -55,11 +55,6 @@ svg4everybody();
       </span>
    </button>
 
-   <button type="button" class="navbar-toggler hidden-lg-up collapsed" data-toggle="navbar-search">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="zmdi zmdi-hc-lg zmdi-search"></span>
-   </button> 
-
    <button type="button" class="navbar-toggler hidden-lg-up collapsed" data-toggle="collapse" data-target="#site-navbar-collapse" aria-expanded="false">
       <span class="sr-only">Toggle navigation</span>
       <span class="zmdi zmdi-hc-lg zmdi-more"></span>
