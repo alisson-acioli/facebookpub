@@ -30,7 +30,6 @@ class Conta extends CI_Controller {
         $data['jsLoader'] = array(
                                   'assets/vendor/bower_components/jquery-validation/dist/jquery.validate.min.js',
                                   'assets/vendor/bower_components/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js',
-                                  'assets/vendor/bower_components/sweetalert/dist/sweetalert.min.js',
                                   'assets/js/pages/postagem.js',
                                   'assets/js/additional-methods.js',
                                   'assets/vendor/bower_components/moment/min/moment.min.js',

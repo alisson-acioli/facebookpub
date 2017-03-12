@@ -47,6 +47,7 @@ var baseURL = '<?php echo base_url();?>';
 <script src="<?php echo base_url();?>assets/vendor/bower_components/peity/jquery.peity.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/owl-carousel/owl.carousel.min.js"></script>
 
+<script src="<?php echo base_url();?>assets/vendor/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <!-- site-wide scripts -->
 <script src="<?php echo base_url();?>assets/global/js/main.js"></script>
 <script src="<?php echo base_url();?>assets/global/js/settings.js"></script>
