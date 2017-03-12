@@ -73,7 +73,8 @@ class Conta extends CI_Controller {
 
         $data['jsLoader'] = array(
                           'assets/vendor/bower_components/moment/min/moment.min.js',
-                          'assets/vendor/bower_components/bootstrap-daterangepicker/daterangepicker.js'
+                          'assets/vendor/bower_components/bootstrap-daterangepicker/daterangepicker.js',
+                          'assets/js/pages/relatorios.js'
                           );
 
         $this->load->view('conta/templates/header', $data);
