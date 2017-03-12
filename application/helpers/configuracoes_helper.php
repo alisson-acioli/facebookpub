@@ -19,4 +19,32 @@ function website_config($column){
         }
     }
 }
+
+function StatusPostagem($id){
+
+    switch($id){
+
+        case 1:
+            $status = 'Processando';
+        break;
+
+        case 2:
+            $status = 'Publicado';
+        break;
+
+        case 3:
+            $status = 'Cancelado';
+        break;
+
+        case 4:
+            $status = 'Com problemas';
+        break;
+
+        default:
+            $status = 'Com problemas';
+        break;
+    }
+
+    return $status;
+}
 ?>
