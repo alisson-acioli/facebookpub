@@ -7,7 +7,7 @@
             </header>
             <div class="card-block d-flex px-3">
                <div class="mr-auto text-primary">
-                  <h5><span data-plugin="counterUp">50</span> postagens</h5>
+                  <h5><span data-plugin="counterUp"><?php echo $this->postagem->PostagensMes();?></span> postagens</h5>
                   <span>Quantidade postada no mês</span>
                </div>
                <div>
@@ -26,7 +26,7 @@
             </header>
             <div class="card-block d-flex px-3">
                <div class="mr-auto text-primary">
-                  <h5><span data-plugin="counterUp">13</span> postagens</h5>
+                  <h5><span data-plugin="counterUp"><?php echo $this->postagem->PostagensHoje();?></span> postagens</h5>
                   <span>Postagens programadas para hoje</span>
                </div>
                <div>
