@@ -115,4 +115,33 @@ $(document).ready(function(){
             swal("Opps...", "Você deve escolher ao menos 1 item para excluir.", "error");
         }
     });
+
+    /**
+        Mostra detalhes da programação
+    **/
+
+    $("a#detalhesProgramacao").on('click', function(){
+
+        var idProgramacao = $(this).attr('data-id');
+
+        $.ajax({
+            url: baseURL+'requests/details_programming',
+            type: 'POST',
+            data: {id:idProgramacao},
+
+            success: function(html){
+
+                $("#contentDetalhesProgramacao").empty();
+                $("#contentDetalhesProgramacao").html(html);
+
+                $("#verDetalhes").click();
+
+            },
+
+            error: function(error){
+                console.log(error.responseText);
+            }
+        });
+        
+    });
 });

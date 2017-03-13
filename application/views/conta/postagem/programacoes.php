@@ -1,5 +1,7 @@
 <section class="site-content">
-   
+
+   <a data-toggle="modal" id="verDetalhes" data-target="#modalDetalhes"></a>
+
    <h3>Suas programações</h3>
 
    <p>Quando você faz uma publicação você tem a possibilidade de programar as postagens, assim você não precisa se preocupar em entrar todo dia no facebook para postar em sua página.</p>
@@ -68,5 +70,23 @@
      </tbody>
      </table>
     </div>
+
+    <div class="modal fade" id="modalDetalhes" tabindex="-1" role="dialog" aria-labelledby="image-gallery-modal" aria-hidden="true">
+     <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+           <div class="modal-body p-5">
+              <h4 class="text-center">Detalhes da Programação</h4>
+              <br />
+
+              <div id="contentDetalhesProgramacao"></div>
+
+           </div>
+           <!-- /.modal-body -->
+        </div>
+        <!-- /.modal-content -->
+     </div>
+     <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 </section>
 <!-- /.site-content -->

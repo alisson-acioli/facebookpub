@@ -29,7 +29,7 @@ class Requests extends CI_Controller {
         'data_programacao'=>$dataAgendamento,
         'hora_programacao'=>$horaAgendamento,
         'repetir_programacao'=>($repetirPostagem == 1) ? 1 : 0,
-        'intervalo'=>(60*60*$Intervalo),
+        'intervalo'=>(60*60*24*$Intervalo),
         'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-') : NULL,
         'tipo_programacao'=>'texto',
         'data_criacao'=>date('Y-m-d'),
@@ -89,7 +89,7 @@ class Requests extends CI_Controller {
         'data_programacao'=>$dataAgendamento,
         'hora_programacao'=>$horaAgendamento,
         'repetir_programacao'=>($repetirPostagem == 1) ? 1 : 0,
-        'intervalo'=>(60*60*$Intervalo),
+        'intervalo'=>(60*60*24*$Intervalo),
         'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-') : NULL,
         'tipo_programacao'=>'link',
         'data_criacao'=>date('Y-m-d'),
@@ -142,7 +142,7 @@ class Requests extends CI_Controller {
         'data_programacao'=>$dataAgendamento,
         'hora_programacao'=>$horaAgendamento,
         'repetir_programacao'=>($repetirPostagem == 1) ? 1 : 0,
-        'intervalo'=>(60*60*$Intervalo),
+        'intervalo'=>(60*60*24*$Intervalo),
         'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-') : NULL,
         'tipo_programacao'=>'imagem',
         'data_criacao'=>date('Y-m-d'),
@@ -197,7 +197,7 @@ class Requests extends CI_Controller {
         'data_programacao'=>$dataAgendamento,
         'hora_programacao'=>$horaAgendamento,
         'repetir_programacao'=>($repetirPostagem == 1) ? 1 : 0,
-        'intervalo'=>(60*60*$Intervalo),
+        'intervalo'=>(60*60*24*$Intervalo),
         'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-') : NULL,
         'tipo_programacao'=>'video',
         'data_criacao'=>date('Y-m-d'),
@@ -224,6 +224,117 @@ class Requests extends CI_Controller {
         }else{
 
             echo json_encode(array('status'=>0, 'erro'=>'Não foi encontrada nenhuma página/grupo para relacionar com a postagem a ser feita.'));
+        }
+    }
+
+    public function details_programming(){
+
+        $userid = $this->session->userdata('userid');
+
+        $id = $this->input->post('id');
+
+        $html = '';
+
+        $this->db->where('id_user', $userid);
+        $this->db->where('id', $id);
+        $query = $this->db->get('programacoes');
+
+        $this->db->where('id_programacao', $id);
+        $queryPages = $this->db->get('programacoes_contas');
+
+        if($query->num_rows() > 0){
+
+            $row = $query->row();
+
+            $html .= '<h5>Tipo de Publicação: <u>'.ucfirst(strtolower($row->tipo_programacao)).'</u></h5><br />';
+
+            if($row->tipo_programacao == 'texto'){
+                
+                $html .= '<b>Mensagem do Post:</b> '.$row->mensagem_post.'<br /><br />';
+
+            }elseif($row->tipo_programacao == 'link'){
+
+                $html .= '<b>Título:</b> '.$row->titulo_link.'<br />';
+                $html .= '<b>Descrição:</b> '.$row->descricao_link.'<br />';
+                $html .= '<b>Imagem:</b> <a href="'.$row->imagem_link.'" target="_blank">'.$row->imagem_link.'</a><br />';
+                $html .= '<b>URL:</b> <a href="'.$row->url_link.'" target="_blank">'.$row->url_link.'</a><br />';
+                $html .= '<b>Mensagem do Post:</b> '.$row->mensagem_post.'<br /><br />';
+               
+
+            }elseif($row->tipo_programacao == 'imagem'){
+
+                $html .= '<b>Imagem:</b> <a href="'.$row->imagem_imagem.'" target="_blank">'.$row->imagem_imagem.'</a><br />';
+                $html .= '<b>Mensagem do Post:</b> '.$row->mensagem_post.'<br /><br />';
+
+
+            }elseif($row->tipo_programacao == 'video'){
+
+                $html .= '<b>Título:</b> '.$row->titulo_video.'<br />';
+                $html .= '<b>Descrição:</b> '.$row->descricao_video.'<br />';
+                $html .= '<b>Link Vídeo:</b> <a href="'.$row->link_video.'" target="_blank">'.$row->link_video.'</a><br />';
+                $html .= '<b>URL:</b> <a href="'.$row->url_link.'" target="_blank">'.$row->url_link.'</a><br /><br />';
+
+            }else{
+                echo '<div class="alert alert-danger text-center">O tipo de publicação não é compatível com o sistema. Fale com um administrador</div>';
+                return;
+            }
+
+            $html .= '<b>Data da Programação:</b> '.converter_data($row->data_programacao, '-', '/').' às '.$row->hora_programacao.'<br />';
+            
+            $repete_programacao = ($row->repetir_programacao == 1) ? 'Sim' : 'Não';
+
+            $html .= '<b>Repetir Programação:</b> '.$repete_programacao.'<br /><br />';
+
+            if($row->repetir_programacao == 1){
+
+                $dias = ($row->intervalo/3600)/24;
+
+                if($dias < 7){
+                    $label = 'Dia(s)';
+                }elseif($dias >= 7 && $dias < 30){
+                    $label = 'Semana(s)';
+                }elseif($dias >= 30 && $dias < 365){
+                    $label = 'Mes(es)';
+                }else{
+                    $label = 'Ano(s)';
+                }
+
+                $html .= '<b>Intervalo:</b> A cada '.$dias.' '.$label.'<br />';
+                $html .= '<b>Data Final:</b> '.converter_data($row->data_final_repeticao, '-', '/').'<br /><br />';
+            }
+
+            foreach($queryPages->result() as $key=>$page){
+
+                $html .= 'Página '.$key.' - '.$this->facebook->NamePage($page->id_conta).'<br />';
+            }
+
+          switch($row->status){
+            case 1:
+              $label = 'label-info';
+            break;
+
+            case 2:
+              $label = 'info-success';
+            break;
+
+            case 3:
+              $label = 'info-danger';
+            break;
+
+            case 4:
+              $label = 'info-warning';
+            break;
+
+            default:
+              $label = 'info-warning';
+            break;
+          }
+          $html .= '<b>Status:</b> <span class="label '.$label.'">'.StatusPostagem($row->status).'</span>';
+
+          echo $html;
+
+        }else{
+            echo '<div class="alert alert-danger text-center">Você não tem autorização para ver detalhes dessa publicação.</div>';
         }
     }
 
@@ -255,7 +366,7 @@ class Requests extends CI_Controller {
             }
 
             echo json_encode(array('status'=>1));
-            
+
         }else{
             echo json_encode(array('status'=>0, 'erro'=>'Nenhuma programação foi selecionada para excluir.'));
         }
