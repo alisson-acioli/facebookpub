@@ -52,3 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['requests/relatorios/postagens'] = 'requests/relatorio_postagens';
+$route['requests/relatorios/curtidas'] = 'requests/relatorio_curtidas';
