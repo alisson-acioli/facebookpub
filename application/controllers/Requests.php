@@ -384,7 +384,7 @@ class Requests extends CI_Controller {
 
         $userid  = $this->session->userdata('userid');
 
-        $pagina  = $this->input->get('pagina');
+        $pagina  = $this->input->get('paginas');
         $periodo = $this->input->get('periodo');
 
         $paginas_id = array();
@@ -443,6 +443,109 @@ class Requests extends CI_Controller {
                 }
 
                 $data[$result->id_conta][] = array('data'=>converter_data($result->data_programacao, '-', '/'),'quantidade'=>$result->quantidade);
+            }
+
+            foreach($data as $id_conta=>$dataSecound){
+
+                $quantidades = array();
+
+                foreach($dataSecound as $array){
+
+                    foreach($dias as $dataCompleta){
+
+                        if($array['data'] == $dataCompleta){
+                            $quantidades[$dataCompleta] = (int)$array['quantidade'];
+
+                        }else{
+
+                            if(!isset($quantidades[$dataCompleta])){
+                                $quantidades[$dataCompleta] = 0;
+                            }
+                        }
+                    }
+                }
+
+                $newValues = array();
+
+                foreach($quantidades as $quantidade_unica){
+
+                    $newValues[] = $quantidade_unica;
+                }
+
+                $new[] = array('name'=>$this->facebook->NamePage($id_conta), 'data'=>$newValues);
+            }
+
+            $grafico = array('series'=>$new, 'categories'=>$dias);
+
+            echo json_encode($grafico);
+
+        }else{
+            echo json_encode(array('series'=>'', 'categories'=>''));
+        }
+    }
+
+    public function relatorio_curtidas(){
+
+        $userid  = $this->session->userdata('userid');
+
+        $pagina  = $this->input->get('paginas');
+        $periodo = $this->input->get('periodo');
+
+        $paginas_id = array();
+
+        if($pagina == false || empty($pagina)){
+
+            if($this->paginas->TodasPaginas()){
+
+                foreach($this->paginas->TodasPaginas() as $paginas){
+
+                    $paginas_id[] = $paginas['page_id'];
+                }
+            }
+        }else{
+
+            $paginas_id = explode(',', $pagina);
+        }
+
+        $this->db->where_in('id_page', $paginas_id);
+
+        if($periodo == false || empty($periodo)){
+
+            $this->db->where('data >= ', date('Y-m-d'));
+            $this->db->where('data <= ', date('Y-m-d', time() + (60*60*24*10)));
+        
+        }else{
+
+            $separaPeriodo = explode('-', $periodo);
+
+            $dataInicial = converter_data(trim($separaPeriodo[0]), '/', '-');
+            $dataFinal   = converter_data(trim($separaPeriodo[1]), '/', '-');
+
+            $this->db->where('data >= ', $dataInicial);
+            $this->db->where('data <= ', $dataFinal);
+        }
+
+        $this->db->where('id_user', $userid);
+
+        $this->db->group_by(array('data', 'id_page'));
+
+        $this->db->select('SUM(quantidade) AS quantidade, id_page, data');
+        $this->db->from('relatorio_curtidas');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0){
+
+            $dias = array();
+
+            foreach($query->result() as $result){
+
+                if(!in_array($result->data, $dias)){
+
+                    $dias[] = converter_data($result->data, '-', '/');
+                }
+
+                $data[$result->id_page][] = array('data'=>converter_data($result->data, '-', '/'),'quantidade'=>$result->quantidade);
             }
 
             foreach($data as $id_conta=>$dataSecound){
