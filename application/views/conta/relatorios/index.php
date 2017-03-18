@@ -3,12 +3,13 @@
   <form class="form-inline">
 
     <?php
-    if($paginas !== false){
+    if(!empty($paginas)){
     ?>
-    <select class="custom-select mb-2 mr-sm-2 mb-sm-0">
+    <select id="paginas" class="custom-select mb-2 mr-sm-2 mb-sm-0">
+      <option value="">Todas as Páginas</option>
       <?php
         foreach($paginas as $pagina){
-          echo '<option value="'.$pagina->page_id.'">'.$pagina->page.'</option>';
+          echo '<option value="'.$pagina['page_id'].'">'.$pagina['page'].'</option>';
         }
       ?>
     </select>
@@ -18,9 +19,9 @@
     ?>
 
     <label class="mr-sm-2" for="">Período</label>
-    <input type="text" data-plugin="daterangepicker" class="form-control mr-2">
+    <input type="text" id="periodo" data-plugin="daterangepicker" class="form-control mr-2">
 
-    <button type="submit" class="btn btn-primary">Filtrar</button>
+    <button type="button" class="btn btn-primary" id="FiltrarRelatorio">Filtrar</button>
     </form>
 
     <br />
