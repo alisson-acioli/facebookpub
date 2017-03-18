@@ -31,7 +31,7 @@ class Paginas extends CI_Model{
 
                 }else{
 
-                    $this->db->insert('paginas', array('id_user'=>$userid, 'id_page'=>$page, 'status'=>1));
+                    $this->db->insert('paginas', array('id_user'=>$userid, 'id_page'=>$page, 'crescimento'=>0, 'status'=>1));
                 }
             }
         }
@@ -56,6 +56,30 @@ class Paginas extends CI_Model{
         }
 
         return $pages;
+    }
+
+    public function CrescimentoPaginasTotal(){
+
+        $userid = $this->session->userdata('userid');
+        $total = 0;
+
+        $this->db->where('id_user', $userid);
+        $this->db->where('status', 1);
+        $queryPages = $this->db->get('paginas');
+
+        if($queryPages->num_rows() > 0){
+
+            foreach($queryPages->result() as $result){
+
+                $total += $result->crescimento;
+            }
+
+            return $total;
+
+        }else{
+
+            return 0;
+        }
     }
 }
 ?>

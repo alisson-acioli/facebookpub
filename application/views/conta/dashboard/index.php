@@ -45,7 +45,7 @@
             </header>
             <div class="card-block d-flex px-3">
                <div class="mr-auto text-primary">
-                  <h5><span data-plugin="counterUp">439</span> likes</h5>
+                  <h5><span data-plugin="counterUp"><?php echo $this->paginas->CrescimentoPaginasTotal();?></span> likes</h5>
                   <span>A mais em suas páginas</span>
                </div>
                <div>
