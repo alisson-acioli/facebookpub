@@ -23,10 +23,12 @@
       <?php
       if($postagens !== false){
         foreach($postagens as $postagem){
+
+          $separaDataHora = explode(' ', $postagem->data_programacao);
       ?>
        <tr>
          <td><input type="checkbox" id="excluir" value="<?php echo $postagem->id;?>"></td>
-         <td scope="row"><?php echo converter_data($postagem->data_programacao, '-', '/').' '.$postagem->hora_programacao;?></td>
+         <td scope="row"><?php echo converter_data($separaDataHora[0], '-', '/').' '.$separaDataHora[1];?></td>
          <td><?php echo ucfirst(strtolower($postagem->tipo_programacao));?></td>
          <td>
           <?php
