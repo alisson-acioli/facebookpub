@@ -58,8 +58,6 @@ class Conta extends CI_Controller {
                                   'assets/examples/js/demos/forms.datetime.js'
                                   );
 
-        $data['paginas'] = $this->paginas->TodasPaginas();
-
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/postagem/index');
         $this->load->view('conta/templates/footer');

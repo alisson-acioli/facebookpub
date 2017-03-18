@@ -1,16 +1,12 @@
 <section class="site-content">
 
-   <!-- <div align="center">
+   <!--<div align="center">-->
       <?php
-      if($this->facebook->is_authenticated()){
-         echo '<div class="alert alert-success text-center">O sistema está conectado com o seu Facebook</div>';
-      }else{
+      // if($this->facebook->is_authenticated()){
+      //    echo '<div class="alert alert-success text-center">O sistema está conectado com o seu Facebook</div>';
+      
       ?>
-      <a href="<?php echo $this->facebook->login_url();?>" class="btn btn-primary">Faça o login no Facebook antes de usar o sistema</a>
-      <?php
-      }
-      ?>
-   </div> -->
+      
    <form action="" id="bootstrap-wizard-form">
       <div class="wizard p-5" id="bootstrap-wizard-1">
       <ul class="nav nav-tabs vertices" role="tablist">
@@ -248,9 +244,9 @@
             <p class="text-center">Escolha as páginas que deverão receber a sua postagem.</p>
             <select name="paginas_programacao_select" id="paginas_programacao_select" class="form-control" style="width:75%;">
             <?php
-            if(!empty($paginas)){
+            if(!empty($this->paginas->TodasPaginas())){
 
-                  foreach($paginas as $pagina){
+                  foreach($this->paginas->TodasPaginas() as $pagina){
                      echo '<option value="'.$pagina['page_id'].'">'.$pagina['page'].'</option>';
                   }
             }
@@ -268,5 +264,14 @@
    </div>
    <!-- /.form-wizard -->
    </form>
+   <?php
+   //}else{
+   ?>
+   <!--<a href="<?php echo $this->facebook->login_url();?>" class="btn btn-primary">Faça o login no Facebook antes de usar o sistema</a>
+   <div class="alert alert-info text-center mt-4">Para você fazer uma postagem você precisa primeiro estar no facebook para as informações ficarem sincronizadas.</div>-->
+   <?php
+   //}
+   ?>
+<!--</div>-->
 </section>
 <!-- /.site-content -->

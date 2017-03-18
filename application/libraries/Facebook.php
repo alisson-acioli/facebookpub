@@ -252,11 +252,18 @@ Class Facebook
 
     public function NamePage($idPage){
 
-        $query = $this->request('get', '/'.$idPage);
+        if($this->is_authenticated()){
 
-        if(!empty($query)){
+            $query = $this->request('get', '/'.$idPage);
 
-            return $query['name'];
+            if(!empty($query)){
+
+                return $query['name'];
+            }
+
+        }else{
+
+                return '<font color="red">Logue com o facebook para exibir o nome da página</font>';
         }
     }
 
