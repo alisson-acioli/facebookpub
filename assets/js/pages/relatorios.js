@@ -1,82 +1,103 @@
-$(document).ready(function(){
 
-    $.getJSON(baseURL+'requests/relatorios/postagens', function(callback){
+function GeraGraficosRelatorios(paginas, periodo){
 
-        Highcharts.chart('postagem_dia', {
+    var paginas = paginas || '';
+    var periodo = periodo || '';
 
-            title: {
-                text: 'Postagem por dia'
-            },
+    $.ajax({
+        url: baseURL+'requests/relatorios/postagens',
+        type: 'POST',
+        data: {paginas: paginas, periodo: periodo},
+        dataType: 'json',
+        Async: false,
 
-            subtitle: {
-                text: 'Quantidade de postagens feitas por dia'
-            },
+        success: function(callback){
 
-            yAxis: {
+            Highcharts.chart('postagem_dia', {
+
                 title: {
-                    text: 'Quantidade'
-                }
-            },
+                    text: 'Postagem por dia'
+                },
 
-            xAxis: {
-              categories: callback.categories
-            },
+                subtitle: {
+                    text: 'Quantidade de postagens feitas por dia'
+                },
 
-            credits:{
-              enabled: false
-            },
+                yAxis: {
+                    title: {
+                        text: 'Quantidade'
+                    }
+                },
 
-            legend: {
-                align: 'center',
-                verticalAlign: 'bottom',
-                x: 0,
-                y: 0
-            },
+                xAxis: {
+                  categories: callback.categories
+                },
 
-            series: callback.series
+                credits:{
+                  enabled: false
+                },
 
-        });
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    x: 0,
+                    y: 0
+                },
 
-    });
+                series: callback.series
 
-    $.getJSON(baseURL+'requests/relatorios/curtidas', function(callback){
-
-    });
-});
-
-
-
-Highcharts.chart('curtidas_dia', {
-
-    title: {
-        text: 'Curtidas por dia'
-    },
-
-    subtitle: {
-        text: 'Curtidas total de todas as páginas por dia'
-    },
-
-    yAxis: {
-        title: {
-            text: 'Quantidade'
+            });
         }
-    },
+    });
 
-    xAxis: {
-      categories: ['01/03/2017', '02/03/2017', '03/03/2017', '04/03/2017', '05/03/2017', '06/03/2017', '07/03/2017', '08/03/2017']
-    },
+    $.ajax({
+        url: baseURL+'requests/relatorios/curtidas',
+        type: 'POST',
+        data: {paginas: paginas, periodo: periodo},
+        dataType: 'json',
+        Async: false,
 
-    credits:{
-      enabled: false
-    },
+        success: function(callback){
 
-    legend:{
-      enabled: false
-    },
+            Highcharts.chart('curtidas_dia', {
 
-    series: [{
-        name: 'Curtidas',
-        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-    }]
+                title: {
+                    text: 'Curtidas por dia'
+                },
 
+                subtitle: {
+                    text: 'Curtidas total de todas as páginas por dia'
+                },
+
+                yAxis: {
+                    title: {
+                        text: 'Quantidade'
+                    }
+                },
+
+                xAxis: {
+                  categories: callback.categories
+                },
+
+                credits:{
+                  enabled: false
+                },
+
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    x: 0,
+                    y: 0
+                },
+
+                series: callback.series
+
+            });
+        }
+    });
+}
+
+
+$(document).ready(function(){
+    GeraGraficosRelatorios();
 });
