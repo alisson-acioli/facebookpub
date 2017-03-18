@@ -6,7 +6,7 @@ class Requests extends CI_Controller {
     public function __construct(){
         parent::__construct();
     }
-
+    
     public function post_texto(){
 
         $contagem = 0;
@@ -20,6 +20,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
+        $Paginas         = rtrim($Paginas, ',');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
@@ -76,6 +77,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
+        $Paginas         = rtrim($Paginas, ',');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
@@ -133,6 +135,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
+        $Paginas         = rtrim($Paginas, ',');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
@@ -187,6 +190,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
+        $Paginas         = rtrim($Paginas, ',');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
@@ -305,8 +309,10 @@ class Requests extends CI_Controller {
 
             foreach($queryPages->result() as $key=>$page){
 
-                $html .= 'Página '.$key.' - '.$this->facebook->NamePage($page->id_conta).'<br />';
+                $html .= 'Página '.($key+1).' - '.$this->facebook->NamePage($page->id_conta).'<br />';
             }
+
+            $html .= '<br />';
 
           switch($row->status){
             case 1:
