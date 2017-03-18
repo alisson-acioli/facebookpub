@@ -4,6 +4,9 @@ function GeraGraficosRelatorios(paginas, periodo){
     var paginas = paginas || '';
     var periodo = periodo || '';
 
+    $("#postagem_dia").empty();
+    $("#curtidas_dia").empty();
+
     $.ajax({
         url: baseURL+'requests/relatorios/postagens',
         type: 'POST',
@@ -100,4 +103,14 @@ function GeraGraficosRelatorios(paginas, periodo){
 
 $(document).ready(function(){
     GeraGraficosRelatorios();
+});
+
+$(document).ready(function(){
+    $("#FiltrarRelatorio").on('click', function(){
+
+        var paginas = $("#paginas option:selected").val();
+        var periodo = $("#periodo").val();
+
+        GeraGraficosRelatorios(paginas, periodo);
+    });
 });
