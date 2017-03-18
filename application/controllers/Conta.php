@@ -77,6 +77,8 @@ class Conta extends CI_Controller {
 
         $data['titulo'] = 'Relatórios';
 
+        $data['paginas'] = $this->paginas->TodasPaginas();
+
         $data['jsLoader'] = array(
                           'assets/vendor/bower_components/moment/min/moment.min.js',
                           'assets/vendor/bower_components/bootstrap-daterangepicker/daterangepicker.js',

@@ -1,11 +1,21 @@
 <section class="site-content">
   <h3>Filtro</h3>
   <form class="form-inline">
+
+    <?php
+    if($paginas !== false){
+    ?>
     <select class="custom-select mb-2 mr-sm-2 mb-sm-0">
-      <option selected>Escolha a página</option>
-      <option value="1">Atually Fashion</option>
-      <option value="2">Conecteen - Itaquera</option>
+      <?php
+        foreach($paginas as $pagina){
+          echo '<option value="'.$pagina->page_id.'">'.$pagina->page.'</option>';
+        }
+      ?>
     </select>
+
+    <?php
+    }
+    ?>
 
     <label class="mr-sm-2" for="">Período</label>
     <input type="text" data-plugin="daterangepicker" class="form-control mr-2">
