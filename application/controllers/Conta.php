@@ -26,6 +26,21 @@ class Conta extends CI_Controller {
         $this->load->view('conta/templates/footer');
     }
 
+    public function perfil(){
+
+        $data['titulo'] = 'Perfil';
+
+        if($this->input->post('submit')){
+          $data['message'] = $this->LoginModel->MudarInformacoes();
+        }
+
+        $data['jsLoader'] = array();
+        
+        $this->load->view('conta/templates/header', $data);
+        $this->load->view('conta/dashboard/perfil');
+        $this->load->view('conta/templates/footer');
+    }
+
     public function postagem(){
 
         $data['titulo'] = 'Programar postagem';

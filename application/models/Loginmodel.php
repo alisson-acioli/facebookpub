@@ -81,5 +81,36 @@ class Loginmodel extends CI_Model{
             $this->db->update('usuarios', array('token'=>$access_token));
         }
     }
+
+    public function MudarInformacoes(){
+
+        $userid    = $this->session->userdata('userid');
+
+        $nome      = $this->input->post('nome');
+        $senha     = $this->input->post('senha');
+        $novasenha = $this->input->post('novasenha');
+
+        $data['nome'] = $nome;
+
+        if(!empty($senha)){
+
+            if($senha != $novasenha){
+
+                return '<div class="alert alert-danger text-center">As senhas não conferem, tente novamente.</div>';
+            }
+
+            $data['senha'] = md5($senha);
+        }
+
+        $this->db->where('id', $userid);
+        $atualiza = $this->db->update('usuarios', $data);
+
+        if($atualiza){
+
+            return '<div class="alert alert-success text-center">Dados atualizados com sucesso!</div>';
+        }
+
+        return '<div class="alert alert-danger text-center">Erro ao atualizar os dados. Tente novamente.</div>';
+    }
 }
 ?>

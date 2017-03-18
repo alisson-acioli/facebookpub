@@ -140,11 +140,11 @@ svg4everybody();
          </a>
          <div class="dropdown-menu dropdown-menu-right p-0" data-plugin="dropdownCaret">
             <a class="dropdown-item dropdown-menu-cap"><?php echo usuario('nome');?></a> 
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="<?php echo base_url();?>perfil">
                <span>Perfil</span> 
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="<?php echo base_url();?>sair">
                <span>Sair</span>
             </a>
          </div>
