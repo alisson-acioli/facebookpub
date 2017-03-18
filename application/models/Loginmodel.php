@@ -56,6 +56,7 @@ class Loginmodel extends CI_Model{
                       'email'=>$email,
                       'login'=>$login,
                       'senha'=>md5($senha),
+                      'token'=>NULL,
                       'status'=>1,
                       'data_cadastro'=>time()
                       );
@@ -66,6 +67,18 @@ class Loginmodel extends CI_Model{
             return '<div class="alert alert-success text-center">Cadastro efetuado com sucesso!</div>';
         }else{
             return '<div class="alert alert-danger text-center">Erro ao fazer seu cadastro. Tente novamente.</div>';
+        }
+    }
+
+    public function AtualizarTokenUser(){
+
+        if($this->input->get('code') && $this->input->get('state')){
+
+            $userid = $this->session->userdata('userid');
+            $access_token = $this->session->userdata('fb_access_token');
+
+            $this->db->where('id', $userid);
+            $this->db->update('usuarios', array('token'=>$access_token));
         }
     }
 }

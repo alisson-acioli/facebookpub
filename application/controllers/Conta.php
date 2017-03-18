@@ -8,6 +8,7 @@ class Conta extends CI_Controller {
 
         $this->load->model('paginas');
         $this->load->model('postagem');
+        $this->load->model('loginmodel', 'LoginModel');
     }
 
     public function index(){
@@ -17,6 +18,8 @@ class Conta extends CI_Controller {
         $data['jsLoader'] = array(
                                   'assets/examples/js/dashboards/dashboard.v1.js'
                                   );
+
+        $this->LoginModel->AtualizarTokenUser();
         
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/dashboard/index');
@@ -88,5 +91,13 @@ class Conta extends CI_Controller {
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/relatorios/index');
         $this->load->view('conta/templates/footer');
+    }
+
+    public function logoff(){
+
+      $this->facebook->destroy_session();
+      $this->session->unset_userdata('userid');
+
+      redirect('login');
     }
 }
