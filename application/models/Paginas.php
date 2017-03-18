@@ -25,13 +25,17 @@ class Paginas extends CI_Model{
 
                 if($queryPages->num_rows() > 0){
 
+                    $tokenPage = $this->facebook->TokenAcessoPagina($page);
+
                     $this->db->where('id_user', $userid);
                     $this->db->where('id_page', $page);
-                    $this->db->update('paginas', array('status'=>1));
+                    $this->db->update('paginas', array('status'=>1, 'token'=>$tokenPage));
 
                 }else{
 
-                    $this->db->insert('paginas', array('id_user'=>$userid, 'id_page'=>$page, 'crescimento'=>0, 'status'=>1));
+                    $tokenPage = $this->facebook->TokenAcessoPagina($page);
+
+                    $this->db->insert('paginas', array('id_user'=>$userid, 'id_page'=>$page, 'token'=>$tokenPage, 'crescimento'=>0, 'status'=>1));
                 }
             }
         }
