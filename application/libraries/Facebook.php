@@ -276,19 +276,26 @@ Class Facebook
         return $json['fan_count'];
     }
 
-    public function PostPage($params, $idpage){
+    public function TokenAcessoPagina($pageID){
 
-        $params = array(
-          "access_token" => $this->get_access_token(), // see: https://developers.facebook.com/docs/facebook-login/access-tokens/
-          "message" => "Here is a blog post about auto posting on Facebook using PHP #php #facebook",
-          "link" => "http://www.pontikis.net/blog/auto_post_on_facebook_with_php",
-          "picture" => "http://i.imgur.com/lHkOsiH.png",
-          "name" => "How to Auto Post on Facebook with PHP",
-          "caption" => "www.pontikis.net",
-          "description" => "Automatically post on Facebook with PHP using Facebook PHP SDK. How to create a Facebook app. Obtain and extend Facebook access tokens. Cron automation."
-        );
+        $json = $this->request('get', '/'.$pageID.'?fields=access_token');
 
-        $post = $this->request('post', '/'.$idpage.'/feed', $params);
+        return $json['access_token'];
+    }
+
+    public function FazerPost($id_page, $params, $token){
+
+        // $params = array(
+        //   "access_token" => $this->get_access_token(), // see: https://developers.facebook.com/docs/facebook-login/access-tokens/
+        //   "message" => "Here is a blog post about auto posting on Facebook using PHP #php #facebook",
+        //   "link" => "http://www.pontikis.net/blog/auto_post_on_facebook_with_php",
+        //   "picture" => "http://i.imgur.com/lHkOsiH.png",
+        //   "name" => "How to Auto Post on Facebook with PHP",
+        //   "caption" => "www.pontikis.net",
+        //   "description" => "Automatically post on Facebook with PHP using Facebook PHP SDK. How to create a Facebook app. Obtain and extend Facebook access tokens. Cron automation."
+        // );
+
+        $post = $this->request('post', '/'.$id_page.'/feed', $params, $token);
 
         return $post;
     }
