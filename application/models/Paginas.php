@@ -35,7 +35,9 @@ class Paginas extends CI_Model{
 
                     $tokenPage = $this->facebook->TokenAcessoPagina($page);
 
-                    $this->db->insert('paginas', array('id_user'=>$userid, 'id_page'=>$page, 'token'=>$tokenPage, 'crescimento'=>0, 'status'=>1));
+                    $curtidas_pagina = $this->facebook->getLikesPage($page, $tokenPage);
+
+                    $this->db->insert('paginas', array('id_user'=>$userid, 'id_page'=>$page, 'token'=>$tokenPage, 'curtidas'=>$curtidas_pagina, 'crescimento'=>$curtidas_pagina, 'status'=>1));
                 }
             }
         }

@@ -106,5 +106,52 @@ class Cronjobs extends CI_Model{
             }
         }
     }
+
+    public function VerificarCurtidasPaginas(){
+
+        $this->db->where('status', 1);
+        $paginas = $this->db->get('paginas');
+
+        if($paginas->num_rows() > 0){
+
+            foreach($paginas->result() as $pagina){
+
+                $curtidas_inicial = $pagina->curtidas;
+                $tokenPage        = $pagina->token;
+
+                $curtidas_atuais  = $this->facebook->getLikesPage($pagina->id_page, $tokenPage);
+
+                if($curtidas_atuais > $curtidas_inicial){
+
+                    $curtidas_ganhas = $curtidas_atuais - $curtidas_inicial;
+
+                    $novas_curtidas = $pagina->crescimento + $curtidas_ganhas;
+
+                    $this->db->where('id', $pagina->id);
+                    $this->db->update('paginas', array('curtidas'=>$curtidas_atuais, 'crescimento'=>$novas_curtidas));
+
+                    $this->db->where('id_page', $pagina->id_page);
+                    $this->db->where('data', date('Y-m-d'));
+                    $relatorio = $this->db->get('relatorio_curtidas');
+
+                    if($relatorio->num_rows() > 0){
+
+                        $row = $relatorio->row();
+
+                        $quantidade = $row->quantidade;
+
+                        $nova_quantidade = $quantidade + $curtidas_ganhas;
+
+                        $this->db->where('id_page', $pagina->id_page);
+                        $this->db->where('data', date('Y-m-d'));
+                        $this->db->update('relatorio_curtidas', array('quantidade'=>$nova_quantidade));
+                    }else{
+
+                        $this->db->insert('relatorio_curtidas', array('id_user'=>$pagina->id_user, 'id_page'=>$pagina->id_page, 'quantidade'=>$curtidas_ganhas, 'data'=>date('Y-m-d')));
+                    }
+                }
+            }
+        }
+    }
 }
 ?>

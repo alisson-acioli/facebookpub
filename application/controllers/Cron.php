@@ -13,4 +13,8 @@ class Cron extends CI_Controller {
 
         $this->cronjobs->FazerPostagem();
     }
+
+    public function relatorio_curtidas(){
+        $this->cronjobs->VerificarCurtidasPaginas();
+    }
 }
