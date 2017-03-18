@@ -29,11 +29,10 @@ class Requests extends CI_Controller {
         $conteudoInsercaoProgramacao = array(
         'id_user' => $userid,
         'mensagem_post'=>$Mensagem,
-        'data_programacao'=>$dataAgendamento,
-        'hora_programacao'=>$horaAgendamento,
+        'data_programacao'=>$dataAgendamento.' '.$horaAgendamento,
         'repetir_programacao'=>($repetirPostagem == 1) ? 1 : 0,
         'intervalo'=>(60*60*24*$Intervalo),
-        'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-') : NULL,
+        'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-').' 23:59:59' : NULL,
         'tipo_programacao'=>'texto',
         'data_criacao'=>date('Y-m-d'),
         'status'=>1
@@ -90,11 +89,10 @@ class Requests extends CI_Controller {
         'imagem_link'=>$imagemLink,
         'url_link'=>$urlLink,
         'mensagem_post'=>$Mensagem,
-        'data_programacao'=>$dataAgendamento,
-        'hora_programacao'=>$horaAgendamento,
+        'data_programacao'=>$dataAgendamento.' '.$horaAgendamento,
         'repetir_programacao'=>($repetirPostagem == 1) ? 1 : 0,
         'intervalo'=>(60*60*24*$Intervalo),
-        'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-') : NULL,
+        'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-').' 23:59:59' : NULL,
         'tipo_programacao'=>'link',
         'data_criacao'=>date('Y-m-d'),
         'status'=>1
@@ -145,11 +143,10 @@ class Requests extends CI_Controller {
         'id_user'=>$userid,
         'imagem_imagem'=>$imagemImagem,
         'mensagem_post'=>$Mensagem,
-        'data_programacao'=>$dataAgendamento,
-        'hora_programacao'=>$horaAgendamento,
+        'data_programacao'=>$dataAgendamento.' '.$horaAgendamento,
         'repetir_programacao'=>($repetirPostagem == 1) ? 1 : 0,
         'intervalo'=>(60*60*24*$Intervalo),
-        'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-') : NULL,
+        'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-').' 23:59:59' : NULL,
         'tipo_programacao'=>'imagem',
         'data_criacao'=>date('Y-m-d'),
         'status'=>1
@@ -204,11 +201,10 @@ class Requests extends CI_Controller {
         'descricao_video'=>$descricaoVideo,
         'link_video'=>$urlVideo,
         'mensagem_post'=>$mensagem,
-        'data_programacao'=>$dataAgendamento,
-        'hora_programacao'=>$horaAgendamento,
+        'data_programacao'=>$dataAgendamento.' '.$horaAgendamento,
         'repetir_programacao'=>($repetirPostagem == 1) ? 1 : 0,
         'intervalo'=>(60*60*24*$Intervalo),
-        'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-') : NULL,
+        'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-').' 23:59:59' : NULL,
         'tipo_programacao'=>'video',
         'data_criacao'=>date('Y-m-d'),
         'status'=>1
@@ -290,7 +286,8 @@ class Requests extends CI_Controller {
                 return;
             }
 
-            $html .= '<b>Data da Programação:</b> '.converter_data($row->data_programacao, '-', '/').' às '.$row->hora_programacao.'<br />';
+            $separaDataHora = explode(' ', $row->data_programacao);
+            $html .= '<b>Data da Programação:</b> '.converter_data($separaDataHora[0], '-', '/').' às '.$separaDataHora[1].'<br />';
             
             $repete_programacao = ($row->repetir_programacao == 1) ? 'Sim' : 'Não';
 
@@ -311,7 +308,10 @@ class Requests extends CI_Controller {
                 }
 
                 $html .= '<b>Intervalo:</b> A cada '.$dias.' '.$label.'<br />';
-                $html .= '<b>Data Final:</b> '.converter_data($row->data_final_repeticao, '-', '/').'<br /><br />';
+
+                $separaDataFinalRepeticao = explode(' ', $row->data_final_repeticao);
+
+                $html .= '<b>Data Final:</b> '.converter_data($separaDataFinalRepeticao[0], '-', '/').'<br /><br />';
             }
 
             foreach($queryPages->result() as $key=>$page){
