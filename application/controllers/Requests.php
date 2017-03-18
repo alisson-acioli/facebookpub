@@ -142,6 +142,7 @@ class Requests extends CI_Controller {
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
         $conteudoInsercaoProgramacao = array(
+        'id_user'=>$userid,
         'imagem_imagem'=>$imagemImagem,
         'mensagem_post'=>$Mensagem,
         'data_programacao'=>$dataAgendamento,
@@ -186,6 +187,7 @@ class Requests extends CI_Controller {
         $tituloVideo     = $this->input->post('titulo_video');
         $descricaoVideo  = $this->input->post('descricao_video');
         $urlVideo        = $this->input->post('url_video');
+        $mensagem        = $this->input->post('mensagem');
         $dataAgendamento = $this->input->post('data_agendamento');
         $horaAgendamento = $this->input->post('hora_agendamento');
         $repetirPostagem = $this->input->post('repetir_postagem');
@@ -197,9 +199,11 @@ class Requests extends CI_Controller {
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
         $conteudoInsercaoProgramacao = array(
+        'id_user'=>$userid,
         'titulo_video'=>$tituloVideo,
         'descricao_video'=>$descricaoVideo,
         'link_video'=>$urlVideo,
+        'mensagem_post'=>$mensagem,
         'data_programacao'=>$dataAgendamento,
         'hora_programacao'=>$horaAgendamento,
         'repetir_programacao'=>($repetirPostagem == 1) ? 1 : 0,
@@ -279,6 +283,7 @@ class Requests extends CI_Controller {
                 $html .= '<b>Descrição:</b> '.$row->descricao_video.'<br />';
                 $html .= '<b>Link Vídeo:</b> <a href="'.$row->link_video.'" target="_blank">'.$row->link_video.'</a><br />';
                 $html .= '<b>URL:</b> <a href="'.$row->url_link.'" target="_blank">'.$row->url_link.'</a><br /><br />';
+                $html .= '<b>Mensagem do Post:</b> '.$row->mensagem_post.'<br />';
 
             }else{
                 echo '<div class="alert alert-danger text-center">O tipo de publicação não é compatível com o sistema. Fale com um administrador</div>';
@@ -322,19 +327,19 @@ class Requests extends CI_Controller {
             break;
 
             case 2:
-              $label = 'info-success';
+              $label = 'label-success';
             break;
 
             case 3:
-              $label = 'info-danger';
+              $label = 'label-danger';
             break;
 
             case 4:
-              $label = 'info-warning';
+              $label = 'label-warning';
             break;
 
             default:
-              $label = 'info-warning';
+              $label = 'label-warning';
             break;
           }
           $html .= '<b>Status:</b> <span class="label '.$label.'">'.StatusPostagem($row->status).'</span>';
