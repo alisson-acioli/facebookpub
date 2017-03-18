@@ -282,12 +282,14 @@ $(function() {
                var titulovideo = $("input[name='titulo_video_video']").val();
                var descricaovideo = $("textarea[name='descricao_video_video']").val();
                var urlvideo = $("input[name='url_video_video']").val();
+               var mensagem = $("textarea[name='mensagem_post_video']").val();
 
                $.ajax({
                   url: baseURL+'requests/post_video',
                   type: 'POST',
                   dataType: 'json',
                   data: {
+                        mensagem: mensagem,
                         titulo_video: titulovideo,
                         descricao_video: descricaovideo,
                         url_video: urlvideo,

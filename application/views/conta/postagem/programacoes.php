@@ -36,19 +36,19 @@
             break;
 
             case 2:
-              $label = 'info-success';
+              $label = 'label-success';
             break;
 
             case 3:
-              $label = 'info-danger';
+              $label = 'label-danger';
             break;
 
             case 4:
-              $label = 'info-warning';
+              $label = 'label-warning';
             break;
 
             default:
-              $label = 'info-warning';
+              $label = 'label-warning';
             break;
           }
           ?>

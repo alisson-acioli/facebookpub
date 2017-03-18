@@ -177,6 +177,12 @@
                      <input type="text" id="url_video_video" name="url_video_video" class="form-control">
                   </div>
                </div>
+               <div class="form-group row">
+                  <label for="mensagem_post_video" class="col-2 col-form-label">Mensagem no post</label>
+                  <div class="col-10">
+                     <textarea id="mensagem_post_video" name="mensagem_post_video" rows="4" class="form-control"></textarea>
+                  </div>
+               </div>
             </div>
 
          </div>
