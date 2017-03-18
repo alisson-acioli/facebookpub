@@ -384,8 +384,8 @@ class Requests extends CI_Controller {
 
         $userid  = $this->session->userdata('userid');
 
-        $pagina  = $this->input->get('paginas');
-        $periodo = $this->input->get('periodo');
+        $pagina  = $this->input->post('paginas');
+        $periodo = $this->input->post('periodo');
 
         $paginas_id = array();
 
@@ -488,8 +488,8 @@ class Requests extends CI_Controller {
 
         $userid  = $this->session->userdata('userid');
 
-        $pagina  = $this->input->get('paginas');
-        $periodo = $this->input->get('periodo');
+        $pagina  = $this->input->post('paginas');
+        $periodo = $this->input->post('periodo');
 
         $paginas_id = array();
 
