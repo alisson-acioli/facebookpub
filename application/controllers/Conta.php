@@ -9,6 +9,8 @@ class Conta extends CI_Controller {
         $this->load->model('paginas');
         $this->load->model('postagem');
         $this->load->model('loginmodel', 'LoginModel');
+
+        checksession();
     }
 
     public function index(){

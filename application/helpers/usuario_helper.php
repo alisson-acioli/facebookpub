@@ -23,4 +23,15 @@ function usuario($column){
         return 'Não encontrado';
     }
 }
+
+function checksession(){
+
+    $_this =& get_instance();
+
+    if(!$_this->session->has_userdata('userid')){
+
+        redirect('login');
+        exit;
+    }
+}
 ?>
