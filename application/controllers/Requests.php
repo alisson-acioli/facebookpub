@@ -5,6 +5,8 @@ class Requests extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
+
+        $this->load->model('paginas');
     }
     
     public function post_texto(){
@@ -375,6 +377,110 @@ class Requests extends CI_Controller {
 
         }else{
             echo json_encode(array('status'=>0, 'erro'=>'Nenhuma programação foi selecionada para excluir.'));
+        }
+    }
+
+    public function relatorio_postagens(){
+
+        $userid  = $this->session->userdata('userid');
+
+        $pagina  = $this->input->get('pagina');
+        $periodo = $this->input->get('periodo');
+
+        $paginas_id = array();
+
+        if($pagina == false || empty($pagina)){
+
+            if($this->paginas->TodasPaginas()){
+
+                foreach($this->paginas->TodasPaginas() as $paginas){
+
+                    $paginas_id[] = $paginas['page_id'];
+                }
+            }
+        }else{
+
+            $paginas_id = explode(',', $pagina);
+        }
+
+        $this->db->where_in('programacoes_contas.id_conta', $paginas_id);
+
+        if($periodo == false || empty($periodo)){
+
+            $this->db->where('programacoes.data_programacao >= ', date('Y-m-d'));
+            $this->db->where('programacoes.data_programacao <= ', date('Y-m-d', time() + (60*60*24*10)));
+        
+        }else{
+
+            $separaPeriodo = explode('-', $periodo);
+
+            $dataInicial = converter_data(trim($separaPeriodo[0]), '/', '-');
+            $dataFinal   = converter_data(trim($separaPeriodo[1]), '/', '-');
+
+            $this->db->where('programacoes.data_programacao >= ', $dataInicial);
+            $this->db->where('programacoes.data_programacao <= ', $dataFinal);
+        }
+
+        $this->db->where('programacoes.status', 2);
+        $this->db->where('id_user', $userid);
+
+        $this->db->select('COUNT(*) AS quantidade, programacoes.data_programacao, programacoes_contas.id_conta');
+        $this->db->from('programacoes');
+        $this->db->join('programacoes_contas', 'programacoes.id = programacoes_contas.id_programacao', 'inner');
+        $this->db->group_by(array('programacoes.data_programacao', 'programacoes_contas.id_conta'));
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0){
+
+            $dias = array();
+
+            foreach($query->result() as $result){
+
+                if(!in_array($result->data_programacao, $dias)){
+
+                    $dias[] = converter_data($result->data_programacao, '-', '/');
+                }
+
+                $data[$result->id_conta][] = array('data'=>converter_data($result->data_programacao, '-', '/'),'quantidade'=>$result->quantidade);
+            }
+
+            foreach($data as $id_conta=>$dataSecound){
+
+                $quantidades = array();
+
+                foreach($dataSecound as $array){
+
+                    foreach($dias as $dataCompleta){
+
+                        if($array['data'] == $dataCompleta){
+                            $quantidades[$dataCompleta] = (int)$array['quantidade'];
+
+                        }else{
+
+                            if(!isset($quantidades[$dataCompleta])){
+                                $quantidades[$dataCompleta] = 0;
+                            }
+                        }
+                    }
+                }
+
+                $newValues = array();
+
+                foreach($quantidades as $quantidade_unica){
+
+                    $newValues[] = $quantidade_unica;
+                }
+
+                $new[] = array('name'=>$this->facebook->NamePage($id_conta), 'data'=>$newValues);
+            }
+
+            $grafico = array('series'=>$new, 'categories'=>$dias);
+
+            echo json_encode($grafico);
+
+        }else{
+            echo json_encode(array('series'=>'', 'categories'=>''));
         }
     }
 }

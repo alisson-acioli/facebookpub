@@ -1,37 +1,50 @@
-Highcharts.chart('postagem_dia', {
+$(document).ready(function(){
 
-    title: {
-        text: 'Postagem por dia'
-    },
+    $.getJSON(baseURL+'requests/relatorios/postagens', function(callback){
 
-    subtitle: {
-        text: 'Quantidade de postagens feitas por dia'
-    },
+        Highcharts.chart('postagem_dia', {
 
-    yAxis: {
-        title: {
-            text: 'Quantidade'
-        }
-    },
+            title: {
+                text: 'Postagem por dia'
+            },
 
-    xAxis: {
-      categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
-    },
+            subtitle: {
+                text: 'Quantidade de postagens feitas por dia'
+            },
 
-    credits:{
-      enabled: false
-    },
+            yAxis: {
+                title: {
+                    text: 'Quantidade'
+                }
+            },
 
-    legend:{
-      enabled: false
-    },
+            xAxis: {
+              categories: callback.categories
+            },
 
-    series: [{
-        name: 'Postagens',
-        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-    }]
+            credits:{
+              enabled: false
+            },
 
+            legend: {
+                align: 'center',
+                verticalAlign: 'bottom',
+                x: 0,
+                y: 0
+            },
+
+            series: callback.series
+
+        });
+
+    });
+
+    $.getJSON(baseURL+'requests/relatorios/curtidas', function(callback){
+
+    });
 });
+
+
 
 Highcharts.chart('curtidas_dia', {
 
