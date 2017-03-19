@@ -263,7 +263,20 @@ Class Facebook
 
         }else{
 
-                return '<font color="red">Logue com o facebook para exibir o nome da página</font>';
+            $this->db->where('id_page', $idPage);
+            $pagina = $this->db->get('paginas');
+
+            if($pagina->num_rows() > 0){
+
+                $row = $pagina->row();
+
+                $query = $this->request('get', '/'.$idPage, $row->token);
+                
+                return $query['name'];
+                
+            }
+
+            return '<font color="red">Logue com o facebook para exibir o nome da página</font>';
         }
     }
 
@@ -271,16 +284,17 @@ Class Facebook
 
         $token = $this->get_access_token();
 
-        $list = $this->request('get', 'me/accounts?type=page', null, $token);
+        $list = $this->request('get', 'me/accounts?type=page', $token);
 
         return $list;
     }
 
     public function getLikesPage($pageID, $token){
 
-        $json = $this->request('get', '/'.$pageID.'?fields=fan_count', null, $token);
-
+        $json = $this->request('get', '/'.$pageID.'?fields=fan_count', $token);
+        
         return $json['fan_count'];
+        
     }
 
     public function TokenAcessoPagina($pageID){
