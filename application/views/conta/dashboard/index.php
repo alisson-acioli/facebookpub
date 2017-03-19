@@ -63,7 +63,7 @@
    <div align="center">
       <?php
       if($this->facebook->is_authenticated()){
-         echo '<div class="alert alert-success text-center">O sistema está conectado com o seu Facebook. <br /> <a href="'.$this->facebook->logout_url().'">Deslogar do Facebook</a></div>';
+         echo '<div class="alert alert-success text-center">'.$this->lang->line('sistema_conectado_facebook').'. <br /> <a href="'.$this->facebook->logout_url().'">'.$this->lang->line('deslogar_facebook').'</a></div>';
       }else{
       ?>
       <a href="<?php echo $this->facebook->login_url();?>" class="btn btn-primary"><?php echo $this->lang->line('btn_login_facebook');?></a>

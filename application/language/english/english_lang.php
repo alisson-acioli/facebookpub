@@ -192,5 +192,7 @@ $lang['quantidade'] = 'Amount';
 $lang['curtidas_por_dia'] = 'Likes by day';
 $lang['curtidas_total_paginas'] = 'Total likes of all pages per day';
 $lang['aplicar'] = 'Apply';
+$lang['deslogar_facebook'] = 'Disconnect from Facebook';
+$lang['sistema_conectado_facebook'] = 'The system is connected to your Facebook.';
 
 ?>
