@@ -9,8 +9,10 @@ class Linguagem extends CI_Controller {
 
     public function index($lang = 'pt-br'){
 
+        $ref = $this->input->get('ref');
+
         $this->session->set_userdata('lingua', $lang);
 
-        redirect('conta');
+        redirect($ref);
     }
 }

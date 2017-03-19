@@ -126,7 +126,7 @@ svg4everybody();
 
                if($readLanguagesDir != '.' && $readLanguagesDir != '..' && is_dir('application/language/'.$readLanguagesDir)){
             ?>
-            <a class="dropdown-item" href="<?php echo base_url();?>lang/<?php echo strtolower($readLanguagesDir);?>">
+            <a class="dropdown-item" href="<?php echo base_url();?>lang/<?php echo strtolower($readLanguagesDir);?>?ref=<?php echo $this->uri->segment(1);?>/<?php echo $this->uri->segment(2);?>">
                <img src="<?php echo base_url();?>assets/images/flags/<?php echo $readLanguagesDir;?>.png" class="mr-2 dropdown-item-icon" alt="">
                <span><?php echo strtoupper($readLanguagesDir);?></span>
             </a>
