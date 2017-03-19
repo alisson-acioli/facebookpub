@@ -21,13 +21,13 @@ $(document).ready(function(){
         var tr = $(this).closest('tr');
 
         swal({
-            title: "Tem certeza ?",
-            text: "Tem certeza que deseja excluir essa programação ? Essa ação não será reversível.",
+            title: tem_certeza,
+            text: tem_certeza_excluir_programacao,
             type: "warning",
             showCancelButton: true,
-            cancelButtonText: "Cancelar",
+            cancelButtonText: cancelar,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Sim, deletar",
+            confirmButtonText: sim_deletar,
             closeOnConfirm: false 
             }, function(){
 
@@ -41,12 +41,12 @@ $(document).ready(function(){
 
                     if(callback.status == 1){
 
-                        swal("Deletado!", "A programação foi deletada com sucesso!", "success"); 
+                        swal(deletado, programacao_deletada, "success"); 
 
                         tr.addClass('bg-danger').fadeOut(2000);
 
                     }else{
-                        swal("Erro", "Ocorreu um erro ao deletar: "+callback.erro, "danger");
+                        swal("Erro", erro_deletar+": "+callback.erro, "danger");
                     }
                 },
 
@@ -73,13 +73,13 @@ $(document).ready(function(){
         if(ids != ''){
 
             swal({
-                title: "Tem certeza ?",
-                text: "Tem certeza que deseja excluir todas as programações selecionadas ? Essa ação não será reversível.",
+                title: tem_certeza,
+                text: tem_certeza_excluir_programacoes,
                 type: "warning",
                 showCancelButton: true,
-                cancelButtonText: "Cancelar",
+                cancelButtonText: cancelar,
                 confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, deletar",
+                confirmButtonText: sim_deletar,
                 closeOnConfirm: false 
                 }, function(){
 
@@ -93,7 +93,7 @@ $(document).ready(function(){
 
                         if(callback.status == 1){
 
-                            swal("Deletado!", "As programações selecionadas foram deletadas com sucesso!", "success"); 
+                            swal(deletado, programacoes_deletadas, "success"); 
 
                             $("input#excluir:checked").each(function(){
                 
@@ -102,7 +102,7 @@ $(document).ready(function(){
 
 
                         }else{
-                            swal("Erro", "Ocorreu um erro ao deletar: "+callback.erro, "error");
+                            swal(erro, erro_deletar+": "+callback.erro, "error");
                         }
                     },
 
@@ -112,7 +112,7 @@ $(document).ready(function(){
                 });    
             });
         }else{
-            swal("Opps...", "Você deve escolher ao menos 1 item para excluir.", "error");
+            swal(ops, selecione_um_deletar, "error");
         }
     });
 

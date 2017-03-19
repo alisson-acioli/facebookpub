@@ -16,11 +16,11 @@ function usuario($column){
 
             return $row->$column;
         }else{
-            return 'Não encontrado';
+            return $_this->lang->line('nada_encontrado');
         }
     }else{
 
-        return 'Não encontrado';
+        return $_this->lang->line('nada_encontrado');
     }
 }
 

@@ -36,8 +36,8 @@
             </a>
          </div>
          <div id="form-switch-btns" class="btn-group switch-btns">
-	         <button data-target="#signup-form-wrap" class="btn" <?php echo (isset($messageCadastrar)) ? 'disabled' : '';?>>Cadastrar</button> 
-	         <button data-target="#signin-form-wrap" class="btn" <?php echo (!isset($messageCadastrar)) ? 'disabled' : '';?>>Entrar</button>
+	         <button data-target="#signup-form-wrap" class="btn" <?php echo (isset($messageCadastrar)) ? 'disabled' : '';?>><?php echo $this->lang->line('btn_cadastrar_top');?></button> 
+	         <button data-target="#signin-form-wrap" class="btn" <?php echo (!isset($messageCadastrar)) ? 'disabled' : '';?>><?php echo $this->lang->line('btn_entrar_top');?></button>
          </div>
       </header>
       <!-- /.login-page-header -->
@@ -62,40 +62,40 @@
          <div class="side second-side">
             <div class="side-content">
                <div id="signin-form-wrap" class="form-wrap <?php echo (!isset($messageCadastrar)) ? 'show' : '';?>">
-                  <h4 class="my-5 font-weight-light text-uppercase">Faça o login e tenha acesso ao sistema</h4>
+                  <h4 class="my-5 font-weight-light text-uppercase"><?php echo $this->lang->line('titulo_login');?></h4>
                   <form id="signin-form" class="form" action="" method="post">
 
                   	 <?php if(isset($messageLogin)) echo $messageLogin; ?>
 
                      <div class="form-group">
-                     	<input type="text" name="login" class="form-control" placeholder="Login" required>
+                     	<input type="text" name="login" class="form-control" placeholder="<?php echo $this->lang->line('campo_login');?>" required>
                      </div>
                      <div class="form-group">
-                     	<input type="password" name="senha" class="form-control" placeholder="Senha" required>
+                     	<input type="password" name="senha" class="form-control" placeholder="<?php echo $this->lang->line('campo_senha');?>" required>
                      </div>
-                     <input type="submit" name="submitLogin" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="Entrar">
+                     <input type="submit" name="submitLogin" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="<?php echo $this->lang->line('btn_login');?>">
                   </form>
                </div>
                <!-- /#signin-form-wrap -->
                <div id="signup-form-wrap" class="form-wrap <?php echo (isset($messageCadastrar)) ? 'show' : '';?>">
-                  <h4 class="my-5 font-weight-light text-uppercase">Faça seu cadastro para acessar nosso sistema</h4>
+                  <h4 class="my-5 font-weight-light text-uppercase"><?php echo $this->lang->line('titulo_cadastro');?></h4>
                   <form id="signup-form" class="form" action="" method="post">
 
                   	 <?php if(isset($messageCadastrar)) echo $messageCadastrar; ?>
 
                      <div class="form-group">
-                     	<input type="text" name="nome" class="form-control" placeholder="Nome" required>
+                     	<input type="text" name="nome" class="form-control" placeholder="<?php echo $this->lang->line('campo_cadastrar_nome');?>" required>
                      </div>
                      <div class="form-group">
-                     	<input type="email" name="email" class="form-control" placeholder="Email" required>
+                     	<input type="email" name="email" class="form-control" placeholder="<?php echo $this->lang->line('campo_cadastrar_email');?>" required>
                      </div>
                      <div class="form-group">
-                     	<input type="text" name="login" class="form-control" placeholder="Login" required>
+                     	<input type="text" name="login" class="form-control" placeholder="<?php echo $this->lang->line('campo_login');?>" required>
                      </div>
                      <div class="form-group">
-                     	<input type="password" name="senha" class="form-control" placeholder="Senha" required>
+                     	<input type="password" name="senha" class="form-control" placeholder="<?php echo $this->lang->line('campo_senha');?>" required>
                      </div>
-                     <input type="submit" name="submitCadastrar" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="Cadastrar">
+                     <input type="submit" name="submitCadastrar" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="<?php echo $this->lang->line('btn_cadastrar');?>">
                   </form>
                </div>
                <!-- /#signin-form-wrap -->

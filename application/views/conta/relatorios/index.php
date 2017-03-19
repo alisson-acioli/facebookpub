@@ -1,12 +1,12 @@
 <section class="site-content">
-  <h3>Filtro</h3>
+  <h3><?php echo $this->lang->line('filtro');?></h3>
   <form class="form-inline">
 
     <?php
     if(!empty($paginas)){
     ?>
     <select id="paginas" class="custom-select mb-2 mr-sm-2 mb-sm-0">
-      <option value="">Todas as Páginas</option>
+      <option value=""><?php echo $this->lang->line('todas_paginas');?></option>
       <?php
         foreach($paginas as $pagina){
           echo '<option value="'.$pagina['page_id'].'">'.$pagina['page'].'</option>';
@@ -18,10 +18,10 @@
     }
     ?>
 
-    <label class="mr-sm-2" for="">Período</label>
+    <label class="mr-sm-2" for=""><?php echo $this->lang->line('periodo');?></label>
     <input type="text" id="periodo" data-plugin="daterangepicker" class="form-control mr-2">
 
-    <button type="button" class="btn btn-primary" id="FiltrarRelatorio">Filtrar</button>
+    <button type="button" class="btn btn-primary" id="FiltrarRelatorio"><?php echo $this->lang->line('filtrar');?></button>
     </form>
 
     <br />

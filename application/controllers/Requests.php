@@ -7,6 +7,15 @@ class Requests extends CI_Controller {
         parent::__construct();
 
         $this->load->model('paginas');
+
+        if($this->session->has_userdata('lingua')){
+          $lang = $this->session->userdata('lingua');
+        }else{
+          $lang = website_config('linguagem');
+          $this->session->set_userdata('lingua', $lang);
+        }
+
+        $this->lang->load($lang, $lang);
     }
     
     public function post_texto(){
@@ -117,7 +126,7 @@ class Requests extends CI_Controller {
             
         }else{
 
-            echo json_encode(array('status'=>0, 'erro'=>'Não foi encontrada nenhuma página/grupo para relacionar com a postagem a ser feita.'));
+            echo json_encode(array('status'=>0, 'erro'=>$this->lang->line('nenhum_pagina_encontrada')));
         }
     }
 
@@ -171,7 +180,7 @@ class Requests extends CI_Controller {
             
         }else{
 
-            echo json_encode(array('status'=>0, 'erro'=>'Não foi encontrada nenhuma página/grupo para relacionar com a postagem a ser feita.'));
+            echo json_encode(array('status'=>0, 'erro'=>$this->lang->line('nenhum_pagina_encontrada')));
         }
     }
 
@@ -229,7 +238,7 @@ class Requests extends CI_Controller {
             
         }else{
 
-            echo json_encode(array('status'=>0, 'erro'=>'Não foi encontrada nenhuma página/grupo para relacionar com a postagem a ser feita.'));
+            echo json_encode(array('status'=>0, 'erro'=>$this->lang->line('nenhum_pagina_encontrada')));
         }
     }
 
@@ -252,71 +261,70 @@ class Requests extends CI_Controller {
 
             $row = $query->row();
 
-            $html .= '<h5>Tipo de Publicação: <u>'.ucfirst(strtolower($row->tipo_programacao)).'</u></h5><br />';
+            $html .= '<h5>'.$this->lang->line('tipo_publicacao').': <u>'.str_replace(array('Texto', 'Link', 'Imagem', 'Vídeo'), array($this->lang->line('postagem_texto'), $this->lang->line('postagem_link'), $this->lang->line('postagem_imagem'), $this->lang->line('postagem_video')), ucfirst(strtolower($row->tipo_programacao))).'</u></h5><br />';
 
             if($row->tipo_programacao == 'texto'){
                 
-                $html .= '<b>Mensagem do Post:</b> '.$row->mensagem_post.'<br /><br />';
+                $html .= '<b>'.$this->lang->line('mensagem_post').':</b> '.$row->mensagem_post.'<br /><br />';
 
             }elseif($row->tipo_programacao == 'link'){
 
-                $html .= '<b>Título:</b> '.$row->titulo_link.'<br />';
-                $html .= '<b>Descrição:</b> '.$row->descricao_link.'<br />';
-                $html .= '<b>Imagem:</b> <a href="'.$row->imagem_link.'" target="_blank">'.$row->imagem_link.'</a><br />';
-                $html .= '<b>URL:</b> <a href="'.$row->url_link.'" target="_blank">'.$row->url_link.'</a><br />';
-                $html .= '<b>Mensagem do Post:</b> '.$row->mensagem_post.'<br /><br />';
+                $html .= '<b>'.$this->lang->line('titulo_link').':</b> '.$row->titulo_link.'<br />';
+                $html .= '<b>'.$this->lang->line('descricao_link').':</b> '.$row->descricao_link.'<br />';
+                $html .= '<b>'.$this->lang->line('imagem_link').':</b> <a href="'.$row->imagem_link.'" target="_blank">'.$row->imagem_link.'</a><br />';
+                $html .= '<b>'.$this->lang->line('url_link').':</b> <a href="'.$row->url_link.'" target="_blank">'.$row->url_link.'</a><br />';
+                $html .= '<b>'.$this->lang->line('mensagem_post').':</b> '.$row->mensagem_post.'<br /><br />';
                
 
             }elseif($row->tipo_programacao == 'imagem'){
 
-                $html .= '<b>Imagem:</b> <a href="'.$row->imagem_imagem.'" target="_blank">'.$row->imagem_imagem.'</a><br />';
-                $html .= '<b>Mensagem do Post:</b> '.$row->mensagem_post.'<br /><br />';
+                $html .= '<b>'.$this->lang->line('link_imagem').':</b> <a href="'.$row->imagem_imagem.'" target="_blank">'.$row->imagem_imagem.'</a><br />';
+                $html .= '<b>'.$this->lang->line('mensagem_post').':</b> '.$row->mensagem_post.'<br /><br />';
 
 
             }elseif($row->tipo_programacao == 'video'){
 
-                $html .= '<b>Título:</b> '.$row->titulo_video.'<br />';
-                $html .= '<b>Descrição:</b> '.$row->descricao_video.'<br />';
-                $html .= '<b>Link Vídeo:</b> <a href="'.$row->link_video.'" target="_blank">'.$row->link_video.'</a><br />';
-                $html .= '<b>URL:</b> <a href="'.$row->url_link.'" target="_blank">'.$row->url_link.'</a><br /><br />';
-                $html .= '<b>Mensagem do Post:</b> '.$row->mensagem_post.'<br />';
+                $html .= '<b>'.$this->lang->line('titulo_video').':</b> '.$row->titulo_video.'<br />';
+                $html .= '<b>'.$this->lang->line('descricao_video').':</b> '.$row->descricao_video.'<br />';
+                $html .= '<b>'.$this->lang->line('url_video').':</b> <a href="'.$row->link_video.'" target="_blank">'.$row->link_video.'</a><br />';
+                $html .= '<b>'.$this->lang->line('mensagem_post').':</b> '.$row->mensagem_post.'<br />';
 
             }else{
-                echo '<div class="alert alert-danger text-center">O tipo de publicação não é compatível com o sistema. Fale com um administrador</div>';
+                echo '<div class="alert alert-danger text-center">'.$this->lang->line('publicacao_nao_compativel').'</div>';
                 return;
             }
 
             $separaDataHora = explode(' ', $row->data_programacao);
-            $html .= '<b>Data da Programação:</b> '.converter_data($separaDataHora[0], '-', '/').' às '.$separaDataHora[1].'<br />';
+            $html .= '<b>'.$this->lang->line('data_programacao').':</b> '.converter_data($separaDataHora[0], '-', '/').' '.$this->lang->line('as').' '.$separaDataHora[1].'<br />';
             
-            $repete_programacao = ($row->repetir_programacao == 1) ? 'Sim' : 'Não';
+            $repete_programacao = ($row->repetir_programacao == 1) ? $this->lang->line('sim') : $this->lang->line('nao');
 
-            $html .= '<b>Repetir Programação:</b> '.$repete_programacao.'<br /><br />';
+            $html .= '<b>'.$this->lang->line('repetir_programacao').':</b> '.$repete_programacao.'<br /><br />';
 
             if($row->repetir_programacao == 1){
 
                 $dias = ($row->intervalo/3600)/24;
 
                 if($dias < 7){
-                    $label = 'Dia(s)';
+                    $label = $this->lang->line('dias');
                 }elseif($dias >= 7 && $dias < 30){
-                    $label = 'Semana(s)';
+                    $label = $this->lang->line('semanas');
                 }elseif($dias >= 30 && $dias < 365){
-                    $label = 'Mes(es)';
+                    $label = $this->lang->line('meses');
                 }else{
-                    $label = 'Ano(s)';
+                    $label = $this->lang->line('anos');
                 }
 
-                $html .= '<b>Intervalo:</b> A cada '.$dias.' '.$label.'<br />';
+                $html .= '<b>'.$this->lang->line('intervalo').':</b> '.$this->lang->line('a_cada').' '.$dias.' '.$label.'<br />';
 
                 $separaDataFinalRepeticao = explode(' ', $row->data_final_repeticao);
 
-                $html .= '<b>Data Final:</b> '.converter_data($separaDataFinalRepeticao[0], '-', '/').'<br /><br />';
+                $html .= '<b>'.$this->lang->line('data_final').':</b> '.converter_data($separaDataFinalRepeticao[0], '-', '/').'<br /><br />';
             }
 
             foreach($queryPages->result() as $key=>$page){
 
-                $html .= 'Página '.($key+1).' - '.$this->facebook->NamePage($page->id_conta).'<br />';
+                $html .= $this->lang->line('pagina').' '.($key+1).' - '.$this->facebook->NamePage($page->id_conta).'<br />';
             }
 
             $html .= '<br />';
@@ -342,12 +350,12 @@ class Requests extends CI_Controller {
               $label = 'label-warning';
             break;
           }
-          $html .= '<b>Status:</b> <span class="label '.$label.'">'.StatusPostagem($row->status).'</span>';
+          $html .= '<b>'.$this->lang->line('status').':</b> <span class="label '.$label.'">'.StatusPostagem($row->status).'</span>';
 
           echo $html;
 
         }else{
-            echo '<div class="alert alert-danger text-center">Você não tem autorização para ver detalhes dessa publicação.</div>';
+            echo '<div class="alert alert-danger text-center">'.$this->lang->line('sem_permissao_detalhes').'</div>';
         }
     }
 
@@ -381,7 +389,7 @@ class Requests extends CI_Controller {
             echo json_encode(array('status'=>1));
 
         }else{
-            echo json_encode(array('status'=>0, 'erro'=>'Nenhuma programação foi selecionada para excluir.'));
+            echo json_encode(array('status'=>0, 'erro'=>$this->lang->line('nenhum_publicacao_excluir')));
         }
     }
 
@@ -444,10 +452,12 @@ class Requests extends CI_Controller {
 
                 if(!in_array($result->data_programacao, $dias)){
 
-                    $dias[] = converter_data($result->data_programacao, '-', '/');
+                    $separadorData = explode(" ", $result->data_programacao);
+                    $dias[] = converter_data($separadorData[0], '-', '/');
                 }
 
-                $data[$result->id_conta][] = array('data'=>converter_data($result->data_programacao, '-', '/'),'quantidade'=>$result->quantidade);
+                $separadorData = explode(" ", $result->data_programacao);
+                $data[$result->id_conta][] = array('data'=>converter_data($separadorData[0], '-', '/'),'quantidade'=>$result->quantidade);
             }
 
             foreach($data as $id_conta=>$dataSecound){
@@ -547,10 +557,12 @@ class Requests extends CI_Controller {
 
                 if(!in_array($result->data, $dias)){
 
-                    $dias[] = converter_data($result->data, '-', '/');
+                    $separadorData = explode(" ", $result->data);
+                    $dias[] = converter_data($separadorData[0], '-', '/');
                 }
 
-                $data[$result->id_page][] = array('data'=>converter_data($result->data, '-', '/'),'quantidade'=>$result->quantidade);
+                $separadorData = explode(" ", $result->data);
+                $data[$result->id_page][] = array('data'=>converter_data($separadorData[0], '-', '/'),'quantidade'=>$result->quantidade);
             }
 
             foreach($data as $id_conta=>$dataSecound){

@@ -1,7 +1,7 @@
 <section class="site-content">
-  <h3>Páginas</h3>
-  <p>Selecione abaixo todas as páginas que você quer gerenciar a partir de nosso sistema. Somente as páginas selecionadas poderão ser gerenciadas por nosso sistemas, as demais não.</p>
-  <p>Caso queira adiconar ou remover posteriormente, será possível por essa página.</p>
+  <h3><?php echo $this->lang->line('menu_paginas');?></h3>
+  <p><?php echo $this->lang->line('help_paginas_1');?></p>
+  <p><?php echo $this->lang->line('help_paginas_2');?></p>
 
   <div align="center">
     <form action="" method="post">
@@ -19,9 +19,9 @@
     <table class="table table-hover table-striped">
     <thead>
       <tr>
-        <th>Página</th>
-        <th>Curtidas</th>
-        <th>Ativa</th>
+        <th><?php echo $this->lang->line('pagina');?></th>
+        <th><?php echo $this->lang->line('curtidas');?></th>
+        <th><?php echo $this->lang->line('ativa');?></th>
       </tr>
     </thead>
 
@@ -47,7 +47,7 @@
     ?>
     <tr>
       <td><?php echo $page['name'];?></td>
-      <td><?php echo $this->facebook->getLikesPage($page['id']);?> curtidas</td>
+      <td><?php echo $this->facebook->getLikesPage($page['id']);?> <?php echo $this->lang->line('curtidas');?></td>
       <td><input type="checkbox" data-plugin="switchry" data-color="#10c469" name="pages[]" value="<?php echo $page['id'];?>" data-size="small" <?php echo $checked;?>></td>
     </tr>
     <?php
@@ -57,11 +57,11 @@
   </table>
     <?php
       }else{
-        echo '<div class="alert alert-danger text-center">Você ainda não gerencia nenhuma página. Para usar essa ferramente, crie uma página.</div>';
+        echo '<div class="alert alert-danger text-center">'.$this->lang->line('crie_uma_pagina').'</div>';
       }
     }else{
     ?>
-      <a href="<?php echo $this->facebook->login_url();?>" class="btn btn-primary">Faça o login para gerenciar suas páginas</a>
+      <a href="<?php echo $this->facebook->login_url();?>" class="btn btn-primary"><?php echo $this->lang->line('btn_login_facebook');?></a>
     <?php
     }
     ?>

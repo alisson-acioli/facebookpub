@@ -59,47 +59,47 @@
       <div class="tab-content">
          <!-- /.tab-pane -->
          <div class="tab-pane active py-5" id="tipo-publicacao" role="tabpanel">
-            <h4 class="text-center mb-5">Qual é o tipo de postagem ?</h4>
-            <p class="text-center">Caso você não escolha, o padrão será <b>Texto</b>.</p>
+            <h4 class="text-center mb-5"><?php echo $this->lang->line('tipo_postagem');?></h4>
+            <p class="text-center"><?php echo $this->lang->line('help_tipo_postagem');?></p>
             <div class="d-flex justify-content-center">
 
                <div class="wizard-radio mr-4">
                   <input id="textoin" value="texto" type="radio" name="tipo" checked>
                   <label for="textoin">
                      <i class="fa fa-text-height mb-2"></i>
-                     <span class="fz-base">Texto</span>
+                     <span class="fz-base"><?php echo $this->lang->line('postagem_texto');?></span>
                   </label>
                </div>
                <div class="wizard-radio mr-4">
                   <input id="linkin" value="link" type="radio" name="tipo">
                   <label for="linkin">
                      <i class="fa fa-link mb-2"></i>
-                     <span class="fz-base">Link</span>
+                     <span class="fz-base"><?php echo $this->lang->line('postagem_link');?></span>
                   </label>
                </div>
                <div class="wizard-radio mr-4">
                   <input id="imagemin" value="imagem" type="radio" name="tipo">
                   <label for="imagemin">
                      <i class="fa fa-file-picture-o mb-2"></i>
-                     <span class="fz-base">Imagem</span>
+                     <span class="fz-base"><?php echo $this->lang->line('postagem_imagem');?></span>
                   </label>
                </div>
                <div class="wizard-radio">
                   <input id="videoin" value="video" type="radio" name="tipo">
                   <label for="videoin">
                      <i class="fa fa-video-camera mb-2"></i>
-                     <span class="fz-base">Vídeo</span>
+                     <span class="fz-base"><?php echo $this->lang->line('postagem_video');?></span>
                   </label>
                </div>
             </div>
          </div>
          <!-- /.tab-pane -->
          <div class="tab-pane p-5" id="detalhes-publicacao" role="tabpanel">
-            <h4 class="text-center mb-5">Detalhes da Programação</h4>
+            <h4 class="text-center mb-5"><?php echo $this->lang->line('detalhes_programacao');?></h4>
 
             <div class="texto" style="display:block;">
                <div class="form-group row">
-                  <label for="mensagem_texto" class="col-2 col-form-label">Mensagem</label>
+                  <label for="mensagem_texto" class="col-2 col-form-label"><?php echo $this->lang->line('mensagem_post');?></label>
                   <div class="col-10">
                      <textarea name="mensagem_texto" id="mensagem_texto" rows="4" class="form-control"></textarea>
                   </div>
@@ -108,31 +108,31 @@
 
             <div class="row link" style="display:none;">
                <div class="form-group row">
-                  <label for="mensagem_link" class="col-2 col-form-label">Mensagem no post</label>
+                  <label for="mensagem_link" class="col-2 col-form-label"><?php echo $this->lang->line('mensagem_post');?></label>
                   <div class="col-10">
                      <textarea name="mensagem_link" id="mensagem_link" rows="4" class="form-control"></textarea>
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="titulo_link_link" class="col-2 col-form-label">Título do Link</label>
+                  <label for="titulo_link_link" class="col-2 col-form-label"><?php echo $this->lang->line('titulo_link');?></label>
                   <div class="col-10">
                      <input type="text" id="titulo_link_link" name="titulo_link_link" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="descricao_link_link" class="col-2 col-form-label">Descrição do Link</label>
+                  <label for="descricao_link_link" class="col-2 col-form-label"><?php echo $this->lang->line('descricao_link');?></label>
                   <div class="col-10">
                      <textarea type="text" id="descricao_link_link" name="descricao_link_link" class="form-control"></textarea>
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="imagem_link_link" class="col-2 col-form-label">Imagem do Link</label>
+                  <label for="imagem_link_link" class="col-2 col-form-label"><?php echo $this->lang->line('imagem_link');?></label>
                   <div class="col-10">
                      <input type="text" id="imagem_link_link" name="imagem_link_link" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="url_link_link" class="col-2 col-form-label">URL (link)</label>
+                  <label for="url_link_link" class="col-2 col-form-label"><?php echo $this->lang->line('url_link');?></label>
                   <div class="col-10">
                      <input type="text" id="url_link_link" name="url_link_link" class="form-control">
                   </div>
@@ -141,13 +141,13 @@
 
             <div class="row imagem" style="display:none;">
                <div class="form-group row">
-                  <label for="imagem_imagem" class="col-2 col-form-label">Imagem</label>
+                  <label for="imagem_imagem" class="col-2 col-form-label"><?php echo $this->lang->line('link_imagem');?></label>
                   <div class="col-10">
                      <input type="url" id="imagem_imagem" name="imagem_imagem" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="mensagem_post_imagem" class="col-2 col-form-label">Mensagem no post</label>
+                  <label for="mensagem_post_imagem" class="col-2 col-form-label"><?php echo $this->lang->line('mensagem_post');?></label>
                   <div class="col-10">
                      <textarea id="mensagem_post_imagem" name="mensagem_post_imagem" rows="4" class="form-control"></textarea>
                   </div>
@@ -156,25 +156,25 @@
 
             <div class="row video" style="display:none;">
                <div class="form-group row">
-                  <label for="titulo_video_video" class="col-2 col-form-label">Título do Vídeo</label>
+                  <label for="titulo_video_video" class="col-2 col-form-label"><?php echo $this->lang->line('titulo_video');?></label>
                   <div class="col-10">
                      <input type="text" id="titulo_video_video" name="titulo_video_video" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="descricao_video_video" class="col-2 col-form-label">Descrição do Vídeo</label>
+                  <label for="descricao_video_video" class="col-2 col-form-label"><?php echo $this->lang->line('descricao_video');?></label>
                   <div class="col-10">
                      <textarea id="descricao_video_video" name="descricao_video_video" rows="4" class="form-control"></textarea>
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="url_video_video" class="col-2 col-form-label">URL do Vídeo</label>
+                  <label for="url_video_video" class="col-2 col-form-label"><?php echo $this->lang->line('url_video');?></label>
                   <div class="col-10">
                      <input type="text" id="url_video_video" name="url_video_video" class="form-control">
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="mensagem_post_video" class="col-2 col-form-label">Mensagem no post</label>
+                  <label for="mensagem_post_video" class="col-2 col-form-label"><?php echo $this->lang->line('mensagem_post');?></label>
                   <div class="col-10">
                      <textarea id="mensagem_post_video" name="mensagem_post_video" rows="4" class="form-control"></textarea>
                   </div>
@@ -184,15 +184,15 @@
          </div>
          <!-- /.tab-pane -->
          <div class="tab-pane p-5" id="agendamento-publicacao" role="tabpanel">
-            <h4 class="text-center mb-5">Agendamento</h4>
+            <h4 class="text-center mb-5"><?php echo $this->lang->line('agendamento');?></h4>
             <div class="form-group row">
-               <label for="services" class="col-2 col-form-label">Data</label>
+               <label for="services" class="col-2 col-form-label"><?php echo $this->lang->line('data');?></label>
                <div class="col-10">
                   <input type="text" id="daterange-ex-3" name="data_agendamento" class="form-control" value="<?php echo date('d/m/Y');?>" style="width:150px;">
                </div>
             </div>
             <div class="form-group row">
-               <label for="services" class="col-2 col-form-label">Hora</label>
+               <label for="services" class="col-2 col-form-label"><?php echo $this->lang->line('hora');?></label>
                <div class="col-10">
                   <div class="clockpicker" data-plugin="clockpicker">
                      <input type="text" name="hora_agendamento" class="form-control" value="<?php echo date('H:i');?>" style="width: 150px">
@@ -200,21 +200,21 @@
                </div>
             </div>
             <div class="form-group row">
-               <label for="services" class="col-2 col-form-label">Repetir Postagem ?</label>
+               <label for="services" class="col-2 col-form-label"><?php echo $this->lang->line('repetir_postagem');?></label>
                <div class="col-10">
                   <div class="radio radio-inline radio-primary">
                      <input type="radio" id="radio-inline-1" name="repetir_post" value="0" checked="checked">
-                     <label for="radio-inline-1">Não</label>
+                     <label for="radio-inline-1"><?php echo $this->lang->line('nao');?></label>
                   </div>
                   <div class="ml-3 radio radio-inline radio-primary">
                      <input type="radio" id="radio-inline-2" name="repetir_post" value="1">
-                     <label for="radio-inline-2">Sim</label>
+                     <label for="radio-inline-2"><?php echo $this->lang->line('sim');?></label>
                   </div>
                </div>
             </div>
             <div class="repeticao_postagem" style="display:none;">
                <div class="form-group row">
-                  <label for="intervalo" class="col-2 col-form-label">Intervalo</label>
+                  <label for="intervalo" class="col-2 col-form-label"><?php echo $this->lang->line('intervalo');?></label>
                   <div class="col-10">
                      <select id="intervalo" name="intervalo" class="form-control" style="width:200px">
                         <option value="1">A cada 1 dia</option>
@@ -230,7 +230,7 @@
                   </div>
                </div>
                <div class="form-group row">
-                  <label for="dt-picker" class="col-2 col-form-label">Data Final</label>
+                  <label for="dt-picker" class="col-2 col-form-label"><?php echo $this->lang->line('data_final');?></label>
                   <div class="col-10">
                      <input type="text" id="dt-picker" name="data_final" class="form-control" value="<?php echo date('d/m/Y', time() + (60*60*24));?>" style="width:150px;">
                   </div>
@@ -240,8 +240,8 @@
          <!-- /.tab-pane -->
          <!-- /.tab-pane -->
          <div class="tab-pane py-5" id="paginas-publicacao" role="tabpanel">
-            <h4 class="text-center mb-5">Quais Páginas ?</h4>
-            <p class="text-center">Escolha as páginas que deverão receber a sua postagem.</p>
+            <h4 class="text-center mb-5"><?php echo $this->lang->line('quais_paginas');?></h4>
+            <p class="text-center"><?php echo $this->lang->line('help_quais_paginas');?></p>
             <select name="paginas_programacao_select" id="paginas_programacao_select" class="form-control" style="width:75%;">
             <?php
             if(!empty($this->paginas->TodasPaginas())){
@@ -255,9 +255,9 @@
          </div>
          <!-- /.tab-pane -->
          <div class="pager d-flex justify-content-center">
-            <button type="button" id="finish-btn" class="finish btn btn-success w-50 mr-4">Finalizar</button>
-            <button type="button" id="previous-btn" class="previous btn btn-success w-50 mr-4">Anterior</button>
-            <button type="button" id="next-btn" class="next btn btn-success w-50">Próximo</button></div>
+            <button type="button" id="finish-btn" class="finish btn btn-success w-50 mr-4"><?php echo $this->lang->line('btn_finalizar');?></button>
+            <button type="button" id="previous-btn" class="previous btn btn-success w-50 mr-4"><?php echo $this->lang->line('btn_anterior');?></button>
+            <button type="button" id="next-btn" class="next btn btn-success w-50"><?php echo $this->lang->line('btn_proximo');?></button></div>
          <!-- /.pager -->
       </div>
       <!-- /.tab-content -->

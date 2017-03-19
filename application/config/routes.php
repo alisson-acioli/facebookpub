@@ -53,6 +53,8 @@ $route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['lang/(:any)']                   = 'linguagem/index/$1';
+
 $route['perfil']                        = 'conta/perfil';
 $route['requests/relatorios/postagens'] = 'requests/relatorio_postagens';
 $route['requests/relatorios/curtidas']  = 'requests/relatorio_curtidas';

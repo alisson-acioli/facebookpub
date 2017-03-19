@@ -112,18 +112,28 @@ svg4everybody();
       </li>
       <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="nav-img" src="<?php echo base_url();?>assets/global/images/flags/United-States-of-America.png" alt="">
-            <span class="nav-text hidden-sm-down ml-2">English</span> 
+            <img class="nav-img" src="<?php echo base_url();?>assets/images/flags/<?php echo $this->session->userdata('lingua');?>.png" alt="">
+            <span class="nav-text hidden-sm-down ml-2"><?php echo strtoupper($this->session->userdata('lingua'));?></span> 
             <i class="nav-caret hidden-sm-down zmdi zmdi-hc-sm zmdi-chevron-down"></i>
          </a>
          <div class="dropdown-menu p-0" data-plugin="dropdownCaret">
-            <a class="dropdown-item dropdown-menu-cap">2 Linguagens</a>
-            <a class="dropdown-item" href="#">
-               <img src="<?php echo base_url();?>assets/global/images/flags/Egypt.png" class="mr-2 dropdown-item-icon" alt="">
-               <span>Português</span> </a><a class="dropdown-item" href="#">
-               <img src="<?php echo base_url();?>assets/global/images/flags/United-States-of-America.png" class="mr-2 dropdown-item-icon" alt="">
-               <span>English</span>
+            <a class="dropdown-item dropdown-menu-cap">2 <?php echo $this->lang->line('linguagens');?></a>
+            
+            <?php
+            $openLanguagesDir = opendir('application/language');
+
+            while($readLanguagesDir = readdir($openLanguagesDir)){
+
+               if($readLanguagesDir != '.' && $readLanguagesDir != '..' && is_dir('application/language/'.$readLanguagesDir)){
+            ?>
+            <a class="dropdown-item" href="<?php echo base_url();?>lang/<?php echo strtolower($readLanguagesDir);?>">
+               <img src="<?php echo base_url();?>assets/images/flags/<?php echo $readLanguagesDir;?>.png" class="mr-2 dropdown-item-icon" alt="">
+               <span><?php echo strtoupper($readLanguagesDir);?></span>
             </a>
+            <?php
+               }
+            }
+            ?>
       </li>
    </ul>
    <ul class="navbar-nav">
@@ -141,11 +151,11 @@ svg4everybody();
          <div class="dropdown-menu dropdown-menu-right p-0" data-plugin="dropdownCaret">
             <a class="dropdown-item dropdown-menu-cap"><?php echo usuario('nome');?></a> 
             <a class="dropdown-item" href="<?php echo base_url();?>perfil">
-               <span>Perfil</span> 
+               <span><?php echo $this->lang->line('perfil');?></span> 
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="<?php echo base_url();?>sair">
-               <span>Sair</span>
+               <span><?php echo $this->lang->line('sair');?></span>
             </a>
          </div>
       </li>
@@ -160,35 +170,35 @@ svg4everybody();
    <div class="site-menubar-inner">
       <ul class="site-menu">
          <!-- MAIN NAVIGATION SECTION -->
-         <li class="menu-section-heading">NAVEGAÇÃO</li>
+         <li class="menu-section-heading"><?php echo $this->lang->line('menu_navegacao');?></li>
          <li>
             <a href="<?php echo base_url('conta');?>">
                <i class="fa fa-home"></i>
-               <span class="menu-text">Dashboard</span>
+               <span class="menu-text"><?php echo $this->lang->line('menu_dashboard');?></span>
             </a>
          </li>
          <li>
             <a href="<?php echo base_url('conta/postagem');?>">
                <i class="fa fa-edit"></i>
-               <span class="menu-text">Postagem</span>
+               <span class="menu-text"><?php echo $this->lang->line('menu_postagem');?></span>
             </a>
          </li>
          <li>
             <a href="<?php echo base_url('conta/programacoes');?>">
                <i class="fa fa-clock-o"></i>
-               <span class="menu-text">Programações</span>
+               <span class="menu-text"><?php echo $this->lang->line('menu_programacoes');?></span>
             </a>
          </li>
          <li>
             <a href="<?php echo base_url('conta/paginas');?>">
                <i class="fa fa-facebook-official"></i>
-               <span class="menu-text">Páginas</span>
+               <span class="menu-text"><?php echo $this->lang->line('menu_paginas');?></span>
             </a>
          </li>
          <li>
             <a href="<?php echo base_url('conta/relatorios');?>">
                <i class="fa fa-line-chart"></i>
-               <span class="menu-text">Relatórios</span>
+               <span class="menu-text"><?php echo $this->lang->line('menu_relatorios');?></span>
             </a>
          </li>
          

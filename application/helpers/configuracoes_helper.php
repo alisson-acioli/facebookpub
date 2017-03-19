@@ -15,33 +15,35 @@ function website_config($column){
         
         }else{
 
-            return 'Erro de configuração. Verifique!';
+            return $_this->lang->line('erro_configuracao');
         }
     }
 }
 
 function StatusPostagem($id){
 
+    $_this =& get_instance();
+
     switch($id){
 
         case 1:
-            $status = 'Processando';
+            $status = $_this->lang->line('processando');
         break;
 
         case 2:
-            $status = 'Publicado';
+            $status = $_this->lang->line('publicado');
         break;
 
         case 3:
-            $status = 'Cancelado';
+            $status = $_this->lang->line('cancelado');
         break;
 
         case 4:
-            $status = 'Com problemas';
+            $status = $_this->lang->line('com_problemas');
         break;
 
         default:
-            $status = 'Com problemas';
+            $status = $_this->lang->line('com_problemas');
         break;
     }
 

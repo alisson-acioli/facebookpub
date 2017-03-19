@@ -148,8 +148,8 @@ $(function() {
                      if(callback.status == 1){
 
                         swal({
-                           title: 'Feito',
-                           text: 'Programação feita com sucesso. Na data e hora programada sua postagem será feita!',
+                           title: feito,
+                           text: programacao_feita,
                            type: 'success'
                         }, function(){
 
@@ -159,7 +159,7 @@ $(function() {
 
                      }else{
 
-                        swal("Erro", "Ocorreu um erro ao fazer a programação: "+callback.erro, "error");
+                        swal(erro, erro_programacao+": "+callback.erro, "error");
 
                         return false;
                      }
@@ -203,8 +203,8 @@ $(function() {
                      if(callback.status == 1){
 
                         swal({
-                           title: 'Feito',
-                           text: 'Programação feita com sucesso. Na data e hora programada sua postagem será feita!',
+                           title: feito,
+                           text: programacao_feita,
                            type: 'success'
                         }, function(){
 
@@ -214,7 +214,7 @@ $(function() {
 
                      }else{
 
-                        swal("Erro", "Ocorreu um erro ao fazer a programação: "+callback.erro, "error");
+                        swal(erro, erro_programacao+": "+callback.erro, "error");
 
                         return false;
                      }
@@ -252,8 +252,8 @@ $(function() {
                      if(callback.status == 1){
 
                         swal({
-                           title: 'Feito',
-                           text: 'Programação feita com sucesso. Na data e hora programada sua postagem será feita!',
+                           title: feito,
+                           text: programacao_feita,
                            type: 'success'
                         }, function(){
 
@@ -263,7 +263,7 @@ $(function() {
 
                      }else{
 
-                        swal("Erro", "Ocorreu um erro ao fazer a programação: "+callback.erro, "error");
+                        swal(erro, erro_programacao+": "+callback.erro, "error");
 
                         return false;
                      }
@@ -306,8 +306,8 @@ $(function() {
                      if(callback.status == 1){
 
                         swal({
-                           title: 'Feito',
-                           text: 'Programação feita com sucesso. Na data e hora programada sua postagem será feita!',
+                           title: feito,
+                           text: programacao_feita,
                            type: 'success'
                         }, function(){
 
@@ -317,7 +317,7 @@ $(function() {
 
                      }else{
 
-                        swal("Erro", "Ocorreu um erro ao fazer a programação: "+callback.erro, "error");
+                        swal(erro, erro_programacao+": "+callback.erro, "error");
 
                         return false;
                      }
@@ -332,14 +332,14 @@ $(function() {
 
             }else{
 
-               swal("Erro", "Não foi identificado o tipo de postagem que você está tentando fazer. Recarregue essa página e tente novamente.", "error");
+               swal(erro, post_nao_identificado, "error");
 
                return false;
             }
 
          }else{
 
-            swal("Erro", "Por favor, preencha todos os campos!", "error")
+            swal(erro, preencha_campos, "error")
          }
 
       

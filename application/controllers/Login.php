@@ -7,6 +7,14 @@ class Login extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('loginmodel', 'LoginModel');
+
+		if($this->session->has_userdata('lingua')){
+			$lang = $this->session->userdata('lingua');
+		}else{
+			$lang = 'pt-br';
+		}
+
+		$this->lang->load($lang, $lang);
 	}
 
 	public function index(){

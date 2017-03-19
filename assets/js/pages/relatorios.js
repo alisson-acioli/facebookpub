@@ -19,16 +19,16 @@ function GeraGraficosRelatorios(paginas, periodo){
             Highcharts.chart('postagem_dia', {
 
                 title: {
-                    text: 'Postagem por dia'
+                    text: postagem_por_dia
                 },
 
                 subtitle: {
-                    text: 'Quantidade de postagens feitas por dia'
+                    text: quantidade_postagem_dia
                 },
 
                 yAxis: {
                     title: {
-                        text: 'Quantidade'
+                        text: quantidade
                     }
                 },
 
@@ -65,16 +65,16 @@ function GeraGraficosRelatorios(paginas, periodo){
             Highcharts.chart('curtidas_dia', {
 
                 title: {
-                    text: 'Curtidas por dia'
+                    text: curtidas_por_dia
                 },
 
                 subtitle: {
-                    text: 'Curtidas total de todas as páginas por dia'
+                    text: curtidas_total_paginas
                 },
 
                 yAxis: {
                     title: {
-                        text: 'Quantidade'
+                        text: quantidade
                     }
                 },
 

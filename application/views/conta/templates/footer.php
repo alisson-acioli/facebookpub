@@ -1,8 +1,8 @@
 <footer class="site-footer">
          <div class="mr-auto">
-            <p class="text-primary mb-0">Desenvolvido <i class="fa fa-heart text-success"></i> por <a href="mailto:alissonacioli@hotmail.com">Alisson Acioli</a></p>
+            <p class="text-primary mb-0"><?php echo $this->lang->line('desenvolvido');?> <i class="fa fa-heart text-success"></i> <?php echo $this->lang->line('por');?> <a href="mailto:alissonacioli@hotmail.com">Alisson Acioli</a></p>
          </div>
-         <div><a href="javascript:void(0)">All rights reserved &copy; <?php echo website_config('nome_site');?></a></div>
+         <div><a href="javascript:void(0)"><?php echo $this->lang->line('direitos_reservados');?> &copy; <?php echo website_config('nome_site');?></a></div>
       </footer>
       <!-- /.site-footer -->
    </main>
@@ -19,6 +19,16 @@
 
 <script>
 var baseURL = '<?php echo base_url();?>';
+
+<?php
+if(!empty($jsVariables)){
+   foreach($jsVariables as $variavel=>$valor){
+?>
+var <?php echo $variavel;?> = '<?php echo $valor;?>';
+<?php
+   }
+}
+?>
 </script>
 <!-- core plugins -->
 <script src="<?php echo base_url();?>assets/vendor/bower_components/jquery/dist/jquery.min.js"></script>
