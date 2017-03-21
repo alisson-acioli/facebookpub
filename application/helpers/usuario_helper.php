@@ -34,4 +34,28 @@ function checksession(){
         exit;
     }
 }
+
+function StatusUsuario($id_status){
+
+    switch($id_status){
+
+        case 1:
+            $status = 'Ativo';
+        break;
+
+        case 0:
+            $status = 'Não Ativo';
+        break;
+
+        case 2:
+            $status = 'Bloqueado';
+        break;
+
+        default:
+            $status = 'Ativo';
+        break;
+    }
+
+    return $status;
+}
 ?>
