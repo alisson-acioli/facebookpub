@@ -10,6 +10,16 @@ $(document).on("change", 'input[name="tipo"]', function(){
   $("."+TipoPublicacao).css('display', 'block');
 });
 
+$(document).on("change", 'input[name="lugar"]', function(){
+
+  var Lugar = $(this).val();
+
+  $(".local-pagina").css('display', 'none');
+  $(".local-perfil").css('display', 'none');
+
+  $(".local-"+Lugar).css('display', 'block');
+});
+
 $(document).on("change", 'input[name="repetir_post"]', function(){
 
   var Repetir = $(this).val();
@@ -112,6 +122,7 @@ $(function() {
          if(e()){
 
             var TipoPostagem = $("input[name='tipo']:checked").val();
+            var LugarPostagem = $("input[name='lugar']:checked").val();
             var DataAgendamento = $("input[name='data_agendamento']").val();
             var HoraAgendamento = $("input[name='hora_agendamento']").val();
             var RepetirPostagem = $("input[name='repetir_post']:checked").val();
@@ -140,7 +151,8 @@ $(function() {
                         repetir_postagem: RepetirPostagem,
                         intervalo: Intervalo,
                         data_final: DataFinal,
-                        paginas: Paginas
+                        paginas: Paginas,
+                        lugar: LugarPostagem
                      },
 
                   success: function(callback){
@@ -195,7 +207,8 @@ $(function() {
                         repetir_postagem: RepetirPostagem,
                         intervalo: Intervalo,
                         data_final: DataFinal,
-                        paginas: Paginas
+                        paginas: Paginas,
+                        lugar: LugarPostagem
                      },
 
                   success: function(callback){
@@ -244,7 +257,8 @@ $(function() {
                         repetir_postagem: RepetirPostagem,
                         intervalo: Intervalo,
                         data_final: DataFinal,
-                        paginas: Paginas
+                        paginas: Paginas,
+                        lugar: LugarPostagem
                      },
 
                   success: function(callback){
@@ -298,7 +312,8 @@ $(function() {
                         repetir_postagem: RepetirPostagem,
                         intervalo: Intervalo,
                         data_final: DataFinal,
-                        paginas: Paginas
+                        paginas: Paginas,
+                        lugar: LugarPostagem
                      },
 
                   success: function(callback){
