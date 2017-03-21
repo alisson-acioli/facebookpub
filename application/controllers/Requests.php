@@ -31,7 +31,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
-        $Paginas         = rtrim($Paginas, ',');
+        $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
@@ -43,6 +43,7 @@ class Requests extends CI_Controller {
         'intervalo'=>(60*60*24*$Intervalo),
         'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-').' 23:59:59' : NULL,
         'tipo_programacao'=>'texto',
+        'lugar_postagem'=>$lugar,
         'data_criacao'=>date('Y-m-d'),
         'status'=>1
         );
@@ -51,12 +52,27 @@ class Requests extends CI_Controller {
 
         $IDProgramacao = $this->db->insert_id();
 
-        $separaPaginas = explode(',', $Paginas);
+        if($lugar == 'pagina'){
 
-        foreach($separaPaginas as $pagina){
+            $Paginas = rtrim($Paginas, ',');
 
-            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$pagina, 'tipo'=>'pagina'));
-            
+            $separaPaginas = explode(',', $Paginas);
+
+            foreach($separaPaginas as $pagina){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$pagina, 'tipo'=>'pagina'));
+                
+                $contagem++;
+            }
+
+        }elseif($lugar == 'perfil'){
+
+            $token = usuario('token');
+
+            $myID = $this->facebook->GetMyID($token);
+
+            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
+
             $contagem++;
         }
 
@@ -87,7 +103,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
-        $Paginas         = rtrim($Paginas, ',');
+        $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
@@ -103,6 +119,7 @@ class Requests extends CI_Controller {
         'intervalo'=>(60*60*24*$Intervalo),
         'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-').' 23:59:59' : NULL,
         'tipo_programacao'=>'link',
+        'lugar_postagem'=>$lugar,
         'data_criacao'=>date('Y-m-d'),
         'status'=>1
         );
@@ -111,12 +128,25 @@ class Requests extends CI_Controller {
 
         $IDProgramacao = $this->db->insert_id();
 
-        $separaPaginas = explode(',', $Paginas);
+        if($lugar == 'pagina'){
 
-        foreach($separaPaginas as $pagina){
+            $Paginas = rtrim($Paginas, ',');
 
-            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$pagina, 'tipo'=>'pagina'));
-            
+            $separaPaginas = explode(',', $Paginas);
+
+            foreach($separaPaginas as $pagina){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$pagina, 'tipo'=>'pagina'));
+                
+                $contagem++;
+            }
+
+        }elseif($lugar == 'perfil'){
+
+            $myID = $this->facebook->GetMyID();
+
+            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
+
             $contagem++;
         }
 
@@ -144,7 +174,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
-        $Paginas         = rtrim($Paginas, ',');
+        $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
@@ -157,6 +187,7 @@ class Requests extends CI_Controller {
         'intervalo'=>(60*60*24*$Intervalo),
         'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-').' 23:59:59' : NULL,
         'tipo_programacao'=>'imagem',
+        'lugar_postagem'=>$lugar,
         'data_criacao'=>date('Y-m-d'),
         'status'=>1
         );
@@ -165,12 +196,25 @@ class Requests extends CI_Controller {
 
         $IDProgramacao = $this->db->insert_id();
 
-        $separaPaginas = explode(',', $Paginas);
+        if($lugar == 'pagina'){
 
-        foreach($separaPaginas as $pagina){
+            $Paginas = rtrim($Paginas, ',');
 
-            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$pagina, 'tipo'=>'pagina'));
-            
+            $separaPaginas = explode(',', $Paginas);
+
+            foreach($separaPaginas as $pagina){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$pagina, 'tipo'=>'pagina'));
+                
+                $contagem++;
+            }
+
+        }elseif($lugar == 'perfil'){
+
+            $myID = $this->facebook->GetMyID();
+
+            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
+
             $contagem++;
         }
 
@@ -200,7 +244,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
-        $Paginas         = rtrim($Paginas, ',');
+        $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
 
@@ -215,6 +259,7 @@ class Requests extends CI_Controller {
         'intervalo'=>(60*60*24*$Intervalo),
         'data_final_repeticao'=>($repetirPostagem == 1) ? converter_data($dataFinal, '/', '-').' 23:59:59' : NULL,
         'tipo_programacao'=>'video',
+        'lugar_postagem'=>$lugar,
         'data_criacao'=>date('Y-m-d'),
         'status'=>1
         );
@@ -223,12 +268,25 @@ class Requests extends CI_Controller {
 
         $IDProgramacao = $this->db->insert_id();
 
-        $separaPaginas = explode(',', $Paginas);
+        if($lugar == 'pagina'){
 
-        foreach($separaPaginas as $pagina){
+            $Paginas = rtrim($Paginas, ',');
 
-            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$pagina, 'tipo'=>'pagina'));
-            
+            $separaPaginas = explode(',', $Paginas);
+
+            foreach($separaPaginas as $pagina){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$pagina, 'tipo'=>'pagina'));
+                
+                $contagem++;
+            }
+
+        }elseif($lugar == 'perfil'){
+
+            $myID = $this->facebook->GetMyID();
+
+            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
+
             $contagem++;
         }
 
@@ -324,7 +382,14 @@ class Requests extends CI_Controller {
 
             foreach($queryPages->result() as $key=>$page){
 
-                $html .= $this->lang->line('pagina').' '.($key+1).' - '.$this->facebook->NamePage($page->id_conta).'<br />';
+                if($page->tipo == 'pagina'){
+
+                    $html .= $this->lang->line('pagina').' '.($key+1).' - '.$this->facebook->NamePage($page->id_conta).'<br />';
+                
+                }elseif($page->tipo == 'perfil'){
+
+                    $html .= '<div class="alert alert-info text-center text-uppercase">'.$this->lang->line('perfil_selecionado').'</div>';
+                }
             }
 
             $html .= '<br />';
@@ -602,5 +667,15 @@ class Requests extends CI_Controller {
         }else{
             echo json_encode(array('series'=>'', 'categories'=>''));
         }
+    }
+
+    public function user_details(){
+
+        $id = $this->input->post('id');
+    }
+
+    public function user_edit(){
+        
+        $id = $this->input->post('id');
     }
 }
