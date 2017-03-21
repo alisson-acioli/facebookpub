@@ -201,6 +201,25 @@ svg4everybody();
                <span class="menu-text"><?php echo $this->lang->line('menu_relatorios');?></span>
             </a>
          </li>
+         <li class="">
+            <a href="javascript:void(0)" class="submenu-toggle">
+               <i class="fa fa-cogs"></i>
+               <span class="menu-text"><?php echo $this->lang->line('menu_administrador');?></span>
+               <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+            </a>
+            <ul class="submenu" style="display: none;">
+               <li>
+                  <a href="<?php echo base_url('administracao/usuarios');?>">
+                     <span class="menu-text"><?php echo $this->lang->line('submenu_usuarios');?></span>
+                  </a>
+               </li>
+               <li>
+                  <a href="<?php echo base_url('administracao/configuracoes');?>">
+                     <span class="menu-text"><?php echo $this->lang->line('submenu_configuracoes');?></span>
+                  </a>
+               </li>
+            </ul>
+         </li>
          
       </ul>
       <!-- /.site-menu -->
