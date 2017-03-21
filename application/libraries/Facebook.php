@@ -250,6 +250,13 @@ Class Facebook
         }
     }
 
+    public function GetMyID($token){
+
+        $info = $this->request('get', '/me', $token);
+
+        return $info['id'];
+    }
+
     public function NamePage($idPage){
 
         if($this->is_authenticated()){
