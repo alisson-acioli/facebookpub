@@ -29,6 +29,9 @@ $lang['menu_programacoes'] = 'Schedules';
 $lang['menu_paginas'] = 'Pages';
 $lang['menu_relatorios'] = 'Reports';
 $lang['menu_perfil'] = 'Profile';
+$lang['menu_administrador'] = 'Administrator';
+$lang['submenu_usuarios'] = 'Users';
+$lang['submenu_configuracoes'] = 'Settings';
 
 $lang['titulo_postagem_mes'] = 'Posts in the month';
 $lang['quantidade_postada'] = 'Quantity posted in month';
@@ -53,6 +56,12 @@ $lang['texto_como_usar'] = 'Simple, first of all you will have to log in to your
 $lang['btn_anterior'] = 'Previous';
 $lang['btn_proximo'] = 'Next';
 $lang['btn_finalizar'] = 'Finish';
+
+$lang['qual_lugar_postagem'] = 'In which place ?';
+$lang['pagina_facebook'] = 'Page';
+$lang['perfil_facebook'] = 'My Profile';
+$lang['voce_selecionou_perfil'] = 'You have selected to post on your profile';
+$lang['perfil_selecionado'] = 'Your profile has been selected for the post.';
 
 $lang['tipo_postagem'] = 'What is the type of post?';
 $lang['detalhes_programacao'] = 'Programming Details';
@@ -99,6 +108,7 @@ $lang['programado_para'] = 'Programmed to';
 $lang['tipo'] = 'Type';
 $lang['status'] = 'Status';
 $lang['acao'] = 'Action';
+$lang['editar'] = 'Edit';
 $lang['detalhes'] = 'Details';
 $lang['excluir'] = 'Delete';
 $lang['deletar_selecionados'] = 'Delete Selecteds';
@@ -195,4 +205,20 @@ $lang['aplicar'] = 'Apply';
 $lang['deslogar_facebook'] = 'Disconnect from Facebook';
 $lang['sistema_conectado_facebook'] = 'The system is connected to your Facebook.';
 
+$lang['administrador'] = 'Administrator';
+$lang['tem_certeza_excluir_usuario'] = 'Are you sure you want to delete this user? This will not be reversible.';
+$lang['usuario_deletado'] = 'Deleted user successfully!';
+
+$lang['ativo'] = 'Active';
+$lang['nao_ativo'] = 'Disabled';
+$lang['bloqueado'] = 'Blocked';
+$lang['salvar_alteracoes'] = 'Save Changes';
+$lang['status_conta'] = 'Account Status';
+$lang['e_administrador'] = 'Is administrator?';
+$lang['editar_usuario'] = 'Edit User';
+$lang['senha_criptografada'] = 'Encrypted Password';
+$lang['detalhes_usuario'] = 'Details User';
+$lang['usuarios_cadastrados'] = 'Registered users';
+$lang['usuarios_cadastrados_texto'] = 'Below all users registered in the system. Manage them using the form below.';
+$lang['nenhum_usuario_encontrado_id'] = 'No records found with user ID.';
 ?>

@@ -29,6 +29,9 @@ $lang['menu_programacoes'] = 'Programações';
 $lang['menu_paginas'] = 'Páginas';
 $lang['menu_relatorios'] = 'Relatórios';
 $lang['menu_perfil'] = 'Perfil';
+$lang['menu_administrador'] = 'Administrador';
+$lang['submenu_usuarios'] = 'Usuários';
+$lang['submenu_configuracoes'] = 'Configurações';
 
 $lang['titulo_postagem_mes'] = 'Postagens no mês';
 $lang['quantidade_postada'] = 'Quantidade postada no mês';
@@ -53,6 +56,12 @@ $lang['texto_como_usar'] = 'Simples, antes de mais nada você terá que fazer o 
 $lang['btn_anterior'] = 'Anterior';
 $lang['btn_proximo'] = 'Próximo';
 $lang['btn_finalizar'] = 'Finalizar';
+
+$lang['qual_lugar_postagem'] = 'Em qual lugar ?';
+$lang['pagina_facebook'] = 'Página';
+$lang['perfil_facebook'] = 'Meu Perfil';
+$lang['voce_selecionou_perfil'] = 'Você selecionou para postar em seu perfil';
+$lang['perfil_selecionado'] = 'Seu perfil foi selecionado para a postagem.';
 
 $lang['tipo_postagem'] = 'Qual é o tipo de postagem ?';
 $lang['detalhes_programacao'] = 'Detalhes da Programação';
@@ -101,6 +110,7 @@ $lang['tipo'] = 'Tipo';
 $lang['status'] = 'Status';
 $lang['acao'] = 'Ação';
 $lang['detalhes'] = 'Detalhes';
+$lang['editar'] = 'Editar';
 $lang['excluir'] = 'Excluir';
 $lang['deletar_selecionados'] = 'Deletar Selecionados';
 
@@ -196,4 +206,20 @@ $lang['aplicar'] = 'Aplicar';
 $lang['deslogar_facebook'] = 'Deslogar do Facebook';
 $lang['sistema_conectado_facebook'] = 'O sistema está conectado com o seu Facebook.';
 
+$lang['administrador'] = 'Administrador';
+$lang['tem_certeza_excluir_usuario'] = 'Tem certeza que deseja deletar esse usuário ? Isso não será reversível.';
+$lang['usuario_deletado'] = 'Usuário deletado com sucesso!';
+
+$lang['ativo'] = 'Ativo';
+$lang['nao_ativo'] = 'Desativado';
+$lang['bloqueado'] = 'Bloqueado';
+$lang['salvar_alteracoes'] = 'Salvar Alterações';
+$lang['status_conta'] = 'Status da Conta';
+$lang['e_administrador'] = 'É administrador?';
+$lang['editar_usuario'] = 'Editar Usuário';
+$lang['senha_criptografada'] = 'Senha Criptografada';
+$lang['detalhes_usuario'] = 'Detalhes Usuário';
+$lang['usuarios_cadastrados'] = 'Usuários cadastrados';
+$lang['usuarios_cadastrados_texto'] = 'Abaixo todos os usuários cadastrado no sistema. Gerencie eles pelo formulário abaixo.';
+$lang['nenhum_usuario_encontrado_id'] = 'Nenhum registro encontrado com a ID do usuário.';
 ?>
