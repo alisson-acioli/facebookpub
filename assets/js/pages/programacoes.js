@@ -46,7 +46,7 @@ $(document).ready(function(){
                         tr.addClass('bg-danger').fadeOut(2000);
 
                     }else{
-                        swal("Erro", erro_deletar+": "+callback.erro, "danger");
+                        swal(erro, erro_deletar+": "+callback.erro, "danger");
                     }
                 },
 
