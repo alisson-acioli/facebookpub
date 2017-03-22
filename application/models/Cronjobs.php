@@ -65,18 +65,40 @@ class Cronjobs extends CI_Model{
 
                         foreach($paginas->result() as $pagina){
 
-                            $this->db->where('id_page', $pagina->id_conta);
-                            $paginasTable = $this->db->get('paginas');
+                            if($pagina->tipo == 'pagina'){
 
-                            if($paginasTable->num_rows() > 0){
+                                $this->db->where('id_page', $pagina->id_conta);
+                                $paginasTable = $this->db->get('paginas');
 
-                                $rowPost = $paginasTable->row();
+                                if($paginasTable->num_rows() > 0){
 
-                                $post = $this->facebook->FazerPost($pagina->id_conta, $params, $rowPost->token, $imagem);
+                                    $rowPost = $paginasTable->row();
+
+                                    $token = $rowPost->token;
+                                }
+                            }elseif($pagina->tipo == 'perfil'){
+
+                                $this->db->where('id', $result->id_user);
+                                $user = $this->db->get('usuarios');
+
+                                if($user->num_rows() > 0){
+
+                                    $rowPost = $user->row();
+
+                                    $token = $rowPost->token;
+                                }
+                            }
+
+                            if(!empty($token)){
+                                $post = $this->facebook->FazerPost($pagina->id_conta, $params, $token, $imagem);
 
                                 if(isset($post['id'])){
                                     $success = true;
                                 }
+                            }else{
+
+                                $this->db->where('id', $result->id);
+                                $this->db->update('programacoes', array('status'=>4));
                             }
                         }
 
