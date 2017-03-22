@@ -101,6 +101,7 @@ class Conta extends CI_Controller {
         $data['jsVariables'] = array(
                                      'tem_certeza'=>$this->lang->line('tem_certeza'),
                                      'tem_certeza_excluir_programacao'=>$this->lang->line('tem_certeza_excluir_programacao'),
+                                     'tem_certeza_excluir_programacoes'=>$this->lang->line('tem_certeza_excluir_programacoes'),
                                      'cancelar'=>$this->lang->line('cancelar'),
                                      'erro'=>$this->lang->line('erro'),
                                      'sim_deletar'=>$this->lang->line('sim_deletar'),
