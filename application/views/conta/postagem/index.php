@@ -59,25 +59,6 @@
       <div class="tab-content">
          <!-- /.tab-pane -->
          <div class="tab-pane active py-5" id="tipo-publicacao" role="tabpanel">
-            <h4 class="text-center mb-4"><?php echo $this->lang->line('qual_lugar_postagem');?></h4>
-            <div class="d-flex justify-content-center mb-4">
-
-               <div class="wizard-radio mr-4">
-                  <input id="paginain" value="pagina" type="radio" name="lugar" checked>
-                  <label for="paginain">
-                     <i class="fa fa-bank mb-2"></i>
-                     <span class="fz-base"><?php echo $this->lang->line('pagina_facebook');?></span>
-                  </label>
-               </div>
-               <div class="wizard-radio mr-4">
-                  <input id="perfilin" value="perfil" type="radio" name="lugar">
-                  <label for="perfilin">
-                     <i class="fa fa-user mb-2"></i>
-                     <span class="fz-base"><?php echo $this->lang->line('perfil_facebook');?></span>
-                  </label>
-               </div>
-            </div>
-
 
             <h4 class="text-center mb-4"><?php echo $this->lang->line('tipo_postagem');?></h4>
             <p class="text-center"><?php echo $this->lang->line('help_tipo_postagem');?></p>
@@ -260,9 +241,27 @@
          <!-- /.tab-pane -->
          <!-- /.tab-pane -->
          <div class="tab-pane py-5" id="paginas-publicacao" role="tabpanel">
+
+            <h4 class="text-center mb-4"><?php echo $this->lang->line('qual_lugar_postagem');?></h4>
+            <div class="d-flex justify-content-center mb-4">
+
+               <div class="wizard-radio mr-4">
+                  <input id="paginain" value="pagina" type="radio" name="lugar" checked>
+                  <label for="paginain">
+                     <i class="fa fa-bank mb-2"></i>
+                     <span class="fz-base"><?php echo $this->lang->line('pagina_facebook');?></span>
+                  </label>
+               </div>
+               <div class="wizard-radio mr-4">
+                  <input id="perfilin" value="perfil" type="radio" name="lugar">
+                  <label for="perfilin">
+                     <i class="fa fa-user mb-2"></i>
+                     <span class="fz-base"><?php echo $this->lang->line('perfil_facebook');?></span>
+                  </label>
+               </div>
+            </div>
             
             <div class="local-pagina" style="display:block">
-               <h4 class="text-center mb-5"><?php echo $this->lang->line('quais_paginas');?></h4>
                <p class="text-center"><?php echo $this->lang->line('help_quais_paginas');?></p>
                <select name="paginas_programacao_select" id="paginas_programacao_select" class="form-control" style="width:75%;">
                <?php
@@ -277,7 +276,6 @@
             </div>
 
             <div class="local-perfil" style="display:none">
-               <h4 class="text-center mb-5"><?php echo $this->lang->line('qual_lugar_postagem');?></h4>
                <div class="alert alert-info text-center"><?php echo $this->lang->line('voce_selecionou_perfil');?></div>
             </div>
 
