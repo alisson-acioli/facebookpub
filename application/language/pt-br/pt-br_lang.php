@@ -1,4 +1,5 @@
 <?php
+$lang['login']              = 'Login';
 $lang['titulo_login']       = 'Faça o login e tenha acesso ao sistema';
 $lang['titulo_cadastro']    = 'Faça seu cadastro para acessar nosso sistema';
 $lang['btn_login']          = 'Entrar';
@@ -9,6 +10,11 @@ $lang['campo_cadastrar_nome']  = 'Nome';
 $lang['campo_cadastrar_email'] = 'Email';
 $lang['campo_login'] = 'Login';
 $lang['campo_senha'] = 'Senha';
+
+$lang['titulo_rand_1'] = 'Automatize sua página';
+$lang['texto_rand_1'] = 'Faça a programação de suas postagens e traga mais pessoas até sua página, tudo automático!';
+$lang['titulo_rand_2'] = 'Relatórios inteligentes';
+$lang['texto_rand_2'] = 'Tenha sempre disponível relatórios para controlar suas postagens e campanhas no facebook, assim, você consegue achar a melhor forma de fazer suas postagens.';
 
 $lang['postagens'] = 'Postagens';
 $lang['curtidas'] = 'Curtidas';

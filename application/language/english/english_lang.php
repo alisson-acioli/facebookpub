@@ -1,4 +1,5 @@
 <?php
+$lang['login']                 = 'Login';
 $lang['titulo_login']          = 'Make the login and have access to the system';
 $lang['titulo_cadastro']       = 'Make your registration to access our system';
 $lang['btn_login']             = 'Log in';
@@ -9,6 +10,11 @@ $lang['campo_cadastrar_nome']  = 'Name';
 $lang['campo_cadastrar_email'] = 'Email';
 $lang['campo_login'] = 'Login';
 $lang['campo_senha'] = 'Password';
+
+$lang['titulo_rand_1'] = 'Automate your page';
+$lang['texto_rand_1'] = 'Schedule your posts and bring more people to your page, all automatic!';
+$lang['titulo_rand_2'] = 'Smart reports';
+$lang['texto_rand_2'] = 'Always have reports available to control your Facebook posts and campaigns, so you can find the best way to make your posts.';
 
 $lang['postagens'] = 'Posts';
 $lang['curtidas'] = 'Likes';

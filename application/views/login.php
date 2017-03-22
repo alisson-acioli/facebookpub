@@ -3,7 +3,7 @@
    <head>
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title><?php echo website_config('nome_site');?> | Login</title>
+      <title><?php echo website_config('nome_site');?> | <?php echo $this->lang->line('login');?></title>
       <meta name="description" content="<?php echo website_config('descricao_site');?>">
       <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
       <!-- core plugins -->
@@ -47,12 +47,12 @@
                <img class="mb-5" src="<?php echo base_url();?>assets/global/images/lightbulb.png" alt="">
                <div id="login-page-slider" data-plugin="owlCarousel">
                   <div class="item">
-                     <h4 class="mb-3">Automatize sua página</h4>
-                     <p>Faça a programação de suas postagens e traga mais pessoas até sua página, tudo automático!</p>
+                     <h4 class="mb-3"><?php echo $this->lang->line('titulo_rand_1');?></h4>
+                     <p><?php echo $this->lang->line('texto_rand_1');?></p>
                   </div>
                   <div class="item">
-                     <h4 class="mb-3">Relatórios inteligentes</h4>
-                     <p>Tenha sempre disponível relatórios para controlar suas postagens e campanhas no facebook, assim, você consegue achar a melhor forma de fazer suas postagens.</p>
+                     <h4 class="mb-3"><?php echo $this->lang->line('titulo_rand_2');?></h4>
+                     <p><?php echo $this->lang->line('texto_rand_2');?></p>
                   </div>
                </div>
                <!-- /#login-page-slider -->
