@@ -60,4 +60,24 @@ function StatusUsuario($id_status){
 
     return $status;
 }
+
+function isAdmin($redirect = true){
+
+    $admin = usuario('admin');
+
+    if($redirect){
+
+        if($admin == 0){
+            redirect('conta');
+            exit;
+        }
+    }
+
+    if($admin == 1){
+
+        return true;
+    }
+
+    return false;
+}
 ?>

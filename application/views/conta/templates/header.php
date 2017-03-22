@@ -66,52 +66,6 @@ svg4everybody();
       <li class="nav-item hidden-xl-up hidden-md-down"><a class="nav-link" href="#"><button data-toggle="menubar" class="hamburger hamburger--arrowalt js-hamburger" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button></a></li>
       <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-               <g fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-linejoin="round">
-                  <path data-color="color-2" stroke="currentColor" d="M15.5 20.5c0 1.7-1.3 3-3 3s-3-1.3-3-3"/>
-                  <path stroke="currentColor" d="M19.5 13.5v-5c0-3.9-3.1-7-7-7s-7 3.1-7 7v5c0 4-2 7-2 7h18s-2-3-2-7z"/>
-               </g>
-            </svg>
-            <span class="badge badge-circle badge-danger">4</span>
-         </a>
-         <div class="media-list dropdown-menu p-0" data-plugin="dropdownCaret">
-            <div class="dropdown-item dropdown-menu-cap d-flex"><span class="mr-auto my-1">Você tem 4 notificações não lidas</span> <a href="#" class="btn btn-sm btn-secondary my-1">Ver todas</a></div>
-            <div class="scroll-container">
-               <a href="javascript:void(0)" class="media dropdown-item">
-                  <span class="avatar bg-success" data-plugin="firstLitter" data-target="#message-1"></span>
-                  <div class="media-body">
-                     <h6 class="media-heading" id="message-1">Mohamed Ali</h6>
-                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
-                  </div>
-               </a>
-               <a href="javascript:void(0)" class="media dropdown-item">
-                  <span class="avatar bg-warning" data-plugin="firstLitter" data-target="#message-2"></span>
-                  <div class="media-body">
-                     <h6 class="media-heading" id="message-2">Sophia Smith</h6>
-                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
-                  </div>
-               </a>
-               <a href="javascript:void(0)" class="media dropdown-item">
-                  <span class="avatar bg-primary" data-plugin="firstLitter" data-target="#message-3"></span>
-                  <div class="media-body">
-                     <h6 class="media-heading" id="message-3">Sarah Adams</h6>
-                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
-                  </div>
-               </a>
-               <a href="javascript:void(0)" class="media dropdown-item">
-                  <span class="avatar bg-danger" data-plugin="firstLitter" data-target="#message-4"></span>
-                  <div class="media-body">
-                     <h6 class="media-heading" id="message-4">John Doe</h6>
-                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
-                  </div>
-               </a>
-            </div>
-            <!-- /.scroll-container -->
-         </div>
-         <!-- /.media-list -->
-      </li>
-      <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img class="nav-img" src="<?php echo base_url();?>assets/images/flags/<?php echo $this->session->userdata('lingua');?>.png" alt="">
             <span class="nav-text hidden-sm-down ml-2"><?php echo strtoupper($this->session->userdata('lingua'));?></span> 
             <i class="nav-caret hidden-sm-down zmdi zmdi-hc-sm zmdi-chevron-down"></i>
@@ -201,6 +155,9 @@ svg4everybody();
                <span class="menu-text"><?php echo $this->lang->line('menu_relatorios');?></span>
             </a>
          </li>
+         <?php
+         if(isAdmin(false)){
+         ?>
          <li class="">
             <a href="javascript:void(0)" class="submenu-toggle">
                <i class="fa fa-cogs"></i>
@@ -220,7 +177,9 @@ svg4everybody();
                </li>
             </ul>
          </li>
-         
+         <?php
+         }
+         ?>
       </ul>
       <!-- /.site-menu -->
    </div>

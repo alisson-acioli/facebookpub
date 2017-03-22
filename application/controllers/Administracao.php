@@ -7,6 +7,8 @@ class Administracao extends CI_Controller {
         parent::__construct();
 
         $this->load->model('administracaomodel', 'AdministracaoModel');
+        checksession();
+        isAdmin();
     }
 
     public function usuarios(){
