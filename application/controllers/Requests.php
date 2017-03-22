@@ -669,13 +669,125 @@ class Requests extends CI_Controller {
         }
     }
 
-    public function user_details(){
-
-        $id = $this->input->post('id');
-    }
-
     public function user_edit(){
         
         $id = $this->input->post('id');
+
+        $this->db->where('id', $id);
+        $usuarios = $this->db->get('usuarios');
+
+        if($usuarios->num_rows() > 0){
+
+            $row = $usuarios->row();
+
+            
+            echo json_encode(array('status'=>1, 'fields'=>array('nome'=>$row->nome, 'email'=>$row->email, 'login'=>$row->login, 'status'=>$row->status, 'admin'=>$row->admin)));
+        }else{
+
+            echo json_encode(array('status'=>0, 'error'=>$this->lang->line('nenhum_usuario_encontrado_id'), 'class'=>'alert alert-danger text-center'));
+        }
+    }
+
+    public function save_user(){
+
+        $array = array();
+
+        $id = $this->input->post('id');
+        $nome = $this->input->post('nome');
+        $email = $this->input->post('email');
+        $login = $this->input->post('login');
+        $senha = $this->input->post('senha');
+        $status = $this->input->post('status');
+        $admin = $this->input->post('admin');
+
+        $this->db->where('id', $id);
+        $user = $this->db->get('usuarios');
+
+        $row = $user->row();
+
+        if($row->login != $login){
+
+            $this->db->where('login', $login);
+            $userCheck = $this->db->get('usuarios');
+
+            if($userCheck->num_rows() > 0){
+
+                echo json_encode(array('class'=>'alert alert-danger text-center', 'message'=>$this->lang->line('login_cadastrado')));
+            
+            }else{
+                $data['login'] = $login;
+            }
+        }
+
+        if($row->email != $email){
+
+            $this->db->where('email', $email);
+            $emailCheck = $this->db->get('usuarios');
+
+            if($emailCheck->num_rows() > 0){
+
+                echo json_encode(array('class'=>'alert alert-danger text-center', 'message'=>$this->lang->line('email_ja_cadastrado')));
+
+            }else{
+                $data['email'] = $email;
+            }
+        }
+
+        if(!empty($senha)){
+
+            $data['senha'] = md5($senha);
+        }
+        
+        $data['nome'] = $nome;
+        $data['status'] = $status;
+        $data['admin'] = $admin;
+
+        $this->db->where('id', $id);
+        $update = $this->db->update('usuarios', $data);
+
+        if($update){
+
+            echo json_encode(array('class'=>'alert alert-success text-center', 'message'=>$this->lang->line('dados_atualizados')));
+
+        }else{
+
+            echo json_encode(array('class'=>'alert alert-danger text-center', 'message'=>$this->lang->line('erro_atualizar_dados')));
+
+        }
+    }
+
+    public function user_details(){
+
+        $id = $this->input->post('id');
+
+        $this->db->where('id', $id);
+        $user = $this->db->get('usuarios');
+
+        if($user->num_rows() > 0){
+
+            $row = $user->row();
+
+            $status = StatusUsuario($row->status);
+
+            echo json_encode(array('status'=>1, 'fields'=>array('nome'=>$row->nome, 'email'=>$row->email, 'login'=>$row->login, 'status'=>$status, 'admin'=>($row->admin == 1) ? $this->lang->line('sim') : $this->lang->line('nao'))));
+        }else{
+
+            echo json_encode(array('status'=>0, 'class'=>'alert alert-danger text-center', 'error'=>$this->lang->line('nenhum_usuario_encontrado_id')));
+        }
+    }
+
+    public function delete_user(){
+
+        $id = $this->input->post('id');
+
+        $this->db->where('id', $id);
+        $delete = $this->db->delete('usuarios');
+
+        if($delete){
+
+            echo json_encode(array('status'=>1));
+        }else{
+            echo json_encode(array('status'=>0, 'erro'=>$this->lang->line('erro_atualizar_dados')));
+        }
     }
 }
