@@ -491,7 +491,7 @@ class Requests extends CI_Controller {
 
         if($periodo == false || empty($periodo)){
 
-            $this->db->where('programacoes.data_programacao >= ', date('Y-m-d'));
+            $this->db->where('programacoes.data_programacao >= ', date('Y-m-d', time() - (60*60*24*5)));
             $this->db->where('programacoes.data_programacao <= ', date('Y-m-d', time() + (60*60*24*10)));
         
         }else{
@@ -521,13 +521,14 @@ class Requests extends CI_Controller {
 
             foreach($query->result() as $result){
 
-                if(!in_array($result->data_programacao, $dias)){
+                $separadorData = explode(" ", $result->data_programacao);
+
+                if(!in_array(converter_data($separadorData[0], '-', '/'), $dias)){
 
                     $separadorData = explode(" ", $result->data_programacao);
                     $dias[] = converter_data($separadorData[0], '-', '/');
                 }
 
-                $separadorData = explode(" ", $result->data_programacao);
                 $data[$result->id_conta][] = array('data'=>converter_data($separadorData[0], '-', '/'),'quantidade'=>$result->quantidade);
             }
 
@@ -540,7 +541,13 @@ class Requests extends CI_Controller {
                     foreach($dias as $dataCompleta){
 
                         if($array['data'] == $dataCompleta){
-                            $quantidades[$dataCompleta] = (int)$array['quantidade'];
+
+                            if(isset($quantidades[$dataCompleta])){
+
+                                $quantidades[$dataCompleta] = (int)$quantidades[$dataCompleta] + (int)$array['quantidade'];
+                            }else{
+                                $quantidades[$dataCompleta] =  (int)$array['quantidade'];
+                            }
 
                         }else{
 
@@ -597,8 +604,8 @@ class Requests extends CI_Controller {
 
         if($periodo == false || empty($periodo)){
 
-            $this->db->where('data >= ', date('Y-m-d'));
-            $this->db->where('data <= ', date('Y-m-d', time() + (60*60*24*10)));
+            $this->db->where('data >= ', date('Y-m-d H:i:s', time() - (60*60*24*5)));
+            $this->db->where('data <= ', date('Y-m-d H:i:s', time() + (60*60*24*10)));
         
         }else{
 
