@@ -19,7 +19,7 @@
     ?>
 
     <label class="mr-sm-2" for=""><?php echo $this->lang->line('periodo');?></label>
-    <input type="text" id="periodo" data-plugin="daterangepicker" class="form-control mr-2">
+    <input type="text" id="periodo" value="<?php echo date('d/m/Y', time() - (60*60*24*5));?> - <?php echo date('d/m/Y', time() + (60*60*24*10));?>" data-plugin="daterangepicker" class="form-control mr-2">
 
     <button type="button" class="btn btn-primary" id="FiltrarRelatorio"><?php echo $this->lang->line('filtrar');?></button>
     </form>

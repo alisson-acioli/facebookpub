@@ -196,7 +196,7 @@
                <label for="services" class="col-2 col-form-label"><?php echo $this->lang->line('hora');?></label>
                <div class="col-10">
                   <div class="clockpicker" data-plugin="clockpicker">
-                     <input type="text" name="hora_agendamento" class="form-control" value="<?php echo date('H:i');?>" style="width: 150px">
+                     <input type="text" name="hora_agendamento" class="form-control" value="<?php echo date('H:i', time() + (60*5));?>" style="width: 150px">
                   </div>
                </div>
             </div>
