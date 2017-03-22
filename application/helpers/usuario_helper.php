@@ -37,22 +37,24 @@ function checksession(){
 
 function StatusUsuario($id_status){
 
+    $_this =& get_instance();
+
     switch($id_status){
 
         case 1:
-            $status = 'Ativo';
+            $status = $_this->lang->line('ativo');
         break;
 
         case 0:
-            $status = 'Não Ativo';
+            $status = $_this->lang->line('nao_ativo');
         break;
 
         case 2:
-            $status = 'Bloqueado';
+            $status = $_this->lang->line('bloqueado');
         break;
 
         default:
-            $status = 'Ativo';
+            $status = $_this->lang->line('ativo');;
         break;
     }
 
