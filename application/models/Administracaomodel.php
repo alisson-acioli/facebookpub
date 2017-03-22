@@ -28,5 +28,41 @@ class Administracaomodel extends CI_Model{
 
         return false;
     }
+
+    public function LinguagensSite(){
+
+        $linguas = array();
+
+        $openLanguagesDir = opendir('application/language');
+
+        while($readLanguagesDir = readdir($openLanguagesDir)){
+
+           if($readLanguagesDir != '.' && $readLanguagesDir != '..' && is_dir('application/language/'.$readLanguagesDir)){
+
+            $linguas[] = strtoupper($readLanguagesDir);
+
+           }
+       }
+
+       return $linguas;
+    }
+
+    public function SalvarConfiguracoes(){
+
+        $nome_site = $this->input->post('nome_site');
+        $descricao_site = $this->input->post('descricao_site');
+        $lingua = $this->input->post('lingua');
+        $app_id = $this->input->post('app_id');
+        $app_secret = $this->input->post('app_secret');
+
+        $update = $this->db->update('website_config', array('nome_site'=>$nome_site, 'descricao_site'=>$descricao_site, 'linguagem'=>$lingua, 'app_id'=>$app_id, 'app_secret'=>$app_secret));
+        
+        if($update){
+
+            return '<div class="alert alert-success text-center">'.$this->lang->line('dados_atualizados').'</div>';
+        }else{
+            return '<div class="alert alert-danger text-center">'.$this->lang->line('erro_atualizar_dados').'</div>';
+        }
+    }
 }
 ?>

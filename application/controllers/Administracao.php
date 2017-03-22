@@ -37,5 +37,17 @@ class Administracao extends CI_Controller {
 
     public function configuracoes(){
 
+        $data['titulo'] = $this->lang->line('submenu_configuracoes');
+
+        $data['linguas'] = $this->AdministracaoModel->LinguagensSite();
+
+        if($this->input->post('submit')){
+
+            $data['message'] = $this->AdministracaoModel->SalvarConfiguracoes();
+        }
+
+        $this->load->view('conta/templates/header', $data);
+        $this->load->view('conta/administrador/sistema');
+        $this->load->view('conta/templates/footer');
     }
 }
