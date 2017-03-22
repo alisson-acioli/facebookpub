@@ -296,7 +296,11 @@ Class Facebook
         return $list;
     }
 
-    public function getLikesPage($pageID, $token){
+    public function getLikesPage($pageID, $token = false){
+
+        if(!$token){
+            $token = $this->get_access_token();
+        }
 
         $json = $this->request('get', '/'.$pageID.'?fields=fan_count', $token);
         
