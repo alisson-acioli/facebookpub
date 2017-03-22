@@ -221,4 +221,12 @@ $lang['detalhes_usuario'] = 'Details User';
 $lang['usuarios_cadastrados'] = 'Registered users';
 $lang['usuarios_cadastrados_texto'] = 'Below all users registered in the system. Manage them using the form below.';
 $lang['nenhum_usuario_encontrado_id'] = 'No records found with user ID.';
+
+$lang['configuracoes_sistema'] = 'System Settings';
+$lang['configuracoes_sistema_texto'] = 'For optimal operation, it is recommended that all settings be correct. Edit the fields below to edit the system settings.';
+$lang['nome_site'] = 'Site name';
+$lang['descricao_site'] = 'Site description (for Google)';
+$lang['linguagem_site'] = 'Default Language';
+$lang['app_id'] = 'APP ID';
+$lang['app_secret'] = 'APP Secret';
 ?>

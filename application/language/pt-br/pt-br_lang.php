@@ -222,4 +222,13 @@ $lang['detalhes_usuario'] = 'Detalhes Usuário';
 $lang['usuarios_cadastrados'] = 'Usuários cadastrados';
 $lang['usuarios_cadastrados_texto'] = 'Abaixo todos os usuários cadastrado no sistema. Gerencie eles pelo formulário abaixo.';
 $lang['nenhum_usuario_encontrado_id'] = 'Nenhum registro encontrado com a ID do usuário.';
+
+$lang['configuracoes_sistema'] = 'Configurações do sistema';
+$lang['configuracoes_sistema_texto'] = 'Para obter um ótimo funcionamento, é recomendado que todas as configurações estejam corretas. Edite os campos abaixo para editar as configurações do sistema.';
+$lang['nome_site'] = 'Nome do site';
+$lang['descricao_site'] = 'Descrição do site (para o Google)';
+$lang['linguagem_site'] = 'Linguagem Padrão do site';
+$lang['app_id'] = 'APP ID';
+$lang['app_secret'] = 'APP Secret';
+
 ?>
