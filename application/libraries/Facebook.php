@@ -65,8 +65,8 @@ Class Facebook
         if (!isset($this->fb))
         {
             $this->fb = new FB([
-                'app_id'                => $this->config->item('facebook_app_id'),
-                'app_secret'            => $this->config->item('facebook_app_secret'),
+                'app_id'                => website_config('app_id'),
+                'app_secret'            => website_config('app_secret'),
                 'default_graph_version' => $this->config->item('facebook_graph_version')
             ]);
         }
