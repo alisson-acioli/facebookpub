@@ -93,6 +93,14 @@ class Cronjobs extends CI_Model{
                                 $post = $this->facebook->FazerPost($pagina->id_conta, $params, $token, $imagem);
 
                                 if(isset($post['id'])){
+
+                                    $separa = explode('_', $post['id']);
+
+                                    $post_id = $separa[count($separa)-1];
+
+                                    $this->db->where('id', $pagina->id);
+                                    $this->db->update('programacoes_contas', array('post_id'=>$post_id));
+
                                     $success = true;
                                 }
                             }else{

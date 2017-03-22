@@ -390,6 +390,11 @@ class Requests extends CI_Controller {
 
                     $html .= '<div class="alert alert-info text-center text-uppercase">'.$this->lang->line('perfil_selecionado').'</div>';
                 }
+
+                if(!empty($page->post_id) && !is_null($page->post_id)){
+
+                    $html .= '<a class="pointer" href="https://www.facebook.com/permalink.php?story_fbid='.$page->post_id.'&id='.$page->id_conta.'" target="_blank" style="text-decoration:underline;">'.$this->lang->line('clique_visualizar_publicacao').'</a> <br /><br />';
+                }
             }
 
             $html .= '<br />';
@@ -415,7 +420,8 @@ class Requests extends CI_Controller {
               $label = 'label-warning';
             break;
           }
-          $html .= '<b>'.$this->lang->line('status').':</b> <span class="label '.$label.'">'.StatusPostagem($row->status).'</span>';
+          $html .= '<b>'.$this->lang->line('status').':</b> <span class="label '.$label.'">'.StatusPostagem($row->status).'</span> <br />';
+
 
           echo $html;
 

@@ -237,4 +237,6 @@ $lang['linguagem_site'] = 'Linguagem Padrão do site';
 $lang['app_id'] = 'APP ID';
 $lang['app_secret'] = 'APP Secret';
 
+$lang['clique_visualizar_publicacao'] = 'Clique aqui para visualizar a publicação';
+
 ?>

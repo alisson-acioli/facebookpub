@@ -235,4 +235,6 @@ $lang['descricao_site'] = 'Site description (for Google)';
 $lang['linguagem_site'] = 'Default Language';
 $lang['app_id'] = 'APP ID';
 $lang['app_secret'] = 'APP Secret';
+
+$lang['clique_visualizar_publicacao'] = 'Click here to view the publication';
 ?>
