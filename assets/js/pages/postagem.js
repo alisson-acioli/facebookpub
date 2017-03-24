@@ -31,6 +31,62 @@ $(document).on("change", 'input[name="repetir_post"]', function(){
   }
 });
 
+$(document).ready(function() { 
+   var options = {
+       success:       afterSuccess,
+       beforeSubmit:  beforeSubmit,
+       uploadProgress: OnProgress,
+       resetForm: true
+   }; 
+           
+    $('#MyUploadForm').submit(function() { 
+       $(this).ajaxSubmit(options);            
+       return false; 
+   }); 
+});
+
+function beforeSubmit(){
+   if (window.File && window.FileReader && window.FileList && window.Blob){
+      
+      $("#progressbar").css('width', '0%');
+      $("#output").html("");
+
+      var ftype = $('#FileInput')[0].files[0].type; 
+
+      switch(ftype){
+         case 'image/png': 
+         case 'image/gif': 
+         case 'image/jpeg': 
+         case 'image/pjpeg':
+         break;
+         default:
+          $("#output").html("Extensão não permitida. Por favor, envie somente <b>jpeg, jpg, png ou gif</b>");
+         return false
+      }
+   }
+}
+
+function OnProgress(event, position, total, percentComplete){
+
+    $('#progressbox').show();
+    $('#progressbar').width(percentComplete + '%')
+}
+
+function afterSuccess(response){
+
+   let callback = JSON.parse(response);
+
+   if(callback.status == 1){
+
+      let url = callback.url;
+
+      $("#imagem_imagem").val(url);
+
+      $(".modal").modal('hide');
+   }else{
+      swal('Erro', 'Ocorreu um erro ao fazer upload: '+callback.error, 'error');
+   }
+}
 
 
 

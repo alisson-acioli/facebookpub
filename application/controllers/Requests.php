@@ -803,4 +803,26 @@ class Requests extends CI_Controller {
             echo json_encode(array('status'=>0, 'erro'=>$this->lang->line('erro_atualizar_dados')));
         }
     }
+
+    public function imageUpload(){
+
+        $config['upload_path'] = 'uploads';
+        $config['allowed_types'] = 'png|jpg|jpeg|gif';
+        $config['encrypt_name'] = true;
+
+        $this->load->library('upload');
+
+        $this->upload->initialize($config);
+
+        if($this->upload->do_upload('FileInput')){
+
+            $upload = $this->upload->data();
+
+            echo json_encode(array('status'=>1, 'url'=>base_url('uploads/'.$upload['file_name'])));
+
+        }else{
+
+            echo json_encode(array('status'=>0, 'error'=>$this->upload->display_errors()));
+        }
+    }
 }

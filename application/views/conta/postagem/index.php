@@ -143,8 +143,12 @@
             <div class="row imagem" style="display:none;">
                <div class="form-group row">
                   <label for="imagem_imagem" class="col-2 col-form-label"><?php echo $this->lang->line('link_imagem');?></label>
-                  <div class="col-10">
+                  <div class="col-9">
                      <input type="url" id="imagem_imagem" name="imagem_imagem" class="form-control">
+                  </div>
+
+                  <div class="col-md-1">
+                      <a data-toggle="modal" href="javascript:void(0)" data-target="#uploadImagem"><i class="fa fa-2x fa-cloud-upload"></i></a>
                   </div>
                </div>
                <div class="form-group row">
@@ -301,5 +305,41 @@
    //}
    ?>
 <!--</div>-->
+
+<div class="modal fade" id="uploadImagem" tabindex="-1" role="dialog" aria-labelledby="image-gallery-modal" aria-hidden="true">
+     <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+           <div class="modal-body p-5">
+              <h4 class="text-center">Upload de imagem</h4>
+              <p>Faça o upload de uma imagem para programar sua postagem. Os tipos aceitos são: <b>jpg, jpeg, gif, png</b>.</p>
+              <br />
+
+              <div class="" id="msg-return"></div>
+
+              <div id="container">
+                
+                <form action="<?php echo base_url();?>requests/imageUpload" method="post" enctype="multipart/form-data" id="MyUploadForm">
+                  <div class="form-group">
+                  <labeL>Upload da imagem</labeL>
+                  <input type="file" name="FileInput" id="FileInput" />
+                  <input type="submit" id="submit-btn" class="btn btn-success" value="Fazer upload" />
+                </div>
+                </form>
+                  <div id="progressbox">
+                     <div id="progressbar"></div>
+                  </div>
+                  <div id="output"></div>
+
+              </div>
+
+           </div>
+           <!-- /.modal-body -->
+        </div>
+        <!-- /.modal-content -->
+     </div>
+     <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
 </section>
 <!-- /.site-content -->
