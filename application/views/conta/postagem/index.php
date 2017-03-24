@@ -310,8 +310,8 @@
      <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
            <div class="modal-body p-5">
-              <h4 class="text-center">Upload de imagem</h4>
-              <p>Faça o upload de uma imagem para programar sua postagem. Os tipos aceitos são: <b>jpg, jpeg, gif, png</b>.</p>
+              <h4 class="text-center"><?php echo $this->lang->line('upload_de_imagem');?></h4>
+              <p><?php echo $this->lang->line('upload_de_imagem_texto');?></p>
               <br />
 
               <div class="" id="msg-return"></div>
@@ -320,9 +320,9 @@
                 
                 <form action="<?php echo base_url();?>requests/imageUpload" method="post" enctype="multipart/form-data" id="MyUploadForm">
                   <div class="form-group">
-                  <labeL>Upload da imagem</labeL>
+                  <labeL><?php echo $this->lang->line('upload_da_imagem');?></labeL>
                   <input type="file" name="FileInput" id="FileInput" />
-                  <input type="submit" id="submit-btn" class="btn btn-success" value="Fazer upload" />
+                  <input type="submit" id="submit-btn" class="btn btn-success" value="<?php echo $this->lang->line('btn_fazer_upload');?>" />
                 </div>
                 </form>
                   <div id="progressbox">

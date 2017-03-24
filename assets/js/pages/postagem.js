@@ -60,7 +60,7 @@ function beforeSubmit(){
          case 'image/pjpeg':
          break;
          default:
-          $("#output").html("Extensão não permitida. Por favor, envie somente <b>jpeg, jpg, png ou gif</b>");
+          $("#output").html(extensao_nao_permitida);
          return false
       }
    }
@@ -84,7 +84,7 @@ function afterSuccess(response){
 
       $(".modal").modal('hide');
    }else{
-      swal('Erro', 'Ocorreu um erro ao fazer upload: '+callback.error, 'error');
+      swal(erro,  erro_upload+callback.error, 'error');
    }
 }
 

@@ -237,4 +237,12 @@ $lang['app_id'] = 'APP ID';
 $lang['app_secret'] = 'APP Secret';
 
 $lang['clique_visualizar_publicacao'] = 'Click here to view the publication';
+
+$lang['extensao_nao_permitida'] = 'Extension not allowed. Please send only <b>jpeg, jpg, png or gif</b>';
+$lang['erro_upload'] = 'There was an error uploading:';
+$lang['upload_de_imagem'] = 'Upload Image';
+$lang['upload_de_imagem_texto'] = 'Upload an image to schedule your post. The accepted types are: <b> jpg, jpeg, gif, png </b>.';
+$lang['upload_da_imagem'] = 'Image';
+$lang['btn_fazer_upload'] = 'Upload';
+
 ?>

@@ -239,4 +239,11 @@ $lang['app_secret'] = 'APP Secret';
 
 $lang['clique_visualizar_publicacao'] = 'Clique aqui para visualizar a publicação';
 
+$lang['extensao_nao_permitida'] = 'Extensão não permitida. Por favor, envie somente <b>jpeg, jpg, png ou gif</b>';
+$lang['erro_upload'] = 'Ocorreu um erro ao fazer upload:';
+$lang['upload_de_imagem'] = 'Upload de imagem';
+$lang['upload_de_imagem_texto'] = 'Faça o upload de uma imagem para programar sua postagem. Os tipos aceitos são: <b>jpg, jpeg, gif, png</b>.';
+$lang['upload_da_imagem'] = 'Imagem';
+$lang['btn_fazer_upload'] = 'Fazer upload';
+
 ?>
