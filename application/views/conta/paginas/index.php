@@ -13,7 +13,7 @@
       if(count($pagesList['data']) > 0){
     ?>
 
-    <input type="submit" name="submit" class="btn btn-primary pull-right mb-3 pointer" value="Salvar Alterações">
+    <input type="submit" name="submit" class="btn btn-primary pull-right mb-3 pointer" value="<?php echo $this->lang->line('salvar_alteracoes');?>">
     <div class="clearfix"></div>
 
     <table class="table table-hover table-striped">

@@ -33,6 +33,7 @@ $lang['menu_dashboard'] = 'Dashboard';
 $lang['menu_postagem'] = 'Posting';
 $lang['menu_programacoes'] = 'Schedules';
 $lang['menu_paginas'] = 'Pages';
+$lang['menu_grupos'] = 'Groups';
 $lang['menu_relatorios'] = 'Reports';
 $lang['menu_perfil'] = 'Profile';
 $lang['menu_administrador'] = 'Administrator';
@@ -66,6 +67,7 @@ $lang['btn_finalizar'] = 'Finish';
 $lang['qual_lugar_postagem'] = 'In which place ?';
 $lang['pagina_facebook'] = 'Page';
 $lang['perfil_facebook'] = 'My Profile';
+$lang['grupo_facebook'] = 'Group';
 $lang['voce_selecionou_perfil'] = 'You have selected to post on your profile';
 $lang['perfil_selecionado'] = 'Your profile has been selected for the post.';
 
@@ -105,6 +107,7 @@ $lang['data_final'] = 'Final date';
 
 $lang['quais_paginas'] = 'What pages?';
 $lang['help_quais_paginas'] = 'Choose the pages that should receive your post.';
+$lang['help_quais_grupos'] = 'Choose the groups that should receive your post.';
 
 $lang['suas_programacoes'] = 'Your Schedules';
 $lang['texto_suas_programacoes_1'] = 'When you make a publication you have the possibility to program the posts, so you do not have to worry about entering every day on facebook to post on your page.';
@@ -244,5 +247,14 @@ $lang['upload_de_imagem'] = 'Upload Image';
 $lang['upload_de_imagem_texto'] = 'Upload an image to schedule your post. The accepted types are: <b> jpg, jpeg, gif, png </b>.';
 $lang['upload_da_imagem'] = 'Image';
 $lang['btn_fazer_upload'] = 'Upload';
+
+$lang['grupo'] = 'Group';
+
+$lang['crie_uma_pagina'] = 'You do not manage any group yet. To use this tool, create a group.';
+$lang['help_grupos_1'] = 'Select below all the groups you want to manage from our system. Only the selected groups can be managed by our systems, the others will not.';
+$lang['help_grupos_2'] = 'If you want to add or remove later, you can do so through this page.';
+
+$lang['clique_visualizar'] = 'Click here to show!';
+
 
 ?>

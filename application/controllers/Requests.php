@@ -31,6 +31,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
+        $Grupos          = $this->input->post('grupos');
         $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
@@ -74,6 +75,20 @@ class Requests extends CI_Controller {
             $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
 
             $contagem++;
+
+        }elseif($lugar == 'grupo'){
+
+            $Grupos = rtrim($Grupos, ',');
+
+            $separaGrupos = explode(',', $Grupos);
+
+            foreach($separaGrupos as $grupo){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'tipo'=>'grupo'));
+                
+                $contagem++;
+            }
+
         }
 
         if($contagem > 0){
@@ -103,6 +118,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
+        $Grupos          = $this->input->post('grupos');
         $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
@@ -148,6 +164,20 @@ class Requests extends CI_Controller {
             $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
 
             $contagem++;
+
+        }elseif($lugar == 'grupo'){
+
+            $Grupos = rtrim($Grupos, ',');
+
+            $separaGrupos = explode(',', $Grupos);
+
+            foreach($separaGrupos as $grupo){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'tipo'=>'grupo'));
+                
+                $contagem++;
+            }
+
         }
 
         if($contagem > 0){
@@ -174,6 +204,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
+        $Grupos          = $this->input->post('grupos');
         $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
@@ -216,6 +247,20 @@ class Requests extends CI_Controller {
             $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
 
             $contagem++;
+
+        }elseif($lugar == 'grupo'){
+
+            $Grupos = rtrim($Grupos, ',');
+
+            $separaGrupos = explode(',', $Grupos);
+
+            foreach($separaGrupos as $grupo){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'tipo'=>'grupo'));
+                
+                $contagem++;
+            }
+
         }
 
         if($contagem > 0){
@@ -244,6 +289,7 @@ class Requests extends CI_Controller {
         $Intervalo       = $this->input->post('intervalo');
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
+        $Grupos          = $this->input->post('grupos');
         $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
@@ -288,6 +334,20 @@ class Requests extends CI_Controller {
             $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
 
             $contagem++;
+
+        }elseif($lugar == 'grupo'){
+
+            $Grupos = rtrim($Grupos, ',');
+
+            $separaGrupos = explode(',', $Grupos);
+
+            foreach($separaGrupos as $grupo){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'tipo'=>'grupo'));
+                
+                $contagem++;
+            }
+
         }
 
         if($contagem > 0){
@@ -329,14 +389,14 @@ class Requests extends CI_Controller {
 
                 $html .= '<b>'.$this->lang->line('titulo_link').':</b> '.$row->titulo_link.'<br />';
                 $html .= '<b>'.$this->lang->line('descricao_link').':</b> '.$row->descricao_link.'<br />';
-                $html .= '<b>'.$this->lang->line('imagem_link').':</b> <a href="'.$row->imagem_link.'" target="_blank">'.$row->imagem_link.'</a><br />';
-                $html .= '<b>'.$this->lang->line('url_link').':</b> <a href="'.$row->url_link.'" target="_blank">'.$row->url_link.'</a><br />';
+                $html .= '<b>'.$this->lang->line('imagem_link').':</b> <a href="'.$row->imagem_link.'" target="_blank">'.$this->lang->line('clique_visualizar').'</a><br />';
+                $html .= '<b>'.$this->lang->line('url_link').':</b> <a href="'.$row->url_link.'" target="_blank">'.$this->lang->line('clique_visualizar').'</a><br />';
                 $html .= '<b>'.$this->lang->line('mensagem_post').':</b> '.$row->mensagem_post.'<br /><br />';
                
 
             }elseif($row->tipo_programacao == 'imagem'){
 
-                $html .= '<b>'.$this->lang->line('link_imagem').':</b> <a href="'.$row->imagem_imagem.'" target="_blank">'.$row->imagem_imagem.'</a><br />';
+                $html .= '<b>'.$this->lang->line('link_imagem').':</b> <a href="'.$row->imagem_imagem.'" target="_blank">'.$this->lang->line('clique_visualizar').'</a><br />';
                 $html .= '<b>'.$this->lang->line('mensagem_post').':</b> '.$row->mensagem_post.'<br /><br />';
 
 
@@ -344,7 +404,7 @@ class Requests extends CI_Controller {
 
                 $html .= '<b>'.$this->lang->line('titulo_video').':</b> '.$row->titulo_video.'<br />';
                 $html .= '<b>'.$this->lang->line('descricao_video').':</b> '.$row->descricao_video.'<br />';
-                $html .= '<b>'.$this->lang->line('url_video').':</b> <a href="'.$row->link_video.'" target="_blank">'.$row->link_video.'</a><br />';
+                $html .= '<b>'.$this->lang->line('url_video').':</b> <a href="'.$row->link_video.'" target="_blank">'.$this->lang->line('clique_visualizar').'</a><br />';
                 $html .= '<b>'.$this->lang->line('mensagem_post').':</b> '.$row->mensagem_post.'<br />';
 
             }else{
@@ -389,6 +449,10 @@ class Requests extends CI_Controller {
                 }elseif($page->tipo == 'perfil'){
 
                     $html .= '<div class="alert alert-info text-center text-uppercase">'.$this->lang->line('perfil_selecionado').'</div>';
+                
+                }elseif($page->tipo == 'grupo'){
+
+                    $html .= $this->lang->line('grupo').' '.($key+1).' - '.$this->facebook->NameGroup($page->id_conta).'<br />';
                 }
 
                 if(!empty($page->post_id) && !is_null($page->post_id)){

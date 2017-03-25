@@ -150,6 +150,12 @@ svg4everybody();
             </a>
          </li>
          <li>
+            <a href="<?php echo base_url('conta/grupos');?>">
+               <i class="fa fa-facebook-official"></i>
+               <span class="menu-text"><?php echo $this->lang->line('menu_grupos');?></span>
+            </a>
+         </li>
+         <li>
             <a href="<?php echo base_url('conta/relatorios');?>">
                <i class="fa fa-line-chart"></i>
                <span class="menu-text"><?php echo $this->lang->line('menu_relatorios');?></span>

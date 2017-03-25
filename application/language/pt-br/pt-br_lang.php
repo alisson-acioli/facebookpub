@@ -33,6 +33,7 @@ $lang['menu_dashboard'] = 'Dashboard';
 $lang['menu_postagem'] = 'Postagem';
 $lang['menu_programacoes'] = 'Programações';
 $lang['menu_paginas'] = 'Páginas';
+$lang['menu_grupos'] = 'Grupos';
 $lang['menu_relatorios'] = 'Relatórios';
 $lang['menu_perfil'] = 'Perfil';
 $lang['menu_administrador'] = 'Administrador';
@@ -66,6 +67,7 @@ $lang['btn_finalizar'] = 'Finalizar';
 $lang['qual_lugar_postagem'] = 'Em qual lugar ?';
 $lang['pagina_facebook'] = 'Página';
 $lang['perfil_facebook'] = 'Meu Perfil';
+$lang['grupo_facebook'] = 'Grupo';
 $lang['voce_selecionou_perfil'] = 'Você selecionou para postar em seu perfil';
 $lang['perfil_selecionado'] = 'Seu perfil foi selecionado para a postagem.';
 
@@ -105,6 +107,7 @@ $lang['data_final'] = 'Data Final';
 
 $lang['quais_paginas'] = 'Quais Páginas?';
 $lang['help_quais_paginas'] = 'Escolha as páginas que deverão receber a sua postagem.';
+$lang['help_quais_grupos'] = 'Escolha os grupos que deverão receber a sua postagem.';
 
 
 $lang['suas_programacoes'] = 'Suas Programações';
@@ -246,4 +249,10 @@ $lang['upload_de_imagem_texto'] = 'Faça o upload de uma imagem para programar s
 $lang['upload_da_imagem'] = 'Imagem';
 $lang['btn_fazer_upload'] = 'Fazer upload';
 
+$lang['grupo'] = 'Grupo';
+$lang['crie_um_grupo'] = 'Você ainda não gerencia nenhum grupo. Para usar essa ferramenta, crie um grupo.';
+$lang['help_grupos_1'] = 'Selecione abaixo todos os grupos que você quer gerenciar a partir de nosso sistema. Somente os grupos selecionados poderão ser gerenciadas por nosso sistemas, os demais não.';
+$lang['help_grupos_2'] = 'Caso queira adicionar ou remover posteriormente, será possível por essa página.';
+
+$lang['clique_visualizar'] = 'Clique aqui para visualizar';
 ?>

@@ -257,6 +257,41 @@ Class Facebook
         return $info['id'];
     }
 
+    public function NameGroup($idGroup){
+
+        if($this->is_authenticated()){
+
+            $query = $this->request('get', '/'.$idGroup);
+
+            if(!empty($query)){
+
+                return $query['name'];
+            }
+
+        }else{
+
+            $this->db->where('group_id', $idGroup);
+            $grupos = $this->db->get('grupos');
+
+            if($grupos->num_rows() > 0){
+
+                $row = $grupos->row();
+
+                $this->db->where('id', $row->id_user);
+                $user = $this->db->get('usuarios');
+
+                $rowUser = $user->row();
+
+                $query = $this->request('get', '/'.$idGroup, $rowUser->token);
+                
+                return $query['name'];
+                
+            }
+
+            return '<font color="red">Logue com o facebook para exibir o nome do grupo</font>';
+        }
+    }
+
     public function NamePage($idPage){
 
         if($this->is_authenticated()){
@@ -292,6 +327,15 @@ Class Facebook
         $token = $this->get_access_token();
 
         $list = $this->request('get', 'me/accounts?type=page', $token);
+
+        return $list;
+    }
+
+    public function getGroups(){
+
+        $token = $this->get_access_token();
+
+        $list = $this->request('get', 'me/groups', $token);
 
         return $list;
     }

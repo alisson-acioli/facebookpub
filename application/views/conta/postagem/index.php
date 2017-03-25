@@ -263,6 +263,13 @@
                      <span class="fz-base"><?php echo $this->lang->line('perfil_facebook');?></span>
                   </label>
                </div>
+               <div class="wizard-radio mr-4">
+                  <input id="groupoin" value="grupo" type="radio" name="lugar">
+                  <label for="groupoin">
+                     <i class="fa fa-users mb-2"></i>
+                     <span class="fz-base"><?php echo $this->lang->line('grupo_facebook');?></span>
+                  </label>
+               </div>
             </div>
             
             <div class="local-pagina" style="display:block">
@@ -281,6 +288,20 @@
 
             <div class="local-perfil" style="display:none">
                <div class="alert alert-info text-center"><?php echo $this->lang->line('voce_selecionou_perfil');?></div>
+            </div>
+
+            <div class="local-grupo" style="display:none">
+               <p class="text-center"><?php echo $this->lang->line('help_quais_grupos');?></p>
+               <select name="grupos_programacao_select" id="grupos_programacao_select" class="form-control" style="width:75%;">
+               <?php
+               if(!empty($this->grupos->TodosGrupos())){
+
+                     foreach($this->grupos->TodosGrupos() as $grupo){
+                        echo '<option value="'.$grupo['group_id'].'">'.$grupo['group'].'</option>';
+                     }
+               }
+               ?>
+               </select>
             </div>
 
 

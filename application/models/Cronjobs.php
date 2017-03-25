@@ -76,7 +76,7 @@ class Cronjobs extends CI_Model{
 
                                     $token = $rowPost->token;
                                 }
-                            }elseif($pagina->tipo == 'perfil'){
+                            }elseif($pagina->tipo == 'perfil' || $pagina->tipo == 'grupo'){
 
                                 $this->db->where('id', $result->id_user);
                                 $user = $this->db->get('usuarios');

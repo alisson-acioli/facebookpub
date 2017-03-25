@@ -7,6 +7,7 @@ class Conta extends CI_Controller {
         parent::__construct();
 
         $this->load->model('paginas');
+        $this->load->model('grupos');
         $this->load->model('postagem');
         $this->load->model('loginmodel', 'LoginModel');
 
@@ -134,6 +135,19 @@ class Conta extends CI_Controller {
 
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/paginas/index');
+        $this->load->view('conta/templates/footer');
+    }
+
+    public function grupos(){
+
+        $data['titulo'] = $this->lang->line('menu_grupos');
+
+        if($this->input->post('submit')){
+          $data['message'] = $this->grupos->SalvaGrupo();
+        }
+
+        $this->load->view('conta/templates/header', $data);
+        $this->load->view('conta/grupos/index');
         $this->load->view('conta/templates/footer');
     }
 
