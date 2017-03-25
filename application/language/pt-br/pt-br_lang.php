@@ -39,6 +39,7 @@ $lang['menu_perfil'] = 'Perfil';
 $lang['menu_administrador'] = 'Administrador';
 $lang['submenu_usuarios'] = 'Usuários';
 $lang['submenu_configuracoes'] = 'Configurações';
+$lang['menu_gerenciamento'] = 'Gerenciamento';
 
 $lang['titulo_postagem_mes'] = 'Postagens no mês';
 $lang['quantidade_postada'] = 'Quantidade postada no mês';

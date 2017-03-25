@@ -146,7 +146,7 @@ svg4everybody();
          <li class="">
           <a href="javascript:void(0)" class="submenu-toggle">
             <i class="fa fa-facebook-official"></i>
-            <span class="menu-text">Gerenciamento</span>
+            <span class="menu-text"><?php echo $this->lang->line('menu_gerenciamento');?></span>
             <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
          </a>
           <ul class="submenu" style="display: none;">
