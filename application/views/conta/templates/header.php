@@ -143,17 +143,24 @@ svg4everybody();
                <span class="menu-text"><?php echo $this->lang->line('menu_programacoes');?></span>
             </a>
          </li>
-         <li>
-            <a href="<?php echo base_url('conta/paginas');?>">
-               <i class="fa fa-facebook-official"></i>
-               <span class="menu-text"><?php echo $this->lang->line('menu_paginas');?></span>
-            </a>
-         </li>
-         <li>
-            <a href="<?php echo base_url('conta/grupos');?>">
-               <i class="fa fa-facebook-official"></i>
-               <span class="menu-text"><?php echo $this->lang->line('menu_grupos');?></span>
-            </a>
+         <li class="">
+          <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="fa fa-facebook-official"></i>
+            <span class="menu-text">Gerenciamento</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+         </a>
+          <ul class="submenu" style="display: none;">
+            <li>
+               <a href="<?php echo base_url('conta/paginas');?>">
+                  <span class="menu-text"><?php echo $this->lang->line('menu_paginas');?></span>
+               </a>
+            </li>
+            <li>
+               <a href="<?php echo base_url('conta/grupos');?>">
+                  <span class="menu-text"><?php echo $this->lang->line('menu_grupos');?></span>
+               </a>
+            </li>
+          </ul>
          </li>
          <li>
             <a href="<?php echo base_url('conta/relatorios');?>">
