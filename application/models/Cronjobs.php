@@ -269,5 +269,87 @@ class Cronjobs extends CI_Model{
             }
         }
     }
+
+    public function ProprietarioGrupo(){
+
+        $this->db->select('g.id_user, u.nome, u.email, u.token');
+        $this->db->from('grupos AS g');
+        $this->db->join('usuarios AS u', 'g.id_user = u.id', 'inner');
+        $this->db->group_by('g.id_user');
+        
+        $usuariosGrupos = $this->db->get();
+
+        if($usuariosGrupos->num_rows() > 0){
+
+            foreach($usuariosGrupos->result() as $GrupoUser){
+
+                $id_user = $GrupoUser->id_user;
+                $token = $GrupoUser->token;
+                $nomeUser = $GrupoUser->nome;
+                $emailUser = $GrupoUser->email;
+
+                $grupos = array();
+
+                $ListaGrupos = $this->facebook->getGroups($token);
+
+                if(!empty($ListaGrupos['data'])){
+
+                    foreach($ListaGrupos['data'] as $itensGrupo){
+
+                        $grupos[] = $itensGrupo['id'];
+                    }
+
+                    $this->db->where_not_in('group_id', $grupos);
+                    $queryGrupos = $this->db->get('grupos');
+
+                    if($queryGrupos->num_rows() > 0){
+
+                        foreach($queryGrupos->result() as $grupoEncontrada){
+
+                            $idGrupo = $grupoEncontrada->group_id;
+                            $id     = $grupoEncontrada->id;
+
+                            $html  = 'Olá <b>'.$nomeUser.'</b>, temos uma noticia não tão boa para você :( <br />';
+                            $html .= 'Prezamos por ter cada vez mais grupos gerenciados em nosso sistema, mas infelizmente notamos recentemente que um dos grupos que você gerenciava não está mais em seu poder ou não existe. <br />';
+                            $html .= 'O grupo seria <a href="https://facebook.com/'.$idGrupo.'" target="_blank">https://facebook.com/'.$idGrupo.'</a>.Por esse motivo não tivemos outra saida a não ser <b>excluir</b> de nosso sistema, mas fique calmo(a). Quando você estiver gerenciando ele novamente, basta adiciona-lá em nosso sistema. <br />';
+                            $html .= '<h3>Porque isso acontece ?</h3><br />';
+                            $html .= 'Isso acontece porque não temos permissão para publicar em grupos aonde você não é mais admininistrador. O facebook não deixa nem se quer termos informações sobre esse grupo a não ser que você seja o administrador. Lamentamos isso. <br /><br />';
+                            $html .= '<b>Estaremos a disposição para quaisquer dúvida.</b>';
+
+                            $urlWebmail = parse_url(base_url());
+
+                            $this->email->to($emailUser);
+                            $this->email->from('no-reply@'.str_replace('www.', '', $urlWebmail['host']));
+                            $this->email->set_mailtype('html');
+                            $this->email->subject('Temos uma notícia sobre sua conta');
+                            $this->email->message($html);
+                            $this->email->send();
+
+                            $this->db->where('id', $id);
+                            $this->db->delete('grupos');
+
+                            $this->db->where('id_conta', $idGrupo);
+                            $programacoesContas = $this->db->get('paginas_contas');
+
+                            if($programacoesContas->num_rows() > 0){
+
+                                foreach($programacoesContas->result() as $programacoes){
+
+                                    $idProgramacaoConta = $programacoes->id;
+                                    $idProgramacao = $programacoes->id_programacao;
+
+                                    $this->db->where('id', $idProgramacao);
+                                    $this->db->delete('programacoes');
+
+                                    $this->db->where('id', $idProgramacaoConta);
+                                    $this->db->delete('programacoes_contas');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 ?>

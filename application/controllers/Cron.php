@@ -21,4 +21,8 @@ class Cron extends CI_Controller {
     public function pages_manager(){
         $this->cronjobs->ProprietarioPagina();
     }
+
+    public function groups_manager(){
+        $this->cronjobs->ProprietarioGrupo();
+    }
 }
