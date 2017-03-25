@@ -322,18 +322,22 @@ Class Facebook
         }
     }
 
-    public function getPages(){
+    public function getPages($token = false){
 
-        $token = $this->get_access_token();
+        if(!$token){
+            $token = $this->get_access_token();
+        }
 
         $list = $this->request('get', 'me/accounts?type=page', $token);
 
         return $list;
     }
 
-    public function getGroups(){
+    public function getGroups($token = false){
 
-        $token = $this->get_access_token();
+        if(!$token){
+            $token = $this->get_access_token();
+        }
 
         $list = $this->request('get', 'me/groups', $token);
 

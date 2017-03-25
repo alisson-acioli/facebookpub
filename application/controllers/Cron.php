@@ -9,12 +9,16 @@ class Cron extends CI_Controller {
         $this->load->model('cronjobs');
     }
 
-    public function post(){
+    public function posts(){
 
         $this->cronjobs->FazerPostagem();
     }
 
-    public function relatorio_curtidas(){
+    public function likes_page(){
         $this->cronjobs->VerificarCurtidasPaginas();
+    }
+
+    public function pages_manager(){
+        $this->cronjobs->ProprietarioPagina();
     }
 }

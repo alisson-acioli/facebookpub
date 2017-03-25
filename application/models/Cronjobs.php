@@ -184,5 +184,90 @@ class Cronjobs extends CI_Model{
             }
         }
     }
+
+    public function ProprietarioPagina(){
+
+        $this->db->select('p.id_user, u.nome, u.email, u.token');
+        $this->db->from('paginas AS p');
+        $this->db->join('usuarios AS u', 'p.id_user = u.id', 'inner');
+        $this->db->group_by('p.id_user');
+        
+        $usuariosPaginas = $this->db->get();
+
+        if($usuariosPaginas->num_rows() > 0){
+
+            foreach($usuariosPaginas->result() as $PaginaUser){
+
+                $id_user = $PaginaUser->id_user;
+                $token = $PaginaUser->token;
+                $nomeUser = $PaginaUser->nome;
+                $emailUser = $PaginaUser->email;
+
+                $paginas = array();
+
+                $ListaPaginas = $this->facebook->getPages($token);
+
+                if(!empty($ListaPaginas['data'])){
+
+                    foreach($ListaPaginas['data'] as $itensPagina){
+
+                        $paginas[] = $itensPagina['id'];
+                    }
+
+                    $this->db->where_not_in('id_page', $paginas);
+                    $queryPaginas = $this->db->get('paginas');
+
+                    if($queryPaginas->num_rows() > 0){
+
+                        foreach($queryPaginas->result() as $paginaEncontrada){
+
+                            $idPage = $paginaEncontrada->id_page;
+                            $id     = $paginaEncontrada->id;
+
+                            $html  = 'Olá <b>'.$nomeUser.'</b>, temos uma noticia não tão boa para você :( <br />';
+                            $html .= 'Prezamos por ter cada vez mais páginas gerenciadas em nosso sistema, mas infelizmente notamos recentemente que uma das páginas que você gerenciava não está mais em seu poder ou não existe. <br />';
+                            $html .= 'A página seria <a href="https://facebook.com/'.$idPage.'" target="_blank">https://facebook.com/'.$idPage.'</a>.Por esse motivo não tivemos outra saida a não ser <b>excluir</b> de nosso sistema, mas fique calmo(a). Quando você estiver gerenciando ela novamente, basta adiciona-lá em nosso sistema. <br />';
+                            $html .= '<h3>Porque isso acontece ?</h3><br />';
+                            $html .= 'Isso acontece porque não temos permissão para publicar em páginas aonde você não é mais admininistrador. O facebook não deixa nem se quer termos informações sobre essa página a não ser que você seja o administrador. Lamentamos isso. <br /><br />';
+                            $html .= '<b>Estaremos a disposição para quaisquer dúvida.</b>';
+
+                            $urlWebmail = parse_url(base_url());
+
+                            $this->email->to($emailUser);
+                            $this->email->from('no-reply@'.str_replace('www.', '', $urlWebmail['host']));
+                            $this->email->set_mailtype('html');
+                            $this->email->subject('Temos uma notícia sobre sua conta');
+                            $this->email->message($html);
+                            $this->email->send();
+
+                            $this->db->where('id', $id);
+                            $this->db->delete('paginas');
+
+                            $this->db->where('id_conta', $idPage);
+                            $programacoesContas = $this->db->get('paginas_contas');
+
+                            if($programacoesContas->num_rows() > 0){
+
+                                foreach($programacoesContas->result() as $programacoes){
+
+                                    $idProgramacaoConta = $programacoes->id;
+                                    $idProgramacao = $programacoes->id_programacao;
+
+                                    $this->db->where('id', $idProgramacao);
+                                    $this->db->delete('programacoes');
+
+                                    $this->db->where('id', $idProgramacaoConta);
+                                    $this->db->delete('programacoes_contas');
+
+                                    $this->db->where('id_page', $idPage);
+                                    $this->db->delete('relatorio_curtidas');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 ?>
