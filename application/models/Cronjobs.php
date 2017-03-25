@@ -1,4 +1,5 @@
 <?php
+set_time_limit(1500);
 defined('BASEPATH') OR exit('Você não tem permissão para acessar o script diretamente!');
 
 class Cronjobs extends CI_Model{
