@@ -112,5 +112,39 @@ class Loginmodel extends CI_Model{
 
         return '<div class="alert alert-danger text-center">'.$this->lang->line('erro_atualizar_dados').'</div>';
     }
+
+    public function TrocaSenha($email){
+
+        $senha = $this->input->post('senha');
+        $confirmar_senha = $this->input->post('confirmar_senha');
+
+        if(!empty($senha) && !empty($confirmar_senha)){
+
+            if($senha == $confirmar_senha){
+
+                $this->db->where('email', $email);
+                $update = $this->db->update('usuarios', array('senha'=>md5($senha)));
+
+                if($update){
+
+                    $this->db->where('email', $email);
+                    $this->db->update('codigos_recuperacao_senha', array('expirado'=>1));
+
+                    return '<div class="alert alert-success text-center">'.$this->lang->line('senha_alterada').'</div>';
+
+                }else{
+
+                    return '<div class="alert alert-danger text-center">'.$this->lang->line('erro_atualizar_senha').'</div>';
+                }
+
+            }else{
+
+                return '<div class="alert alert-danger text-center">'.$this->lang->line('senhas_nao_conferem').'</div>';
+            }
+        }else{
+
+            return '<div class="alert alert-danger text-center">'.$this->lang->line('preencha_todos_campos').'</div>';
+        }
+    }
 }
 ?>

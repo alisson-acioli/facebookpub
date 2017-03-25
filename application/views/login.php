@@ -73,6 +73,7 @@
                      <div class="form-group">
                      	<input type="password" name="senha" class="form-control" placeholder="<?php echo $this->lang->line('campo_senha');?>" required>
                      </div>
+                     <p class="text-right"><a href="javascript:void(0);" data-toggle="modal" data-target="#esquecisenha" class="white text-underline hover-white">Esqueci minha senha</a></p>
                      <input type="submit" name="submitLogin" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="<?php echo $this->lang->line('btn_login');?>">
                   </form>
                </div>
@@ -107,6 +108,37 @@
       <!-- /.login-page-wrap -->
       <!-- core plugins -->
 
+      <div class="modal fade" id="esquecisenha" tabindex="-1" role="dialog" aria-labelledby="image-gallery-modal" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+           <div class="modal-content">
+              <div class="modal-body p-5">
+                 <h4 class="text-center qp-color"><?php echo $this->lang->line('esqueci_minha_senha');?></h4>
+                 <br />
+
+                 <div class="" id="msg-return"></div>
+
+                 <p class="qp-color"><?php echo $this->lang->line('esqueci_minha_senha_texto');?></p>
+
+                 <div class="form-group">
+                     <label class="qp-color"><?php echo $this->lang->line('email_cadastro');?></label>
+                     <input type="text" class="form-control" name="emailRecuperarSenha">
+                 </div>
+
+                 <input type="button" id="recoverPasswordBtn" class="btn btn-success" value="<?php echo $this->lang->line('recuperar_senha_btn');?>" />
+
+
+              </div>
+              <!-- /.modal-body -->
+           </div>
+           <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+     </div>
+     <!-- /.modal -->
+      
+      <script>
+         var baseURL = '<?php echo base_url();?>';
+      </script>
       <script src="<?php echo base_url();?>assets/vendor/bower_components/jquery/dist/jquery.min.js"></script>
       <script src="<?php echo base_url();?>assets/vendor/bower_components/tether/dist/js/tether.min.js"></script>
       <script src="<?php echo base_url();?>assets/vendor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -117,6 +149,7 @@
 
       <!-- scripts for the current page -->
       <script src="<?php echo base_url();?>assets/examples/js/pages/login.js"></script>
+      <script src="<?php echo base_url();?>assets/js/pages/recoverpassword.js"></script>
       <!-- / scripts for the current page-->
    </body>
 </html>

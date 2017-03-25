@@ -257,5 +257,23 @@ $lang['help_grupos_2'] = 'If you want to add or remove later, you can do so thro
 
 $lang['clique_visualizar'] = 'Click here to show!';
 
+$lang['esqueci_minha_senha'] = 'I forgot my password';
+$lang['esqueci_minha_senha_texto'] = 'Enter your email below to retrieve your password. We will send you a link to the instructions.';
+$lang['email_cadastro'] = 'Email address:';
+$lang['recuperar_senha_btn'] = 'Recover Password';
+$lang['recuperacao_senha'] = 'Password recovery';
+$lang['trocar_senha'] = 'Change Password';
+$lang['email_confirmacao_enviado'] = 'Confirmation email sent successfully!';
+$lang['erro_enviar_confirmacao'] = 'Error sending recovery link. Please try again.';
+$lang['email_nao_encontrado'] = 'Email not found on system';
+$lang['email_invalido'] = 'Invalid email';
+$lang['code_invalido'] = 'Invalid code';
+$lang['link_utilizado'] = 'This link has already been used, please generate another link.';
+$lang['codigo_email_invalido'] = 'Invalid email or code, please try again.';
+$lang['senha_alterada'] = 'Password changed successfully!';
+$lang['erro_atualizar_senha'] = 'Error updating password. Try again.';
+$lang['senhas_nao_conferem'] = 'Passwords do not match. Please try again.';
+$lang['preencha_todos_campos'] = 'Please complete all fields!';
+
 
 ?>

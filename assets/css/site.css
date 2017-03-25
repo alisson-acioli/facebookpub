@@ -2595,6 +2595,22 @@ body.menubar-light.menubar-fold .site-menu>li>.submenu>li {
     cursor: pointer !important;
 }
 
+.white{
+    color:#fff;
+}
+
+.text-underline{
+    text-decoration: underline;
+}
+
+.hover-white:hover{
+    color:#fff;
+}
+
+.qp-color{
+    color:#202020;
+}
+
 #progressbox{
     border:1px solid #0099CC;
     padding:1px;

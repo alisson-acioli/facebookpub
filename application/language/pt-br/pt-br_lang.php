@@ -256,4 +256,23 @@ $lang['help_grupos_1'] = 'Selecione abaixo todos os grupos que você quer gerenc
 $lang['help_grupos_2'] = 'Caso queira adicionar ou remover posteriormente, será possível por essa página.';
 
 $lang['clique_visualizar'] = 'Clique aqui para visualizar';
+
+$lang['esqueci_minha_senha'] = 'Esqueci minha Senha';
+$lang['esqueci_minha_senha_texto'] = 'Informe seu email abaixo para recuperar sua senha. Enviaremos um link com as instruções.';
+$lang['email_cadastro'] = 'Email de cadastro:';
+$lang['recuperar_senha_btn'] = 'Recuperar Senha';
+$lang['recuperacao_senha'] = 'Recuperação de Senha';
+$lang['trocar_senha'] = 'Trocar Senha';
+$lang['email_confirmacao_enviado'] = 'Email de confirmação enviado com sucesso!';
+$lang['erro_enviar_confirmacao'] = 'Erro ao enviar link de recuperação. Por favor, tente novamente.';
+$lang['email_nao_encontrado'] = 'Email não encontrado no sistema';
+$lang['email_invalido'] = 'Email Inválido';
+$lang['code_invalido'] = 'Código Inválido';
+$lang['link_utilizado'] = 'Esse link já foi utilizado, por favor, gere outro link.';
+$lang['codigo_email_invalido'] = 'Código ou email inválidos, tente novamente.';
+$lang['senha_alterada'] = 'Senha alterada com sucesso!';
+$lang['erro_atualizar_senha'] = 'Erro ao atualizar senha. Tente novamente.';
+$lang['senhas_nao_conferem'] = 'As senhas não conferem. Por favor, tente novamente.';
+$lang['preencha_todos_campos'] = 'Preencha todos os campos!';
+
 ?>

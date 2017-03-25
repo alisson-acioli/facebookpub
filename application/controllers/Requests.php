@@ -17,6 +17,45 @@ class Requests extends CI_Controller {
 
         $this->lang->load($lang, $lang);
     }
+
+    public function send_link_recoverpassword(){
+
+        $email = $this->input->post('email');
+
+        $this->db->where('email', $email);
+        $user = $this->db->get('usuarios');
+
+        if($user->num_rows() > 0){
+
+            $hash = md5(time().rand(10,100));
+
+            $this->db->insert('codigos_recuperacao_senha', array('email'=>$email, 'codigo'=>$hash, 'expirado'=>0));
+
+            $link_recuperacao = base_url().'login/recover?email='.$email.'&code='.$hash;
+
+            $html  = 'Olá, recebemos uma solicitação de recuperação de senha para sua conta. Caso não foi você, por favor, ignore esse email. <br /><br />';
+            $html .= '<b>Link de recuperação:</b> <a href="'.$link_recuperacao.'" target="_blank">'.$link_recuperacao.'</a> <br /><br />';
+            $html .= 'Estamos a disposição.';
+
+            $urlWebmail = parse_url(base_url());
+
+            $this->email->to($email);
+            $this->email->from('no-reply@'.str_replace('www.', '', $urlWebmail['host']));
+            $this->email->set_mailtype('html');
+            $this->email->subject('Link de confirmação');
+            $this->email->message($html);
+
+            if($this->email->send()){
+
+                echo json_encode(array('status'=>1, 'message'=>$this->lang->line('email_confirmacao_enviado'), 'class'=>'alert alert-success text-center'));
+            }else{
+                echo json_encode(array('status'=>0, 'message'=>$this->lang->line('erro_enviar_confirmacao'), 'class'=>'alert alert-danger text-center'));
+            }
+        }else{
+
+            echo json_encode(array('status'=>0, 'message'=>$this->lang->line('email_nao_encontrado'), 'class'=>'alert alert-danger text-center'));
+        }
+    }
     
     public function post_texto(){
 
