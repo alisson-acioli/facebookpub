@@ -224,19 +224,14 @@ class Cronjobs extends CI_Model{
                             $idPage = $paginaEncontrada->id_page;
                             $id     = $paginaEncontrada->id;
 
-                            $html  = 'Olá <b>'.$nomeUser.'</b>, temos uma noticia não tão boa para você :( <br />';
-                            $html .= 'Prezamos por ter cada vez mais páginas gerenciadas em nosso sistema, mas infelizmente notamos recentemente que uma das páginas que você gerenciava não está mais em seu poder ou não existe. <br />';
-                            $html .= 'A página seria <a href="https://facebook.com/'.$idPage.'" target="_blank">https://facebook.com/'.$idPage.'</a>.Por esse motivo não tivemos outra saida a não ser <b>excluir</b> de nosso sistema, mas fique calmo(a). Quando você estiver gerenciando ela novamente, basta adiciona-lá em nosso sistema. <br />';
-                            $html .= '<h3>Porque isso acontece ?</h3><br />';
-                            $html .= 'Isso acontece porque não temos permissão para publicar em páginas aonde você não é mais admininistrador. O facebook não deixa nem se quer termos informações sobre essa página a não ser que você seja o administrador. Lamentamos isso. <br /><br />';
-                            $html .= '<b>Estaremos a disposição para quaisquer dúvida.</b>';
+                            $html = str_replace(array('{{nome_user}}', '{{id_page}}'), array($nomeUser, $idPage), $this->lang->line('email_proprietario_pagina'));
 
                             $urlWebmail = parse_url(base_url());
 
                             $this->email->to($emailUser);
                             $this->email->from('no-reply@'.str_replace('www.', '', $urlWebmail['host']));
                             $this->email->set_mailtype('html');
-                            $this->email->subject('Temos uma notícia sobre sua conta');
+                            $this->email->subject($this->lang->line('assunto_email_cron_jobs'));
                             $this->email->message($html);
                             $this->email->send();
 
@@ -309,19 +304,14 @@ class Cronjobs extends CI_Model{
                             $idGrupo = $grupoEncontrada->group_id;
                             $id     = $grupoEncontrada->id;
 
-                            $html  = 'Olá <b>'.$nomeUser.'</b>, temos uma noticia não tão boa para você :( <br />';
-                            $html .= 'Prezamos por ter cada vez mais grupos gerenciados em nosso sistema, mas infelizmente notamos recentemente que um dos grupos que você gerenciava não está mais em seu poder ou não existe. <br />';
-                            $html .= 'O grupo seria <a href="https://facebook.com/'.$idGrupo.'" target="_blank">https://facebook.com/'.$idGrupo.'</a>.Por esse motivo não tivemos outra saida a não ser <b>excluir</b> de nosso sistema, mas fique calmo(a). Quando você estiver gerenciando ele novamente, basta adiciona-lá em nosso sistema. <br />';
-                            $html .= '<h3>Porque isso acontece ?</h3><br />';
-                            $html .= 'Isso acontece porque não temos permissão para publicar em grupos aonde você não é mais admininistrador. O facebook não deixa nem se quer termos informações sobre esse grupo a não ser que você seja o administrador. Lamentamos isso. <br /><br />';
-                            $html .= '<b>Estaremos a disposição para quaisquer dúvida.</b>';
+                            $html = str_replace(array('{{nome_user}}', '{{id_group}}'), array($nomeUser, $idGrupo), $this->lang->line('email_proprietario_grupo'));
 
                             $urlWebmail = parse_url(base_url());
 
                             $this->email->to($emailUser);
                             $this->email->from('no-reply@'.str_replace('www.', '', $urlWebmail['host']));
                             $this->email->set_mailtype('html');
-                            $this->email->subject('Temos uma notícia sobre sua conta');
+                            $this->email->subject($this->lang->line('assunto_email_cron_jobs'));
                             $this->email->message($html);
                             $this->email->send();
 
