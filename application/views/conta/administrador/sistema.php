@@ -31,6 +31,17 @@
         </select>
       </div>
       <div class="form-group">
+        <label><?php echo $this->lang->line('timezone');?></label>
+        <select name="timezone" class="form-control">
+          <?php
+          foreach(TimesZones() as $time){
+            $selected = ($time['zone'] == website_config('timezone')) ? 'selected' : '';
+            echo '<option value="'.$time['zone'].'" '.$selected.'>'.$time['diff_from_GMT'].' - '.$time['zone'].'</option>';
+          }
+          ?>
+        </select>
+      </div>
+      <div class="form-group">
         <label><?php echo $this->lang->line('app_id');?></label>
         <input type="text" name="app_id" class="form-control" value="<?php echo website_config('app_id');?>" required>
       </div>
