@@ -1,0 +1,23 @@
+.tab-title{
+    padding:15px;
+    border-bottom: none;
+}
+.tab-title.active{
+    background:#39527B;
+    color:#fff;
+}
+.tab-content{
+    margin-top:20px;
+}
+.status{
+    font-size: 20px;
+}
+.status.fa-check-circle-o{
+    color:#00b393;
+}
+.status.fa-times-circle-o{
+    color:#d73b3b;
+}
+.btn-custom{
+    background:#39527B !important;
+}

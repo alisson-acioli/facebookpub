@@ -54,7 +54,21 @@ date_default_timezone_set('America/Sao_Paulo');
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	define('ENVIRONMENT', 'installation');
+
+	if (ENVIRONMENT === 'installation') {
+    $domain = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
+
+    $domain = preg_replace('/index.php.*/', '', $domain); //remove everything after index.php
+    if (!empty($_SERVER['HTTPS'])) {
+        $domain = 'https://' . $domain;
+    } else {
+        $domain = 'http://' . $domain;
+    }
+
+    header("Location: $domain./install/index.php");
+    exit;
+}
 
 /*
  *---------------------------------------------------------------
