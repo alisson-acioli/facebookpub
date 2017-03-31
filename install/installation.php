@@ -57,7 +57,7 @@ if (isset($_POST)) {
     $config_file_path = "../application/config/config.php";
     $config_file = file_get_contents($config_file_path);
 
-    $is_installed = strpos($config_file, "DB-HOST");
+    $is_installed = strpos($database_file, "DB-HOST");
 
     if (!$is_installed) {
         echo json_encode(array("success" => false, "message" => "Seems this app is already installed! You can't reinstall it again."));
