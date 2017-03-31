@@ -304,6 +304,19 @@ if (!empty($_SERVER['HTTPS'])) {
                                     </div>
                                 </div>
 
+                                <div class="section clearfix">
+                                    <p>4. Purchase Code. Find in CodeCanyon</p>
+                                    <hr />
+                                    <div>
+                                        <div class="form-group clearfix">
+                                            <label for="purchase" class=" col-md-3">Purchase Code</label>
+                                            <div class="col-md-9">
+                                                <input type="text" value=""  id="purchase"  name="purchasecode" class="form-control"  placeholder="Purchase Code" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="panel-footer">
                                     <button type="submit" class="btn btn-custom btn-block btn-info form-next">
                                         <span class="loader hide"> Please wait...</span>

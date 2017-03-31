@@ -16,9 +16,11 @@ if (isset($_POST)) {
     $appID = $_POST['app_id'];
     $appSecret = $_POST['app_secret'];
 
+    $purchasecode = $_POST['purchasecode'];
+
 
     //check required fields
-    if (!($host && $dbuser && $dbname && $fullname && $login && $email && $login_password)) {
+    if (!($host && $dbuser && $dbname && $purchasecode && $fullname && $login && $email && $login_password)) {
         echo json_encode(array("success" => false, "message" => "Please enter all fields."));
         exit();
     }
