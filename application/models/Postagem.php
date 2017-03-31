@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('Você não tem permissão para acessar o script diretamente!');
 
+if(!is_null(website_config('timezone'))){
+    date_timezone_set(website_config('timezone'));
+}
+
 class Postagem extends CI_Model{
 
     public function __construct(){
