@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('Você não tem permissão para acessar o script diretamente!');
 
+if(!is_null(website_config('timezone'))){
+    date_timezone_set(website_config('timezone'));
+}
+
 class Administracaomodel extends CI_Model{
 
     public function __construct(){
@@ -52,10 +56,11 @@ class Administracaomodel extends CI_Model{
         $nome_site = $this->input->post('nome_site');
         $descricao_site = $this->input->post('descricao_site');
         $lingua = $this->input->post('lingua');
+        $timezone = $this->input->post('timezone');
         $app_id = $this->input->post('app_id');
         $app_secret = $this->input->post('app_secret');
 
-        $update = $this->db->update('website_config', array('nome_site'=>$nome_site, 'descricao_site'=>$descricao_site, 'linguagem'=>$lingua, 'app_id'=>$app_id, 'app_secret'=>$app_secret));
+        $update = $this->db->update('website_config', array('nome_site'=>$nome_site, 'descricao_site'=>$descricao_site, 'linguagem'=>$lingua, 'timezone'=>$timezone, 'app_id'=>$app_id, 'app_secret'=>$app_secret));
         
         if($update){
 
