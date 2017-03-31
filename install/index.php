@@ -279,7 +279,7 @@ if (!empty($_SERVER['HTTPS'])) {
                                         <div class="form-group clearfix">
                                             <label for="password" class=" col-md-3">Password</label>
                                             <div class=" col-md-9">
-                                                <input type="password" value="" name="password" class="form-control" placeholder="Login password" />
+                                                <input type="password" value="" name="password" class="form-control" placeholder="Password" />
                                             </div>
                                         </div>
                                     </div>
