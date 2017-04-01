@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('Você não tem permissão para acessar o script diretamente!');
 
 if(!is_null(website_config('timezone'))){
-    date_timezone_set(website_config('timezone'));
+    date_default_timezone_set(website_config('timezone'));
 }
 
 class Loginmodel extends CI_Model{
