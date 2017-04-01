@@ -34,9 +34,7 @@
         <label><?php echo $this->lang->line('timezone');?></label>
         <select name="timezone" class="form-control">
           <?php
-          $TZ = TimesZones();
-
-          foreach($TZ as $time){
+          foreach(TimesZones() as $time){
             $selected = ($time['zone'] == website_config('timezone')) ? 'selected' : '';
             echo '<option value="'.$time['zone'].'" '.$selected.'>'.$time['diff_from_GMT'].' - '.$time['zone'].'</option>';
           }
