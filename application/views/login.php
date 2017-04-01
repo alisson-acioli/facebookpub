@@ -36,8 +36,14 @@
             </a>
          </div>
          <div id="form-switch-btns" class="btn-group switch-btns">
+           <?php
+           if(website_config('permitir_cadastros') == 1){
+           ?>
 	         <button data-target="#signup-form-wrap" class="btn" <?php echo (isset($messageCadastrar)) ? 'disabled' : '';?>><?php echo $this->lang->line('btn_cadastrar_top');?></button> 
-	         <button data-target="#signin-form-wrap" class="btn" <?php echo (!isset($messageCadastrar)) ? 'disabled' : '';?>><?php echo $this->lang->line('btn_entrar_top');?></button>
+	         <?php
+           }
+           ?>
+           <button data-target="#signin-form-wrap" class="btn" <?php echo (!isset($messageCadastrar)) ? 'disabled' : '';?>><?php echo $this->lang->line('btn_entrar_top');?></button>
          </div>
       </header>
       <!-- /.login-page-header -->
@@ -78,6 +84,9 @@
                   </form>
                </div>
                <!-- /#signin-form-wrap -->
+               <?php
+               if(website_config('permitir_cadastros') == 1){
+               ?>
                <div id="signup-form-wrap" class="form-wrap <?php echo (isset($messageCadastrar)) ? 'show' : '';?>">
                   <h4 class="my-5 font-weight-light text-uppercase"><?php echo $this->lang->line('titulo_cadastro');?></h4>
                   <form id="signup-form" class="form" action="" method="post">
@@ -99,6 +108,9 @@
                      <input type="submit" name="submitCadastrar" class="btn btn-outline-success py-2 mt-5" style="width: 200px" value="<?php echo $this->lang->line('btn_cadastrar');?>">
                   </form>
                </div>
+               <?php
+               }
+               ?>
                <!-- /#signin-form-wrap -->
             </div>
             <!-- /.side-content -->

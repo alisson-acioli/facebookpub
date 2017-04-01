@@ -49,6 +49,19 @@
         <label><?php echo $this->lang->line('app_secret');?></label>
         <input type="text" name="app_secret" class="form-control" value="<?php echo website_config('app_secret');?>" required>
       </div>
+      <div class="form-group">
+        <label><?php echo $this->lang->line('permitir_cadastros');?></label>
+        <?php
+        $yesOrNo = array(1=>$this->lang->line('sim'), 0=>$this->lang->line('nao'));
+
+        foreach($yesOrNo as $key=>$option){
+
+          $checked = ($key == website_config('permitir_cadastros')) ? 'checked' : '';
+
+          echo '<input type="radio" name="permitir_cadastros" value="'.$key.'" '.$checked.'> '.$option.' ';
+        }
+        ?>
+      </div>
 
       <input type="submit" name="submit" class="btn btn-success pointer" value="<?php echo $this->lang->line('salvar_alteracoes');?>" />
   </form>
