@@ -158,7 +158,7 @@ CREATE TABLE `website_config` (
 --
 
 INSERT INTO `website_config` (`id`, `nome_site`, `descricao_site`, `linguagem`, `timezone`, `app_id`,  `app_secret`, `purchase_code`) VALUES
-(1, 'FacebookPub', 'FacebookPub Description', 'english', NULL, 'APP-ID', 'APP-SECRET', 'PURCHASE-CODE');
+(1, 'FacebookPub', 'FacebookPub Description', 'english', 'America/Sao_Paulo', 'APP-ID', 'APP-SECRET', 'PURCHASE-CODE');
 
 --
 -- Indexes for dumped tables
@@ -235,12 +235,12 @@ ALTER TABLE `paginas`
 -- AUTO_INCREMENT for table `programacoes`
 --
 ALTER TABLE `programacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `programacoes_contas`
 --
 ALTER TABLE `programacoes_contas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `relatorio_curtidas`
 --
@@ -250,9 +250,9 @@ ALTER TABLE `relatorio_curtidas`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `website_config`
 --
 ALTER TABLE `website_config`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
