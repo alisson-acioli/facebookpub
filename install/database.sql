@@ -150,7 +150,8 @@ CREATE TABLE `website_config` (
   `timezone` varchar(50) DEFAULT NULL,
   `app_id` varchar(150) NOT NULL,
   `app_secret` varchar(150) NOT NULL,
-  `purchase_code` VARCHAR(70) DEFAULT NULL
+  `purchase_code` VARCHAR(70) DEFAULT NULL,
+  `permitir_cadastros` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
@@ -158,7 +159,7 @@ CREATE TABLE `website_config` (
 --
 
 INSERT INTO `website_config` (`id`, `nome_site`, `descricao_site`, `linguagem`, `timezone`, `app_id`,  `app_secret`, `purchase_code`) VALUES
-(1, 'FacebookPub', 'FacebookPub Description', 'english', 'America/Sao_Paulo', 'APP-ID', 'APP-SECRET', 'PURCHASE-CODE');
+(1, 'FacebookPub', 'FacebookPub Description', 'english', 'America/Sao_Paulo', 'APP-ID', 'APP-SECRET', 'PURCHASE-CODE', 0);
 
 --
 -- Indexes for dumped tables
