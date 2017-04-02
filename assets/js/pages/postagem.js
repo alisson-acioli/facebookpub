@@ -16,6 +16,7 @@ $(document).on("change", 'input[name="lugar"]', function(){
 
   $(".local-pagina").css('display', 'none');
   $(".local-perfil").css('display', 'none');
+  $(".local-grupo").css('display', 'none');
 
   $(".local-"+Lugar).css('display', 'block');
 });
