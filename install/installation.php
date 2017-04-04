@@ -104,6 +104,7 @@ if (isset($_POST)) {
     $sql = str_replace('DATA-CADASTRO', time(), $sql);
     $sql = str_replace('APP-ID', $appID, $sql);
     $sql = str_replace('APP-SECRET', $appSecret, $sql);
+    $sql = str_replace('PURCHASE-CODE', $purchasecode, $sql);
 
     //create tables in datbase 
     $mysqli->multi_query($sql);
