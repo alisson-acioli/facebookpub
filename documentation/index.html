@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>FacebookPub - Documentação</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    
+    <div class="container-fluid">
+
+      <div class="col-md-4">
+        <div class="side-logo">
+          <h2>FacebookPub</h2>
+          <small>by: Alisson Acioli</small>
+        </div>
+        <div class="credits">
+          <p>In addition to the module or modifications, contact the system programmer directly: <a href="mailto:alissonacioli@hotmail.com">alissonacioli@hotmail.com</a></p>
+          <small>Para modificações ou criação de novos módulos, entre em contato com o email acima, diretamente com o programador</small>
+        </div>
+      </div> <!-- col-md-4 -->
+
+      <div class="col-md-8">
+        <div class="content">
+            <p class="text-right"><font color="blue">Version: 1.0.0</font></p>
+
+            <h1 class="text-center">Requirements</h1>
+            <p>Hello, thank you for making the purchase of FacebookPub.</p>
+            <p>To make installation of the system is required to have the following requisites:</p>
+
+            <ul>
+              <li>PHP 5.4+</li>
+              <li>Cron Jobs</li>
+              <li>Support cURL</li>
+            </ul>
+
+            <h1 class="text-center">Installation</h1>
+
+            <p>To install go to the folder where the files of facebookPub/<a href="#">install</a>. (example: <a href="#">http://www.yourwebsite.com/install</a>).</p>
+            <p>Follow the installation steps informing the data of access to your database, login of cadastre, purchase code, etc.</p>
+            <p><font color="red">After installation <b>delete</b> or <b>rename</b> the folder <u>install</u> for your own safety</font></p>
+            
+            <h1 class="text-center">CronJobs</h1>
+
+            <p>The system only works if cronjobs is correctly configured. Follow the commands below, set them to run from 1 to 5 minutes:</p>
+
+            <b>wget --spider -O - http://yourwebsite.com/cron/posts >/dev/null 2>&1</b> <br />
+            <b>wget --spider -O - http://yourwebsite.com/cron/likes_page >/dev/null 2>&1</b> <br />
+            <b>wget --spider -O - http://yourwebsite.com/cron/pages_manager >/dev/null 2>&1</b> <br />
+            <b>wget --spider -O - http://yourwebsite.com/cron/groups_manager >/dev/null 2>&1</b> <br />
+            
+            <br />
+
+            <h1 class="text-center">Future versions</h1>
+
+            <p>We will always keep our system up to date, so stay tuned to CodeCanyon.</p>
+
+            <h1 class="text-center">Want help installing?</h1>
+
+            <p>We charge the $ 10 dollares to complete the setup and installation for you. Payment can be made through paypal.</p>
+        </div>
+      </div> <!-- col-md-8 -->
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="assets/js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+html,body{
+  padding:0;
+  margin:0;
+  background:#F0F0F0;
+}
+.side-logo{
+  background:#39527B;
+  color:#fff;
+  height:154px;
+  padding:20px;
+  text-align: center;
+}
+
+.credits{
+  min-height: 120px;
+  background:#fff;
+  padding:20px;
+}
+
+.content{
+  background:#fff;
+  min-height:300px;
+  padding:20px;
+}
+
+h1{
+  margin:0px 0px 20px 0px;
+  padding:0;
+  font-size: 28px;
+}
