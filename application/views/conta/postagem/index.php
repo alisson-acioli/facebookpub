@@ -308,9 +308,10 @@
          </div>
          <!-- /.tab-pane -->
          <div class="pager d-flex justify-content-center">
-            <button type="button" id="finish-btn" class="finish btn btn-success w-50 mr-4"><?php echo $this->lang->line('btn_finalizar');?></button>
             <button type="button" id="previous-btn" class="previous btn btn-success w-50 mr-4"><?php echo $this->lang->line('btn_anterior');?></button>
-            <button type="button" id="next-btn" class="next btn btn-success w-50"><?php echo $this->lang->line('btn_proximo');?></button></div>
+            <button type="button" id="next-btn" class="next btn btn-success w-50"><?php echo $this->lang->line('btn_proximo');?></button>
+            <button type="button" id="finish-btn" class="finish btn btn-info w-50 mr-4"><?php echo $this->lang->line('btn_finalizar');?></button>
+         </div>
          <!-- /.pager -->
       </div>
       <!-- /.tab-content -->
