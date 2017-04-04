@@ -158,7 +158,7 @@ CREATE TABLE `website_config` (
 -- Extraindo dados da tabela `website_config`
 --
 
-INSERT INTO `website_config` (`id`, `nome_site`, `descricao_site`, `linguagem`, `timezone`, `app_id`,  `app_secret`, `purchase_code`) VALUES
+INSERT INTO `website_config` (`id`, `nome_site`, `descricao_site`, `linguagem`, `timezone`, `app_id`,  `app_secret`, `purchase_code`, `permitir_cadastros`) VALUES
 (1, 'FacebookPub', 'FacebookPub Description', 'english', 'America/Sao_Paulo', 'APP-ID', 'APP-SECRET', 'PURCHASE-CODE', 0);
 
 --
