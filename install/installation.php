@@ -2,6 +2,29 @@
 
 ini_set('max_execution_time', 300); //300 seconds 
 
+function verify($purchasecode){
+
+    $usernameCodecanyon = 'php4fun';
+    $apiKeyCodecanyon = 't328ywj13ddlhc3q61iy2zm5f9mevj3q';
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "http://marketplace.envato.com/api/edge/$usernameCodecanyon/$apiKeyCodecanyon/verify-purchase:$purchasecode.json");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'ENVATO-PURCHASE-VERIFY'); //api requires any user agent to be set
+
+    $result = json_decode( curl_exec($ch) , true );
+
+    if($result != ""){
+        if ( !empty($result['verify-purchase']['item_id']) && $result['verify-purchase']['item_id'] ) {
+            return $result['verify-purchase'];
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
 if (isset($_POST)) {
     $host = $_POST["host"];
     $dbuser = $_POST["dbuser"];
@@ -44,6 +67,11 @@ if (isset($_POST)) {
     //all input seems to be ok. check required fiels
     if (!is_file('database.sql')) {
         echo json_encode(array("success" => false, "message" => "The database.sql file could not found in install folder!"));
+        exit();
+    }
+
+    if (!verify($purchasecode)) {
+        echo json_encode(array("success" => false, "message" => "Purchase Code invalid!"));
         exit();
     }
 
