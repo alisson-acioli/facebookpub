@@ -20,6 +20,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['facebook_login_type']          = 'web';
 $config['facebook_login_redirect_url']  = 'conta';
 $config['facebook_logout_redirect_url'] = 'sair';
-$config['facebook_permissions']         = array('manage_pages', 'publish_pages', 'pages_show_list', 'public_profile', 'publish_actions', 'email', 'user_managed_groups', 'user_posts', 'user_likes');
+$config['facebook_permissions']         = array('publish_actions', 'manage_pages', 'publish_pages', 'pages_show_list', 'public_profile', 'email', 'user_managed_groups', 'user_posts', 'user_likes');
 $config['facebook_graph_version']       = 'v2.8';
 $config['facebook_auth_on_load']        = TRUE;
