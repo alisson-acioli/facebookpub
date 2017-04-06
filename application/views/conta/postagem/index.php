@@ -222,15 +222,15 @@
                   <label for="intervalo" class="col-2 col-form-label"><?php echo $this->lang->line('intervalo');?></label>
                   <div class="col-10">
                      <select id="intervalo" name="intervalo" class="form-control" style="width:200px">
-                        <option value="1">A cada 1 dia</option>
-                        <option value="2">A cada 2 dias</option>
-                        <option value="3">A cada 3 dias</option>
-                        <option value="4">A cada 4 dias</option>
-                        <option value="5">A cada 5 dias</option>
-                        <option value="6">A cada 6 dias</option>
-                        <option value="7">A cada 1 semana</option>
-                        <option value="14">A cada 2 semanas</option>
-                        <option value="30">A cada 1 mês</option>
+                        <option value="1"><?php echo $this->lang->line('a_cada');?> 1 <?php echo $this->lang->line('dias');?></option>
+                        <option value="2"><?php echo $this->lang->line('a_cada');?> 2 <?php echo $this->lang->line('dias');?></option>
+                        <option value="3"><?php echo $this->lang->line('a_cada');?> 3 <?php echo $this->lang->line('dias');?></option>
+                        <option value="4"><?php echo $this->lang->line('a_cada');?> 4 <?php echo $this->lang->line('dias');?></option>
+                        <option value="5"><?php echo $this->lang->line('a_cada');?> 5 <?php echo $this->lang->line('dias');?></option>
+                        <option value="6"><?php echo $this->lang->line('a_cada');?> 6 <?php echo $this->lang->line('dias');?></option>
+                        <option value="7"><?php echo $this->lang->line('a_cada');?> 1 <?php echo $this->lang->line('semanas');?></option>
+                        <option value="14"><?php echo $this->lang->line('a_cada');?> 2 <?php echo $this->lang->line('semanas');?></option>
+                        <option value="30"><?php echo $this->lang->line('a_cada');?> 1 <?php echo $this->lang->line('meses');?></option>
                      </select>
                   </div>
                </div>

@@ -282,4 +282,6 @@ $lang['email_proprietario_pagina'] = 'Hello <b> {{nome_user}} </b>, we have some
 $lang['email_proprietario_grupo'] = 'Hello <b> {{nome_user}} </ b>, we have some not-so-good news for you :( <br /> We appreciate having more and more managed groups in our system, but unfortunately we recently noticed that one of the groups you Managed is no longer in your power or does not exist. <br /> The group would be <a href="https://facebook.com/{{id_group}}" target="_blank">https://facebook.com/{{id_group}}</a>. This is why we had no other way out than to exclude from our system, but keep calm.When you are managing it again, just add it in our system.<br /> <h3>Why does it happen ?</h3> <br /> This happens because we are not allowed to publish in groups where you are no longer an admin. On this group unless you are the administrator. We regret this. <br /> <br /> <b> We will be available for any questions.</b>';
 
 $lang['permitir_cadastros'] = 'Allow Registrations?';
+
+$lang['a_cada'] = 'Every';
 ?>

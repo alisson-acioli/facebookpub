@@ -283,4 +283,6 @@ $lang['email_proprietario_grupo'] = 'Olá <b>{{nome_user}}</b>, temos uma notici
 
 $lang['permitir_cadastros'] = 'Permitir Cadastros?';
 
+$lang['a_cada'] = 'A cada';
+
 ?>
