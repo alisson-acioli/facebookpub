@@ -272,7 +272,7 @@
                </div>
             </div>
             
-            <div class="local-pagina" style="display:block">
+            <div align="center" class="local-pagina" style="display:block">
                <p class="text-center"><?php echo $this->lang->line('help_quais_paginas');?></p>
                <select name="paginas_programacao_select" id="paginas_programacao_select" class="form-control" style="width:75%;">
                <?php
@@ -290,7 +290,7 @@
                <div class="alert alert-info text-center"><?php echo $this->lang->line('voce_selecionou_perfil');?></div>
             </div>
 
-            <div class="local-grupo" style="display:none">
+            <div align="center" class="local-grupo" style="display:none">
                <p class="text-center"><?php echo $this->lang->line('help_quais_grupos');?></p>
                <select name="grupos_programacao_select" id="grupos_programacao_select" class="form-control" style="width:75%;">
                <?php
