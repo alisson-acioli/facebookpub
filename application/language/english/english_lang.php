@@ -292,4 +292,8 @@ $lang['perfil_facebook'] = 'Profile';
 
 $lang['selecione_perfil'] = 'Select one of your registered profiles';
 
+$lang['escolha_pagina'] = 'Choose Page';
+$lang['escolha_perfil'] = 'Choose Profile';
+$lang['escolha_grupo']  = 'Choose Group';
+
 ?>

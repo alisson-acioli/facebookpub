@@ -275,6 +275,7 @@
             <div align="center" class="local-pagina" style="display:block">
                <p class="text-center"><?php echo $this->lang->line('help_quais_paginas');?></p>
                <select name="paginas_programacao_select" id="paginas_programacao_select" class="form-control" style="width:75%;">
+               <option value=""><?php echo $this->lang->line('escolha_pagina');?></option>
                <?php
                if(!empty($this->paginas->TodasPaginas())){
 
@@ -286,9 +287,10 @@
                </select>
             </div>
 
-            <div align="cneter" class="local-perfil" style="display:none">
+            <div align="center" class="local-perfil" style="display:none">
                <p><?php echo $this->lang->line('selecione_perfil');?></p>
                <select name="perfils_programacao_select" id="perfils_programacao_select" class="form-control" style="width:75%;">
+               <option value=""><?php echo $this->lang->line('escolha_perfil');?></option>
                   <?php
                   if(!empty($this->perfils->TodosPerfils())){
                      foreach($this->perfils->TodosPerfils() as $perfil){
@@ -302,6 +304,7 @@
             <div align="center" class="local-grupo" style="display:none">
                <p class="text-center"><?php echo $this->lang->line('help_quais_grupos');?></p>
                <select name="grupos_programacao_select" id="grupos_programacao_select" class="form-control" style="width:75%;">
+               <option value=""><?php echo $this->lang->line('escolha_grupo');?></option>
                <?php
                if(!empty($this->grupos->TodosGrupos())){
 
