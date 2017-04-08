@@ -148,7 +148,7 @@ CREATE TABLE `usuarios_perfils` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_conta` varchar(30) NOT NULL,
-  `token` varchar(150) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
