@@ -31,7 +31,7 @@ class Conta extends CI_Controller {
                                   'assets/examples/js/dashboards/dashboard.v1.js'
                                   );
 
-        $this->LoginModel->AtualizarTokenUser();
+        $this->LoginModel->VerificaContaFacebook();
         
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/dashboard/index');

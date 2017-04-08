@@ -74,15 +74,27 @@ class Loginmodel extends CI_Model{
         }
     }
 
-    public function AtualizarTokenUser(){
+    public function VerificaContaFacebook(){
 
         if($this->input->get('code') && $this->input->get('state')){
 
             $userid = $this->session->userdata('userid');
             $access_token = $this->session->userdata('fb_access_token');
+            $id_account = $this->facebook->getAccountId();
 
-            $this->db->where('id', $userid);
-            $this->db->update('usuarios', array('token'=>$access_token));
+            $this->db->where('id_conta', $id_account);
+            $this->db->where('id_user', $userid);
+            $perfils = $this->db->get('usuarios_perfils');
+
+            if($perfils->num_rows() > 0){
+
+                $this->db->where('id_conta', $id_account);
+                $this->db->where('id_user', $userid);
+                $this->db->update('usuarios_perfils', array('token'=>$access_token));
+            }else{
+
+                $this->db->insert('usuarios_perfils', array('id_user'=>$userid, 'id_conta'=>$id_account, 'token'=>$access_token));
+            }
         }
     }
 

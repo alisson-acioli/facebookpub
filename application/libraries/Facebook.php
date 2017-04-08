@@ -292,6 +292,13 @@ Class Facebook
         }
     }
 
+    public function getAccountId(){
+
+        $query = $this->request('get', '/me');
+
+        return $query['id'];
+    }
+
     public function NamePage($idPage){
 
         if($this->is_authenticated()){
