@@ -146,7 +146,7 @@ class Cronjobs extends CI_Model{
 
                             if($result->repetir_programacao == 1){
 
-                                $ProximaExecucao = date('Y-m-d H:i:s', (strtotime($result->data_programacao) + $result->intervalo));
+                                $ProximaExecucao = date('Y-m-d H:i:s', (time() + $result->intervalo));
                                 
                                 if($ProximaExecucao <= $result->data_final_repeticao){
 
