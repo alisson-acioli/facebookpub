@@ -5,7 +5,8 @@ class Conta extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
-
+        checksession();
+        
         $this->load->model('paginas');
         $this->load->model('grupos');
         $this->load->model('postagem');
@@ -20,8 +21,6 @@ class Conta extends CI_Controller {
         }
 
         $this->lang->load($lang, $lang);
-
-        checksession();
     }
 
     public function index(){
