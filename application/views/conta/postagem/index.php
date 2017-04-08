@@ -286,8 +286,17 @@
                </select>
             </div>
 
-            <div class="local-perfil" style="display:none">
-               <div class="alert alert-info text-center"><?php echo $this->lang->line('voce_selecionou_perfil');?></div>
+            <div align="cneter" class="local-perfil" style="display:none">
+               <p><?php echo $this->lang->line('selecione_perfil');?></p>
+               <select name="perfils_programacao_select" id="perfils_programacao_select" class="form-control" style="width:75%;">
+                  <?php
+                  if(!empty($this->perfils->TodosPerfils())){
+                     foreach($this->perfils->TodosPerfils() as $perfil){
+                        echo '<option value="'.$perfil['perfil_id'].'">'.$perfil['perfil'].'</option>';
+                     }
+                  }
+                  ?>
+               </select>
             </div>
 
             <div align="center" class="local-grupo" style="display:none">

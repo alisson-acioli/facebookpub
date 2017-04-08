@@ -71,6 +71,7 @@ class Requests extends CI_Controller {
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
         $Grupos          = $this->input->post('grupos');
+        $Perfils         = $this->input->post('perfils');
         $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
@@ -107,13 +108,16 @@ class Requests extends CI_Controller {
 
         }elseif($lugar == 'perfil'){
 
-            $token = usuario('token');
+            $Perfils = rtrim($Perfils, ',');
 
-            $myID = $this->facebook->GetMyID($token);
+            $separaPerfils = explode(',', $Perfils);
 
-            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
+            foreach($separaPerfils as $perfil){
 
-            $contagem++;
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$perfil, 'tipo'=>'perfil'));
+                
+                $contagem++;
+            }
 
         }elseif($lugar == 'grupo'){
 
@@ -158,6 +162,7 @@ class Requests extends CI_Controller {
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
         $Grupos          = $this->input->post('grupos');
+        $Perfils         = $this->input->post('perfils');
         $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
@@ -198,11 +203,16 @@ class Requests extends CI_Controller {
 
         }elseif($lugar == 'perfil'){
 
-            $myID = $this->facebook->GetMyID();
+            $Perfils = rtrim($Perfils, ',');
 
-            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
+            $separaPerfils = explode(',', $Perfils);
 
-            $contagem++;
+            foreach($separaPerfils as $perfil){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$perfil, 'tipo'=>'perfil'));
+                
+                $contagem++;
+            }
 
         }elseif($lugar == 'grupo'){
 
@@ -244,6 +254,7 @@ class Requests extends CI_Controller {
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
         $Grupos          = $this->input->post('grupos');
+        $Perfils         = $this->input->post('perfils');
         $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
@@ -281,11 +292,16 @@ class Requests extends CI_Controller {
 
         }elseif($lugar == 'perfil'){
 
-            $myID = $this->facebook->GetMyID();
+            $Perfils = rtrim($Perfils, ',');
 
-            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
+            $separaPerfils = explode(',', $Perfils);
 
-            $contagem++;
+            foreach($separaPerfils as $perfil){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$perfil, 'tipo'=>'perfil'));
+                
+                $contagem++;
+            }
 
         }elseif($lugar == 'grupo'){
 
@@ -329,6 +345,7 @@ class Requests extends CI_Controller {
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
         $Grupos          = $this->input->post('grupos');
+        $Perfils         = $this->input->post('perfils');
         $lugar           = $this->input->post('lugar');
 
         $dataAgendamento = converter_data($dataAgendamento, '/', '-');
@@ -368,11 +385,16 @@ class Requests extends CI_Controller {
 
         }elseif($lugar == 'perfil'){
 
-            $myID = $this->facebook->GetMyID();
+            $Perfils = rtrim($Perfils, ',');
 
-            $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$myID, 'tipo'=>'perfil'));
+            $separaPerfils = explode(',', $Perfils);
 
-            $contagem++;
+            foreach($separaPerfils as $perfil){
+
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$perfil, 'tipo'=>'perfil'));
+                
+                $contagem++;
+            }
 
         }elseif($lugar == 'grupo'){
 
@@ -487,8 +509,8 @@ class Requests extends CI_Controller {
                 
                 }elseif($page->tipo == 'perfil'){
 
-                    $html .= '<div class="alert alert-info text-center text-uppercase">'.$this->lang->line('perfil_selecionado').'</div>';
-                
+                    $html .= $this->lang->line('perfil_facebook').' '.($key+1).' - '.$this->facebook->getNameProfile($page->id_conta).'<br />';
+
                 }elseif($page->tipo == 'grupo'){
 
                     $html .= $this->lang->line('grupo').' '.($key+1).' - '.$this->facebook->NameGroup($page->id_conta).'<br />';

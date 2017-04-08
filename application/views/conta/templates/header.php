@@ -151,6 +151,11 @@ svg4everybody();
          </a>
           <ul class="submenu" style="display: none;">
             <li>
+               <a href="<?php echo base_url('conta/perfils');?>">
+                  <span class="menu-text"><?php echo $this->lang->line('menu_perfils');?></span>
+               </a>
+            </li>
+            <li>
                <a href="<?php echo base_url('conta/paginas');?>">
                   <span class="menu-text"><?php echo $this->lang->line('menu_paginas');?></span>
                </a>

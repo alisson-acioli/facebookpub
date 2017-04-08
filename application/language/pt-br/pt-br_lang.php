@@ -36,6 +36,7 @@ $lang['menu_paginas'] = 'Páginas';
 $lang['menu_grupos'] = 'Grupos';
 $lang['menu_relatorios'] = 'Relatórios';
 $lang['menu_perfil'] = 'Perfil';
+$lang['menu_perfils'] = 'Meus Perfis';
 $lang['menu_administrador'] = 'Administrador';
 $lang['submenu_usuarios'] = 'Usuários';
 $lang['submenu_configuracoes'] = 'Configurações';
@@ -284,5 +285,11 @@ $lang['email_proprietario_grupo'] = 'Olá <b>{{nome_user}}</b>, temos uma notici
 $lang['permitir_cadastros'] = 'Permitir Cadastros?';
 
 $lang['a_cada'] = 'A cada';
+
+$lang['help_perfils_1'] = 'Selecione abaixo todos os perfis que você quer gerenciar a partir de nosso sistema. Somente os perfis selecionados poderão ser gerenciadas por nosso sistemas, os demais não.';
+$lang['help_perfils_2'] = 'Caso queira ativar ou desativar posteriormente, será possível por essa página.';
+$lang['perfil_facebook'] = 'Perfil';
+
+$lang['selecione_perfil'] = 'Selecione um dos seus perfils cadastrados';
 
 ?>

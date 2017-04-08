@@ -9,6 +9,7 @@ class Conta extends CI_Controller {
         $this->load->model('paginas');
         $this->load->model('grupos');
         $this->load->model('postagem');
+        $this->load->model('perfils');
         $this->load->model('loginmodel', 'LoginModel');
 
         if($this->session->has_userdata('lingua')){
@@ -152,6 +153,23 @@ class Conta extends CI_Controller {
 
         $this->load->view('conta/templates/header', $data);
         $this->load->view('conta/grupos/index');
+        $this->load->view('conta/templates/footer');
+    }
+
+    public function perfils(){
+
+        $data['titulo'] = $this->lang->line('menu_perfils');
+
+        $data['userid'] = $this->session->userdata('userid');
+
+        if($this->input->post('submit')){
+          $data['message'] = $this->perfils->SalvaPerfil();
+        }
+
+        $data['perfils'] = $this->perfils->TodosPerfils(true);
+
+        $this->load->view('conta/templates/header', $data);
+        $this->load->view('conta/perfils/index');
         $this->load->view('conta/templates/footer');
     }
 

@@ -299,6 +299,36 @@ Class Facebook
         return $query['id'];
     }
 
+    public function getNameProfile($id_account){
+
+        if($this->is_authenticated()){
+
+            $query = $this->request('get', '/'.$id_account);
+
+            if(!empty($query)){
+
+                return $query['name'];
+            }
+
+        }else{
+
+            $this->db->where('id_conta', $id_account);
+            $perfils = $this->db->get('usuarios_perfils');
+
+            if($perfils->num_rows() > 0){
+
+                $row = $perfils->row();
+
+                $query = $this->request('get', '/'.$id_account, $row->token);
+                
+                return $query['name'];
+                
+            }
+
+            return '<font color="red">Logue com o facebook para exibir o nome da página</font>';
+        }
+    }
+
     public function NamePage($idPage){
 
         if($this->is_authenticated()){

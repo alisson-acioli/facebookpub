@@ -140,7 +140,8 @@ $(function() {
             },
 
             paginas_programacao_select: "required",
-            grupos_programacao_select: "required"
+            grupos_programacao_select: "required",
+            perfils_programacao_select: "required"
          },
          errorElement: "div",
          errorPlacement: function(e, o) {
@@ -188,6 +189,7 @@ $(function() {
             var DataFinal       = $("input[name='data_final']").val();
             var Paginas         = '';
             var Grupos          = '';
+            var Perfils         = '';
 
             $("select[name='paginas_programacao_select'] option:selected").each(function(){
 
@@ -198,6 +200,12 @@ $(function() {
             $("select[name='grupos_programacao_select'] option:selected").each(function(){
 
                Grupos += $(this).val()+',';
+
+            });
+
+            $("select[name='perfils_programacao_select'] option:selected").each(function(){
+
+               Perfils += $(this).val()+',';
 
             });
 
@@ -218,6 +226,7 @@ $(function() {
                         data_final: DataFinal,
                         paginas: Paginas,
                         grupos: Grupos,
+                        perfils: Perfils,
                         lugar: LugarPostagem
                      },
 
@@ -275,6 +284,7 @@ $(function() {
                         data_final: DataFinal,
                         paginas: Paginas,
                         grupos: Grupos,
+                        perfils: Perfils,
                         lugar: LugarPostagem
                      },
 
@@ -326,6 +336,7 @@ $(function() {
                         data_final: DataFinal,
                         paginas: Paginas,
                         grupos: Grupos,
+                        perfils: Perfils,
                         lugar: LugarPostagem
                      },
 
@@ -382,6 +393,7 @@ $(function() {
                         data_final: DataFinal,
                         paginas: Paginas,
                         grupos: Grupos,
+                        perfils: Perfils,
                         lugar: LugarPostagem
                      },
 

@@ -93,7 +93,7 @@ class Loginmodel extends CI_Model{
                 $this->db->update('usuarios_perfils', array('token'=>$access_token));
             }else{
 
-                $this->db->insert('usuarios_perfils', array('id_user'=>$userid, 'id_conta'=>$id_account, 'token'=>$access_token));
+                $this->db->insert('usuarios_perfils', array('id_user'=>$userid, 'id_conta'=>$id_account, 'token'=>$access_token, 'status'=>1));
             }
         }
     }
