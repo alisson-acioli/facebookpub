@@ -69,7 +69,7 @@
             <div class="side-content">
                <div id="signin-form-wrap" class="form-wrap <?php echo (!isset($messageCadastrar)) ? 'show' : '';?>">
                   <h4 class="my-5 font-weight-light text-uppercase"><?php echo $this->lang->line('titulo_login');?></h4>
-                  <form id="signin-form" class="form" action="" method="post">
+                  <form id="signin-form" class="form" action="<?php echo base_url('login');?>" method="post">
 
                   	 <?php if(isset($messageLogin)) echo $messageLogin; ?>
 
@@ -163,5 +163,14 @@
       <script src="<?php echo base_url();?>assets/examples/js/pages/login.js"></script>
       <script src="<?php echo base_url();?>assets/js/pages/recoverpassword.js"></script>
       <!-- / scripts for the current page-->
+
+      <script>
+      let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+
+      if(!isMobile) {
+        let login_firefox = ($('body').width()/2)-48;
+        $(".login-page-wrap .side-content").css('width', login_firefox);
+      }
+      </script>
    </body>
 </html>
