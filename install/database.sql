@@ -36,6 +36,7 @@ CREATE TABLE `codigos_recuperacao_senha` (
 CREATE TABLE `grupos` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `id_conta` VARCHAR(30) NOT NULL,
   `group_id` varchar(50) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
