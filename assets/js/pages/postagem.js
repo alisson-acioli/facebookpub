@@ -10,6 +10,41 @@ $(document).on("change", 'input[name="tipo"]', function(){
   $("."+TipoPublicacao).css('display', 'block');
 });
 
+$(document).on('change', 'select[name="grupos_programacao_select"]', function(){
+
+   var idGrupo = $(this).val();
+
+   $.ajax({
+      url: baseURL+'requests/info_group_posting',
+      data: {id: idGrupo},
+      type: 'POST',
+      dataType: 'JSON',
+      Async: true,
+
+      success: function(response){
+
+         if(response.status == 1){
+
+            $(".escolha-dono-grupo").css('display', 'block');
+            $("#dono_grupo_select").empty();
+
+            for(index in response.admins){
+
+               $("#dono_grupo_select").append('<option value="'+response.admins[index].id_perfil+'">'+response.admins[index].nome+' ('+response.admins[index].id_perfil+')</option>');
+            }
+         }else{
+
+            swal(erro, nenhum_admin_valido, 'error');
+         }
+      },
+
+      error: function(error){
+         console.log('--- error ----');
+         console.log(error.responseText);
+      }
+   });
+});
+
 $(document).on("change", 'input[name="lugar"]', function(){
 
   var Lugar = $(this).val();
@@ -141,7 +176,8 @@ $(function() {
 
             paginas_programacao_select: "required",
             grupos_programacao_select: "required",
-            perfils_programacao_select: "required"
+            perfils_programacao_select: "required",
+            dono_grupo_select: "required"
          },
          errorElement: "div",
          errorPlacement: function(e, o) {
@@ -187,6 +223,7 @@ $(function() {
             var RepetirPostagem = $("input[name='repetir_post']:checked").val();
             var Intervalo       = $("select[name='intervalo'] option:selected").val();
             var DataFinal       = $("input[name='data_final']").val();
+            var AdminGrupo      = $("select[name='dono_grupo_select'] option:selected").val();
             var Paginas         = '';
             var Grupos          = '';
             var Perfils         = '';
@@ -226,6 +263,7 @@ $(function() {
                         data_final: DataFinal,
                         paginas: Paginas,
                         grupos: Grupos,
+                        postar_por: AdminGrupo,
                         perfils: Perfils,
                         lugar: LugarPostagem
                      },
@@ -284,6 +322,7 @@ $(function() {
                         data_final: DataFinal,
                         paginas: Paginas,
                         grupos: Grupos,
+                        postar_por: AdminGrupo,
                         perfils: Perfils,
                         lugar: LugarPostagem
                      },
@@ -336,6 +375,7 @@ $(function() {
                         data_final: DataFinal,
                         paginas: Paginas,
                         grupos: Grupos,
+                        postar_por: AdminGrupo,
                         perfils: Perfils,
                         lugar: LugarPostagem
                      },
@@ -393,6 +433,7 @@ $(function() {
                         data_final: DataFinal,
                         paginas: Paginas,
                         grupos: Grupos,
+                        postar_por: AdminGrupo,
                         perfils: Perfils,
                         lugar: LugarPostagem
                      },

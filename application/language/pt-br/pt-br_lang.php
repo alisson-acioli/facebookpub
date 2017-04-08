@@ -296,4 +296,7 @@ $lang['escolha_pagina'] = 'Escolha uma página';
 $lang['escolha_perfil'] = 'Escolha um Perfil';
 $lang['escolha_grupo']  = 'Escolha um Grupo';
 
+$lang['escolha_perfil_admin_grupo'] = 'Por favor, escolha um perfil para postar nesse grupo. Os perfis abaixo são os que gerenciam o grupo selecionado.';
+
+$lang['nenhum_admin_valido'] = 'O nosso sistema não achou nenhum admin válido para esse grupo. Por favor, tente novamente ou escolha outro grupo. Caso insista em usar esse grupo, a sua postagem não poderá ser concluída com exito.';
 ?>

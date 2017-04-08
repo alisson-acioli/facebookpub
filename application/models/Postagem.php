@@ -15,7 +15,7 @@ class Postagem extends CI_Model{
 
         $userid = $this->session->userdata('userid');
 
-        $this->db->order_by('data_criacao', 'DESC');
+        $this->db->order_by('id', 'DESC');
         $this->db->where('id_user', $userid);
         $programacoes = $this->db->get('programacoes');
 

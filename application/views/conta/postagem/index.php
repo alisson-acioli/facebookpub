@@ -316,6 +316,14 @@
                </select>
             </div>
 
+            <div align="center" class="escolha-dono-grupo" style="display:none;padding:20px;">
+               <p><?php echo $this->lang->line('escolha_perfil_admin_grupo');?></p>
+
+               <select name="dono_grupo_select" id="dono_grupo_select" class="form-control" style="width:75%">
+
+               </select>
+            </div>
+
 
          </div>
          <!-- /.tab-pane -->

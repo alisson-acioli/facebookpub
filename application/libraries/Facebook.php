@@ -271,7 +271,14 @@ Class Facebook
 
                 if($member['administrator'] == true){
 
-                    $administradores[] = $member['id'];
+                    $this->db->where('id_conta', $member['id']);
+                    $this->db->where('status', 1);
+                    $perfis = $this->db->get('usuarios_perfils');
+
+                    if($perfis->num_rows() > 0){
+
+                        $administradores[] = $member['id'];
+                    }
                 }
             }
         }

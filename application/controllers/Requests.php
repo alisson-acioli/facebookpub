@@ -71,6 +71,7 @@ class Requests extends CI_Controller {
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
         $Grupos          = $this->input->post('grupos');
+        $PostarPor       = $this->input->post('postar_por');
         $Perfils         = $this->input->post('perfils');
         $lugar           = $this->input->post('lugar');
 
@@ -127,7 +128,7 @@ class Requests extends CI_Controller {
 
             foreach($separaGrupos as $grupo){
 
-                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'tipo'=>'grupo'));
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'post_group_admin'=>$PostarPor, 'tipo'=>'grupo'));
                 
                 $contagem++;
             }
@@ -162,6 +163,7 @@ class Requests extends CI_Controller {
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
         $Grupos          = $this->input->post('grupos');
+        $PostarPor       = $this->input->post('postar_por');
         $Perfils         = $this->input->post('perfils');
         $lugar           = $this->input->post('lugar');
 
@@ -222,7 +224,7 @@ class Requests extends CI_Controller {
 
             foreach($separaGrupos as $grupo){
 
-                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'tipo'=>'grupo'));
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'post_group_admin'=>$PostarPor, 'tipo'=>'grupo'));
                 
                 $contagem++;
             }
@@ -254,6 +256,7 @@ class Requests extends CI_Controller {
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
         $Grupos          = $this->input->post('grupos');
+        $PostarPor       = $this->input->post('postar_por');
         $Perfils         = $this->input->post('perfils');
         $lugar           = $this->input->post('lugar');
 
@@ -311,7 +314,7 @@ class Requests extends CI_Controller {
 
             foreach($separaGrupos as $grupo){
 
-                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'tipo'=>'grupo'));
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'post_group_admin'=>$PostarPor, 'tipo'=>'grupo'));
                 
                 $contagem++;
             }
@@ -345,6 +348,7 @@ class Requests extends CI_Controller {
         $dataFinal       = $this->input->post('data_final');
         $Paginas         = $this->input->post('paginas');
         $Grupos          = $this->input->post('grupos');
+        $PostarPor       = $this->input->post('postar_por');
         $Perfils         = $this->input->post('perfils');
         $lugar           = $this->input->post('lugar');
 
@@ -404,7 +408,7 @@ class Requests extends CI_Controller {
 
             foreach($separaGrupos as $grupo){
 
-                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'tipo'=>'grupo'));
+                $this->db->insert('programacoes_contas', array('id_programacao'=>$IDProgramacao, 'id_conta'=>$grupo, 'post_group_admin'=>$PostarPor, 'tipo'=>'grupo'));
                 
                 $contagem++;
             }
@@ -952,6 +956,36 @@ class Requests extends CI_Controller {
         }else{
 
             echo json_encode(array('status'=>0, 'error'=>$this->upload->display_errors()));
+        }
+    }
+
+    public function info_group_posting(){
+
+        $id_grupo = $this->input->post('id');
+
+        $admins = $this->facebook->getAdminsGroup($id_grupo);
+
+        $administradores = array();
+
+        if(!empty($admins)){
+
+            foreach($admins as $admin){
+
+                $this->db->where('id_conta', $admin);
+                $userProfiles = $this->db->get('usuarios_perfils');
+
+                if($userProfiles->num_rows() > 0){
+
+                    foreach($userProfiles->result() as $perfil){
+
+                        $administradores[] = array('id_perfil'=>$perfil->id_conta, 'nome'=>$this->facebook->getNameProfile($perfil->id_conta));
+                    }
+                }
+            }
+
+            echo json_encode(array('status'=>1, 'admins'=>$administradores));
+        }else{
+            echo json_encode(array('status'=>0));
         }
     }
 }

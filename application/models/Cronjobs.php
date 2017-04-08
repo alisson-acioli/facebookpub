@@ -98,12 +98,12 @@ class Cronjobs extends CI_Model{
 
                             }elseif($pagina->tipo == 'grupo'){
 
-                                $this->db->where('id', $result->id_user);
-                                $user = $this->db->get('usuarios');
+                                $this->db->where('id_conta', $pagina->post_group_admin);
+                                $PerfilsTable = $this->db->get('usuarios_perfils');
 
-                                if($user->num_rows() > 0){
+                                if($PerfilsTable->num_rows() > 0){
 
-                                    $rowPost = $user->row();
+                                    $rowPost = $PerfilsTable->row();
 
                                     $token = $rowPost->token;
                                 }

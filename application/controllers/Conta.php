@@ -77,7 +77,8 @@ class Conta extends CI_Controller {
                                      'numero_maximo'=>$this->lang->line('numero_maximo'),
                                      'numero_minimo'=>$this->lang->line('numero_minimo'),
                                      'extensao_nao_permitida'=>$this->lang->line('extensao_nao_permitida'),
-                                     'erro_upload'=>$this->lang->line('erro_upload')
+                                     'erro_upload'=>$this->lang->line('erro_upload'),
+                                     'nenhum_admin_valido'=>$this->lang->line('nenhum_admin_valido')
                                      );
         
         $data['jsLoader'] = array(
