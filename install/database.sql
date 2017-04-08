@@ -95,6 +95,7 @@ CREATE TABLE `programacoes_contas` (
   `id` int(11) NOT NULL,
   `id_programacao` int(11) NOT NULL,
   `id_conta` int(11) NOT NULL,
+  `post_group_admin` VARCHAR(30) NULL,
   `post_id` varchar(50) DEFAULT NULL,
   `tipo` varchar(20) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
