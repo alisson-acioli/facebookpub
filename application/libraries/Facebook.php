@@ -257,6 +257,28 @@ Class Facebook
         return $info['id'];
     }
 
+    public function getAdminsGroup($group_id){
+
+        $token = usuario('token');
+
+        $administradores = array();
+
+        $query = $this->request('get', $group_id.'/members?fields=administrator', $token);
+
+        if(count($query['data']) > 0){
+
+            foreach($query['data'] as $member){
+
+                if($member['administrator'] == true){
+
+                    $administradores[] = $member['id'];
+                }
+            }
+        }
+
+        return $administradores;
+    }
+
     public function NameGroup($idGroup){
 
         if($this->is_authenticated()){
