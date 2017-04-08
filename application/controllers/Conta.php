@@ -129,6 +129,8 @@ class Conta extends CI_Controller {
 
         $data['titulo'] = $this->lang->line('menu_paginas');
 
+        $data['userid'] = $this->session->userdata('userid');
+
         if($this->input->post('submit')){
           $data['message'] = $this->paginas->SalvaPagina();
         }
@@ -141,6 +143,8 @@ class Conta extends CI_Controller {
     public function grupos(){
 
         $data['titulo'] = $this->lang->line('menu_grupos');
+
+        $data['userid'] = $this->session->userdata('userid');
 
         if($this->input->post('submit')){
           $data['message'] = $this->grupos->SalvaGrupo();

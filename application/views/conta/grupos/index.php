@@ -29,6 +29,7 @@
         foreach($groupsList['data'] as $grupo){
 
           $this->db->where('group_id', $grupo['id']);
+          $this->db->where('id_user', $userid);
           $queryGroup = $this->db->get('grupos');
 
           if($queryGroup->num_rows() > 0){

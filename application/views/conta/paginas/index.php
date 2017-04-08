@@ -30,6 +30,7 @@
         foreach($pagesList['data'] as $page){
 
           $this->db->where('id_page', $page['id']);
+          $this->db->where('id_user', $userid);
           $queryPage = $this->db->get('paginas');
 
           if($queryPage->num_rows() > 0){
