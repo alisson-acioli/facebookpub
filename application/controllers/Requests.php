@@ -523,8 +523,12 @@ class Requests extends CI_Controller {
               $label = 'label-warning';
             break;
           }
-          $html .= '<b>'.$this->lang->line('status').':</b> <span class="label '.$label.'">'.StatusPostagem($row->status).'</span> <br />';
+          $html .= '<b>'.$this->lang->line('status').':</b> <span class="label '.$label.'">'.StatusPostagem($row->status).'</span> <br /><br />';
 
+          if($row->status == 4){
+
+            $html .= '<div class="alert alert-danger text-center">'.$row->erro_post.'</div>';
+          }
 
           echo $html;
 
