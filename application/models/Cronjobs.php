@@ -14,9 +14,6 @@ class Cronjobs extends CI_Model{
 
     public function FazerPostagem(){
 
-        $error = false;
-        $imagem = false;
-
         $this->db->where('data_programacao <= ', date('Y-m-d H:i:s'));
         $this->db->where('status', 1);
         $query = $this->db->get('programacoes');
@@ -24,6 +21,11 @@ class Cronjobs extends CI_Model{
         if($query->num_rows() > 0){
 
             foreach($query->result() as $result){
+
+                $imagem = false;
+                $error = false;
+
+                $params = array();
 
                 if($result->tipo_programacao == 'texto'){
 
@@ -95,6 +97,7 @@ class Cronjobs extends CI_Model{
                             }
 
                             if(!empty($token)){
+
                                 $post = $this->facebook->FazerPost($pagina->id_conta, $params, $token, $imagem);
 
                                 if(isset($post['id'])){
@@ -107,11 +110,22 @@ class Cronjobs extends CI_Model{
                                     $this->db->update('programacoes_contas', array('post_id'=>$post_id));
 
                                     $success = true;
+                                }else{
+                                    $this->db->where('id', $result->id);
+                                    $this->db->update('programacoes', array('status'=>4));
+
+                                    if(isset($post['error'])){
+                                        $this->db->where('id', $result->id);
+                                        $this->db->update('programacoes', array('erro_post'=>$post['message']));
+                                    }
                                 }
                             }else{
 
                                 $this->db->where('id', $result->id);
                                 $this->db->update('programacoes', array('status'=>4));
+
+                                $this->db->where('id', $result->id);
+                                $this->db->update('programacoes', array('erro_post'=>'User token not exists'));
                             }
                         }
 
