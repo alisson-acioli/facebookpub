@@ -81,6 +81,7 @@ CREATE TABLE `programacoes` (
   `data_final_repeticao` datetime DEFAULT NULL,
   `tipo_programacao` varchar(10) NOT NULL,
   `lugar_postagem` varchar(20) NOT NULL,
+  `erro_post` text DEFAULT NULL,
   `data_criacao` date NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -138,6 +139,19 @@ INSERT INTO `usuarios` (`id`, `admin`, `nome`, `email`, `login`, `senha`, `token
 
 -- --------------------------------------------------------
 
+--
+-- Estrutura da tabela `usuarios_perfils`
+--
+
+CREATE TABLE `usuarios_perfils` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_conta` varchar(30) NOT NULL,
+  `token` varchar(150) DEFAULT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 --
 -- Estrutura da tabela `website_config`
 --
@@ -207,6 +221,13 @@ ALTER TABLE `relatorio_curtidas`
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
+
+--
+-- Indexes for table `usuarios_perfils`
+--
+ALTER TABLE `usuarios_perfils`
+  ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `website_config`
 --
@@ -251,6 +272,11 @@ ALTER TABLE `relatorio_curtidas`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `usuarios_perfils`
+--
+ALTER TABLE `usuarios_perfils`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `website_config`
