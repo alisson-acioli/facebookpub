@@ -84,7 +84,6 @@ if (!empty($_SERVER['HTTPS'])) {
     <div class="jumbotron">
       <div class="container">
         <h1>Hello!</h1>
-        <p>Thank you for purchasing the FacebookPub script. Here you can install this amazing system!</p>
       </div>
     </div>
 
@@ -299,19 +298,6 @@ if (!empty($_SERVER['HTTPS'])) {
                                             <label for="appsecret" class=" col-md-3">APP Secret</label>
                                             <div class=" col-md-9">
                                                 <input type="text" value="" id="appsecret" name="app_secret" class="form-control" placeholder="App Secret" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="section clearfix">
-                                    <p>4. Purchase Code. Find in CodeCanyon</p>
-                                    <hr />
-                                    <div>
-                                        <div class="form-group clearfix">
-                                            <label for="purchase" class=" col-md-3">Purchase Code</label>
-                                            <div class="col-md-9">
-                                                <input type="text" value=""  id="purchase"  name="purchasecode" class="form-control"  placeholder="Purchase Code" />
                                             </div>
                                         </div>
                                     </div>
